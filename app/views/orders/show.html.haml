@@ -11,3 +11,12 @@
     %tr
       %td
       %td=@order.amount
+
+.panel.panel-default
+  .panel-heading
+    Buy on credit
+  .panel-body
+    .progress
+      .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+    .loan-btn
+      =link_to 'Buy', '#', class: 'btn btn-warning'

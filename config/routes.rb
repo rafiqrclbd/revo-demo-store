@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     post 'remove/:product_id', to: 'carts#remove', as: :remove_from
   end
   resources :orders, only: [:index, :create, :show]
+
+  resources :revo, only: [:show]
 end
