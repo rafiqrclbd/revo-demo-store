@@ -1,0 +1,17 @@
+%h1 Orders
+
+%table.table
+  %thead
+    %th #
+    %th= Order.human_attribute_name :uid
+    %th= Order.human_attribute_name :amount
+    %th= Order.human_attribute_name :revo_status
+    %th Pay
+  %tbody
+    -@orders.each do |o|
+      %tr
+        %td= o.id
+        %td= o.uid
+        %td= o.amount
+        %td= o.revo_status
+        %td

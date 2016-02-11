@@ -3,6 +3,7 @@ class Cart
   delegate :any?, to: :items, prefix: false
 
   def initialize(store)
+    @store = store
     store[:cart] = {} unless store[:cart].present?
     @items = store[:cart]
   end
@@ -22,8 +23,16 @@ class Cart
     @items.delete id
   end
 
+  def clear
+    @store[:cart] = {}
+  end
+
   def products
     Product.where id: @items.keys
+  end
+
+  def products_ids
+    @items.keys
   end
 
   def total
