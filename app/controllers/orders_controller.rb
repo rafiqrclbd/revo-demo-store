@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
     @orders = current_user.orders
   end
 
+  def show
+    @order = Order.find params[:id]
+  end
+
   def create
     Order.create do |o|
       o.user = current_user

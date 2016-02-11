@@ -6,7 +6,7 @@
     %th= Order.human_attribute_name :uid
     %th= Order.human_attribute_name :amount
     %th= Order.human_attribute_name :revo_status
-    %th Pay
+    %th
   %tbody
     -@orders.each do |o|
       %tr
@@ -14,4 +14,4 @@
         %td= o.uid
         %td= o.amount
         %td= o.revo_status
-        %td
+        %td= link_to 'View order', order_path(o)

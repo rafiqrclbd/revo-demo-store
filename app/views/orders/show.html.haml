@@ -1,0 +1,13 @@
+%h1
+  =precede 'Order # ' do
+    =@order.id
+%h2 Items
+%table.table
+  %tbody
+    -@order.products.each do |p|
+      %tr
+        %td= p.name
+        %td= p.price
+    %tr
+      %td
+      %td=@order.amount
