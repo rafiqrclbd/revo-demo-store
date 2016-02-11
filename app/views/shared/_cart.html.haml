@@ -1,0 +1,15 @@
+.panel.panel-info
+  .panel-heading
+    Cart
+  .panel-body
+    -if current_cart.present? && current_cart.any?
+      %ul
+        -current_cart.products.each do |p|
+          %li
+            =p.name
+            =link_to 'x', remove_from_cart_path(p.id), class: 'btn btn-xs btn-danger', method: :post
+      .text-center
+        =link_to 'Make order', cart_path, class: 'btn btn-success'
+    -else
+      .text-center
+        no goods in cart

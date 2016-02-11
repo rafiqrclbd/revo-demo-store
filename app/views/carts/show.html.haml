@@ -1,0 +1,23 @@
+%h1 Cart
+
+%table.table
+  %thead
+    %th
+    %th= Product.human_attribute_name :name
+    %th= Product.human_attribute_name :price
+  %tbody
+    -@items.each do |_, p|
+      %tr
+        %td.text-center= image_tag p[:image.to_s], height: 25
+        %td= p[:name.to_s]
+        %td
+          =p[:price.to_s]
+          -if p[:discount_price.to_s]
+            %span.label.label-success
+              Цена по спецпредложению:
+              =p[:discount_price.to_s]
+    %tr
+      %td.text-right{colspan: 2} Total
+      %td{colspan: 2}
+        =@total
+
