@@ -1,0 +1,16 @@
+.products {
+  .thumbnail{
+    height: 370px;
+    img {
+      max-height: 200px;
+    }
+    .caption {
+      position: absolute;
+      height: 170px;
+      bottom: 0px;
+      .name {
+        height: 80px;
+      }
+    }
+  }
+}

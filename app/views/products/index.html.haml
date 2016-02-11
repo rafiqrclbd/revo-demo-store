@@ -1,0 +1,12 @@
+.row.products
+  -@products.each do |p|
+    .col-sm-6.col-md-4
+      .thumbnail
+        =image_tag p.image
+        .caption
+          .name
+            %h3= p.name
+          .description= p.description
+          .price
+            Price: #{p.price}
+            =link_to 'Add to cart', add_to_cart_path(p.id), class: 'btn btn-success', method: :post
