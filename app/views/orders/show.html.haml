@@ -12,7 +12,7 @@
       %td
       %td=@order.amount
 
-.panel.panel-default
+.panel.panel-default.order-loan
   .panel-heading
     Buy on credit
   .panel-body
@@ -20,3 +20,10 @@
       .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
     .loan-btn
       =link_to 'Buy', '#', class: 'btn btn-warning'
+    .loan-error
+      Loan Error
+
+:javascript
+  revoLoan = new RevoLoan(#{@order.id})
+  revoLoan.check()
+
