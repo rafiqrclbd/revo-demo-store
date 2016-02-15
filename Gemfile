@@ -31,7 +31,7 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -39,6 +39,13 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Capistrano for deploy
+  gem 'capistrano'#, '~> 3.3.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
 end
 
 group :development do
