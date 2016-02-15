@@ -1,6 +1,7 @@
 require 'net/http'
 class RevoController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def show
     order = Order.find params[:id]
@@ -11,6 +12,14 @@ class RevoController < ApplicationController
     else
       render json: {status: :error, message: result['message']}
     end
+  end
+
+  def callback
+    order = Order.find_by! uid: params[:order_id]
+    order.update_attribute :revo_status, params[:status]
+    render text: :ok
+  rescue
+    render text: :fail
   end
 
   private
