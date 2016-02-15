@@ -17,7 +17,7 @@ set :repo_url, 'git@github.com:RevoTechnology/revo-demo-store.git'
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :info
 
 # Default value for :pty is false
 # set :pty, true
@@ -47,4 +47,11 @@ namespace :deploy do
     end
   end
 
+end
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
 end
