@@ -21,7 +21,7 @@
   %body
     .navbar.navbar-default.navbar-static-top
       .container
-        %a.navbar-brand(href="/") IframeDemoShop
+        %a.navbar-brand(href="/") RevoDemoShop
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav.pull-right
             -if user_signed_in?
@@ -29,6 +29,9 @@
             -else
               %li= link_to 'Sign in', new_user_session_path
               %li= link_to 'Sign up', new_user_registration_path
+          -if user_signed_in?
+            %ul.nav.navbar-nav
+              %li= link_to 'Orders', orders_path
 
     .container
       .row
@@ -36,6 +39,7 @@
           = bootstrap_flash
           = yield
         .col-lg-3
-          =render 'shared/cart'
+          -if user_signed_in?
+            =render 'shared/cart'
       %footer
-        %p &copy; Company 2016
+        %p &copy; Revo Technology 2016
