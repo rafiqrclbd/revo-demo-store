@@ -30,10 +30,11 @@ class RevoController < ApplicationController
   end
 
   def build_url(order, action = :check)
+    url = action == :check ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     encrypted = encrypt "order_id=#{order.uid}&order_sum=#{"%.2f" % order.amount}&store_id=#{Rails.application.secrets.revo_store_id}"
 
     params = {store_id: Rails.application.secrets.revo_store_id, params: encrypted}
-    uri = URI("http://#{Rails.application.secrets.revo_host}/iframe/#{action}")
+    uri = URI("http://#{url}/iframe/#{action}")
     uri.query = URI.encode_www_form(params)
 
     uri
