@@ -25,6 +25,7 @@ class RevoLoan
       width: 868
       height: 500
     )
+    modalBody.html ''
     iframe.appendTo modalBody
 
 
