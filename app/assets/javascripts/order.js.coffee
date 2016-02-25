@@ -10,7 +10,6 @@ class RevoLoan
   check: ->
     $.get('/revo/'+@order_id).success (data)=>
       @progress.hide()
-      console.log data
       if data.status == 'ok'
         @btn.show()
         @btn.click =>
@@ -20,8 +19,13 @@ class RevoLoan
         @error.show()
 
   openPopup: (url)->
-    console.log url
-    window.open(url, "Revo", "height=500, width=700, top=100, left=200, scrollbars=1")
+    modalBody = $('#revoModal .modal-body')
+    iframe = $('<iframe />',
+      src: url
+      width: 868
+      height: 500
+    )
+    iframe.appendTo modalBody
 
 
 

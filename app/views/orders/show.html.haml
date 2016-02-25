@@ -19,9 +19,21 @@
     .progress
       .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
     .loan-btn
-      =link_to 'Buy', '#', class: 'btn btn-warning'
+      -#=link_to 'Buy', '#', class: 'btn btn-warning'
+      %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+        Buy
     .loan-error
       Loan Error
+
+.modal.fade#revoModal{tabindex: '-1', role: :dialog, aria: {labelledby: :revoModalLabel}}
+  .modal-dialog.modal-lg{role: :document}
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: :modal}, aria: {lable: :close}}
+          %span{aria: {hidden: :true}} &times;
+        %h4.modal-title#revoModalLabel Buy on credit
+      .modal-body
+
 
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
