@@ -31,10 +31,17 @@ class RevoController < ApplicationController
 
   def build_url(order, action = :check)
     url = action == :check ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
-    encrypted = encrypt "order_id=#{order.uid}&order_sum=#{"%.2f" % order.amount}&store_id=#{Rails.application.secrets.revo_store_id}"
+    payload = {
+        order_id: order.uid,
+        order_sum: "%.2f" % order.amount,
+        store_id: Rails.application.secrets.revo_store_id,
+        callback_url: Rails.application.secrets.callback_url,
+        redirect_url: Rails.application.secrets.redirect_url
+    }
+    encrypted = encrypt payload.to_param
 
     params = {store_id: Rails.application.secrets.revo_store_id, params: encrypted}
-    uri = URI("http://#{url}/iframe/#{action}")
+    uri = URI("http://#{url}/iframe/v1/#{action}")
     uri.query = URI.encode_www_form(params)
 
     uri
