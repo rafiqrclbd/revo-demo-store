@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :revo, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
   end
+
+  get 'pages/:name', to: 'pages#index'
 end
