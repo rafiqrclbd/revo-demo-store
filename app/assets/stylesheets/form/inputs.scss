@@ -7,11 +7,13 @@
   padding-bottom: 20px;
   &__text,
   &__dropdown {
+    height: $base-font-size + $input-butt-padding * 2 + $input-border-width * 2 + 2;
     max-width: 100%;
     border: $input-border-width solid $input-border-color;
     outline: none;
     border-radius: 5px;
     font-size: $base-font-size;
+    line-height: 1;
      &:focus {
       border-color: $input-border-focus-color;
       box-shadow: $input-box-shadow rgba($input-border-focus-color, 0.3);

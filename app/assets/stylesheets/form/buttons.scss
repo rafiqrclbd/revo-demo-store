@@ -12,6 +12,7 @@
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
+  font-family: $font-family;
   &:hover {
     background: $button-hover-color;
   }
