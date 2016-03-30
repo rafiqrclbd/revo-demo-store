@@ -1,0 +1,152 @@
+%div.form
+  %div.buffer_bottom
+    %img{:src => '/assets/logo.png'}
+  %h1 Оформление займа
+  %div.steps
+    %span>2
+    %span.text_muted /3
+    %div.steps__arrow
+  %h2 Анкета
+  %h3.with_line Информация о заёмщике
+  %div.input
+    %label.input__label.input__label-required{:for => 'last_name'} Фамилия
+    %input.input__text#last_name
+    %span.input__error Ошибочка :(
+  %div.row
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => 'first_name'} Имя
+        %input.input__text#first_name
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => 'middle_name'} Отчество
+        %input.input__text#middle_name
+  %div.input
+    %label.input__label.input__label-required Пол
+    %div.row
+      %div.col-xs-4
+        %div.input__radio
+          %input.input__radio__button#male{:type => "radio", :name => "sex"}
+          %label.input__radio__label{:for => "male"} мужской
+      %div.col-xs-4
+        %div.input__radio
+          %input.input__radio__button#female{:type => "radio", :name => "sex"}
+          %label.input__radio__label{:for => "female"} женский
+  %div.row
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => "marital_status"} Семейное положение
+        %select.input__dropdown.input__dropdown-stretchy#marital_status
+          %option холост
+          %option в браке
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => "education"} Образование
+        %select.input__dropdown.input__dropdown-stretchy#education
+          %option высшее
+          %option среднеспециальное
+          %option нет
+  %div.input
+    %label.input__label.input__label-required{:for => "experience"} Стаж на последнем месте работы
+    %div.row
+      %div.col-xs-6
+        %select.input__dropdown.input__dropdown-stretchy#experience
+          %option 1 год
+          %option 2 года
+          %option 3 года
+          %option 4 года
+          %option 5 лет
+  %div.input
+    %label.input__label.input__label-required{:for => "children_amount"} Количество детей
+    %div.row
+      %div.col-xs-6
+        %select.input__dropdown.input__dropdown-stretchy#children_amount
+          %option нет
+          %option 1
+          %option 2
+          %option 3
+  %div.input
+    %label.input__label.input__label-required{:for => "social_status"} Социальный статус
+    %select.input__dropdown.input__dropdown-stretchy#social_status
+      %option руководитель
+  %h3.with_line Паспортные данные
+  %div.input
+    %label.input__label.input__label-required{:for => "passport_id"} Серия и номер паспорта
+    %div.row
+      %div.col-xs-3
+        %input.input__text#passport_id{:data => {:mask => "99 99"}}
+      %div.col-xs-4
+        %input.input__text#passport_id_number{:data => {:mask => "999999"}}
+  %div.input
+    %label.input__label.input__label-required{:for => "issued"} Кем выдан
+    %input.input__text.input__text-stretchy#issued
+  %div.row
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => "issue_date"} Дата выдачи
+        %input.input__text.input__text-datepicker#issue_date{:data => {:mask => "99/99/9999"}}
+    %div.col-xs-6
+      %div.input
+        %label.input__label.input__label-required{:for => "department_code"} Код подразделения
+        %input.input__text#department_code{:data => {:mask => "999-999"}}
+  %h3.with_line Фактический адрес
+  %div.input
+    %label.input__label.input__label-required{:for => "location"} Город
+    %input.input__text#location
+  %div.input
+    %label.input__label.input__label-required{:for => "street"} Улица
+    %input.input__text.input__text-stretchy#street
+  %div.row
+    %div.col-xs-3
+      %div.input
+        %label.input__label.input__label-required{:for => "house_no"} Дом
+        %input.input__text#house_no
+    %div.col-xs-3
+      %div.input
+        %label.input__label{:for => "housing_no"} Корпус
+        %input.input__text#housing_no
+    %div.col-xs-3
+      %div.input
+        %label.input__label{:for => "apartment"} Квартира
+        %input.input__text#apartment
+  %h3.with_line Контактные данные
+  %div.input
+    %label.input__label.input__label-required{:for => "phone"} Домашний номер телефона с кодом города
+    %div.input__phone<
+      %input.input__text.input__text-phone#phone
+  %div.input
+    %label.input__label.input__label-required{:for => "email"} E-mail
+    %input.input__text.input__text-stretchy#email
+  %div.input
+    %label.input__label.input__label-required{:for => "credit_card_no"} Номер кредитной карты
+    %input.input__text.input__text-stretchy#credit_card_no
+  %h3.with_line Фотографии паспорта
+  %div.input
+    %label.input__label.input__label-required{:for => "passport_scan_1"} Первая страница паспорта
+    %p.text_success
+      Фотография загружена
+      &nbsp;
+      %i.i.i-success
+  %div.input
+    %label.input__label.input__label-required{:for => "passport_scan_2"} Страница с пропиской
+    %div.input__file
+      %div.input__file__progress{:style => "width: 55%"}
+  %div.input
+    %label.input__label.input__label-required{:for => "passport_scan_3"} Фото с раскрытым паспортом
+    %div.input__file
+      %input.input__file__button#passport_scan_3{:type => "file"}
+      %label.link.link-ajax{:for => "passport_scan_3"} Загрузить фото
+  %h3.with_line Соглашение
+  %div.buffer_bottom
+    %i.i.i-note
+    &nbsp;
+    %a{:href => ""} Условия соглашения
+  %div.input
+    %label.input__label.input__label-required{:for => "sms_code"} Введите код из SMS для подтверждения согласия на обработку персональных данных
+    %div.row
+      %div.col-xs-4
+        %input.input__text#sms_code
+  %div.buffer_bottom
+    %span.text_highlighted *
+    %span &mdash; обязательные поля
+  %button.button Продолжить

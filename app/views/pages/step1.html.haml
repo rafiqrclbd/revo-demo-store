@@ -1,0 +1,26 @@
+%div.form
+  %div.buffer_bottom
+    %img{:src => '/assets/logo.png'}
+  %h1 Оформление займа
+  %div.steps
+    %span>1
+    %span.text_muted /3
+    %div.steps__arrow
+  %h2 Идентификация
+  %div.input
+    %label.input__label.input__label-required{:for => "mobile_phone"} Мобильный телефон
+    %div.input__phone<
+      %input.input__text.input__text-phone#mobile_phone{:data => {:mask => "(999) 999-99-99"}}
+    %span.input__error Текст, сообщающий об ошибке
+  %div.input
+    %label.input__label{:for => "sms_code"} Одноразовый код из SMS
+    %div.row
+      %div.col-xs-4
+        %input.input__text#sms_code
+      %div.col-xs-8
+        %span.link.link-ajax.small_text Прислать код повторно
+  %div.row
+    %div.col-xs-6
+      %button.button Продолжить
+    %div.col-xs-6
+      %button.button{:disabled => "disabled"} Disabled
