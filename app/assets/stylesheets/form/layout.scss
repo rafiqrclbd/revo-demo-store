@@ -1,0 +1,107 @@
+@import "variables";
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.form {
+  max-width: $form-max-width;
+  padding: $form-butt-padding $form-side-padding;
+  border: 3px solid $stroke-color;
+}
+
+.quote {
+  margin-bottom: 25px;
+  padding-left: 60px;
+  background: url('/assets/quote.png') no-repeat 0 0;
+}
+
+.steps {
+  $border-width: 1px;
+  $hack-padding-width: 1px;
+  $arrow-border-width: ($h2-font-size * $line-height + $border-width * 2 + $hack-padding-width) / 2;
+  position: relative;
+  float: left;
+  margin-right: 35px;
+  padding-bottom: $hack-padding-width;// hack for arrow
+  font-size: $h2-font-size;
+  &, &::before {
+    @each $side in top, bottom {
+      border-#{$side}: $border-width solid $primary-color;
+    }
+  }
+  &::before {
+    position: absolute;
+    top: -$border-width;
+    bottom: -$border-width;
+    right: 100%;
+    width: $form-side-padding;
+    content: '';
+  }
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    &::before,
+    &::after {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: 0;
+      height: 0;
+      border: solid transparent;
+      content: "";
+    }
+    &::before {
+      top: -1px;
+      border-left-color: $primary-color;
+      border-width: $arrow-border-width;
+    }
+    &::after {
+      top: 0;
+      border-left-color: $white;
+      border-width: $arrow-border-width - 1;
+    }
+  }
+}
+
+.with_line {
+  position: relative;
+  $line-padding: 15px;
+  &::before {
+    position: absolute;
+    right: 100%;
+    top: 55%;
+    width: $form-side-padding;
+    height: 1px;
+    border-right: $line-padding solid $white;
+    background: $primary-color;
+    content: '';
+  }
+  &::after {
+    position: absolute;
+    top: 55%;
+    right: 100%;
+    width: 5px;
+    height: 5px;
+    margin: -2px $line-padding 0 0;
+    background: $primary-color;
+    border-radius: 100%;
+    content: '';
+  }
+}
+
+.buffer {
+  @each $direction in top, left, bottom, right {
+    &_#{$direction} {
+      margin-#{$direction}: 25px;
+      &-small {
+        margin-#{$direction}: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@import "variables";
+
+.input {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  &__text,
+  &__dropdown {
+    max-width: 100%;
+    border: $input-border-width solid $input-border-color;
+    outline: none;
+    border-radius: 5px;
+    font-size: $base-font-size;
+     &:focus {
+      border-color: $input-border-focus-color;
+      box-shadow: $input-box-shadow rgba($input-border-focus-color, 0.3);
+    }
+    &-error {
+      border-color: $error-color;
+      box-shadow: $input-box-shadow rgba($error-color, 0.3);
+    }
+    &-stretchy {
+      min-width: 100%;
+    }
+    &-datepicker {
+      background: url('/assets/calendar.png') no-repeat 95% center;
+    }
+  }
+  &__text {
+    padding: $input-butt-padding $input-side-padding;
+    &-phone {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  &__dropdown {
+    padding: $input-butt-padding ($input-side-padding - 1);
+  }
+  &__phone {
+    &::before {
+      display: inline-block;
+      padding: ($input-butt-padding + 1) ($input-side-padding - 2);
+      border: 1px solid $input-border-color;
+      border-right: 0;
+      background: #E8E8E8;
+      border-radius: $input-border-radius 0 0 $input-border-radius;
+      vertical-align: top;
+      line-height: 1;
+      content: "+7";
+    }
+  }
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+    &-required {
+      &::after {
+        color: red;
+        content: "*";
+      }
+    }
+    &[for] {
+      cursor: pointer;
+    }
+  } 
+  &__error {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: $small-font-size;
+    color: $error-color;
+  }
+  &__radio {
+    &__button {
+      display: none;
+    }
+    &__label {
+      position: relative;
+      padding-left: 25px;
+      cursor: pointer;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 3px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $input-border-color;
+        border-radius: 100%;
+        content: '';
+      }
+      :checked + & {
+        &::after {
+          position: absolute;
+          left: 5px;
+          top: 8px;
+          width: 6px;
+          height: 6px;
+          background: $primary-color;
+          border-radius: 100%;
+          content: '';
+        }
+      }
+    }
+  }
+  &__file {
+    position: relative;
+    &__button {
+      position: absolute;
+      left: 0;
+      top: 0;
+      visibility: hidden;
+      z-index: -1;
+    }
+    &__progress {
+      max-width: 100%;
+      height: 20px;
+      border-radius: $input-border-radius;
+      background: $primary-color;
+      transition: 0.1s width;
+    }
+  }
+}

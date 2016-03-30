@@ -1,0 +1,72 @@
+@import "variables";
+
+body {
+  font-size: $base-font-size;
+  font-family: $font-family;
+  line-height: $line-height;
+  color: $text-color;
+}
+
+h1 {
+  margin-bottom: 1.2em;
+  font-size: $h1-font-size;
+  font-weight: $semibold;
+}
+
+h2 {
+  margin-bottom: 1em;
+  font-size: $h2-font-size;
+}
+
+h3 {
+  margin-bottom: 1em;
+  font-size: $h3-font-size;
+}
+
+b,
+strong,
+.bold {
+  font-weight: $semibold;
+}
+
+i,
+.italic {
+  font-style: italic;
+}
+
+.small_text {
+  font-size: $small-font-size;
+}
+
+a,
+.link {
+  border-bottom: 1px solid $link-color;
+  color: $link-color;
+  text-decoration: none;
+  cursor: pointer;
+  &-ajax {
+    border-bottom-style: dashed;
+  }
+  &:hover {
+    color: $link-hover-color;
+    border-color: $link-hover-color;
+  }
+}
+
+.text {
+  &_right {
+    text-align: right;
+  }
+  &_left {
+    text-align: left;
+  }
+  &_muted {
+    color: $grey;
+  }
+  &_highlighted {
+    color: $primary-color;
+  }
+  &_success {
+    color: $secondary-color;
+  }
+}

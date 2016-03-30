@@ -1,0 +1,16 @@
+@import "variables";
+
+.i {
+  display: inline-block;
+  vertical-align: middle;
+  &-note {
+    width: 14px;
+    height: 18px;
+    background: url('/assets/note.png');
+  }
+  &-success {
+    width: 20px;
+    height: 20px;
+    background: url('/assets/success.png');
+  }
+}

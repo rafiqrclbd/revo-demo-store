@@ -1,0 +1,23 @@
+@import "variables";
+
+.button {
+  display: inline-block;
+  min-width: 160px;
+  padding: 12px 30px;
+  border: 0;
+  outline: 0;
+  background: $button-color;
+  color: $button-text-color;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    background: $button-hover-color;
+  }
+  &[disabled] {
+    background: $button-disabled-color;
+    opacity: 0.75;
+    cursor: default;
+  }
+}

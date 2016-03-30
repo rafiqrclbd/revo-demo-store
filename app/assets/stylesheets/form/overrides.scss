@@ -1,0 +1,54 @@
+@import "variables";
+
+.ui {
+  &-datepicker {
+    & &-title {
+      margin: 0;
+    }
+    &-header {
+      background: $white;
+      border: 0;
+    }
+    &-month,
+    &-year {
+      margin: 0 5px !important;
+      padding: 3px 5px;
+      border: $input-border-width solid $input-border-color;
+      outline: none;
+      border-radius: 5px;
+      font-size: $base-font-size;
+       &:focus {
+        border-color: $input-border-focus-color;
+        box-shadow: $input-box-shadow rgba($input-border-focus-color, 0.3);
+      }
+    }
+    &-prev,
+    &-next {
+      display: none;
+    }
+    th {
+      color: $primary-color;
+    }
+    .ui {
+      &-state {
+        &-default {
+          border-color: $white;
+          background: $white;
+          border-radius: 3px;
+          text-align: center;
+        }
+        &-hover,
+        &-active {
+          border-color: $primary-color;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  &-widget {
+    &-content {
+      border-color: $input-border-color;
+      border-radius: $input-border-radius;
+    }
+  }
+}

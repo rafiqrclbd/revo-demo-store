@@ -1,0 +1,45 @@
+//
+//  Typography
+//
+$font-family: 'Open Sans', sans-serif;
+$base-font-size: 14px;
+$small-font-size: 12px;
+$line-height: 1.4;
+$semibold: 600;
+$h1-font-size: 24px;
+$h2-font-size: $h1-font-size;
+$h3-font-size: 18px;
+//
+//  Colors
+//
+$primary-color: #F05223;
+$secondary-color: #62C71E;
+$grey: #A2A2A2;
+$white: #FFFFFF;
+$text-color: #000000;
+
+$input-border-color: $grey;
+$input-border-focus-color: $secondary-color;
+$error-color: #FF0000;
+
+$button-color: $primary-color;
+$button-text-color: #E5E5E5;
+$button-hover-color: #D74B21;
+$button-disabled-color: $button-hover-color;
+
+$link-color: #FF4500;
+$link-hover-color: $button-color;
+
+$stroke-color: #D6D6D6;
+//
+//  Layout
+//
+$form-max-width: 540px;
+$form-side-padding: 90px;
+$form-butt-padding: 35px;
+
+$input-border-radius: 5px;
+$input-side-padding: 8px;
+$input-butt-padding: 6px;
+$input-border-width: 1px;
+$input-box-shadow: 0 0 4px 1px;
