@@ -22,8 +22,8 @@ class RevoLoan
     modalBody = $('#revoModal .modal-body')
     iframe = $('<iframe />',
       src: url
-      width: 868
-      height: 500
+      width: 568
+      height: 600
     )
     modalBody.html ''
     iframe.appendTo modalBody
