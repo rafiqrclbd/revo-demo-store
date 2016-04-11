@@ -5,10 +5,9 @@ class RevoController < ApplicationController
 
   def show
     order = Order.find params[:id]
-    resp = Net::HTTP.get build_url(order, :check)
-    result = ActiveSupport::JSON.decode resp
+    result = call_revo order
     if result['status'] == 0
-      render json: {status: :ok, url: build_url(order, :form).to_s}
+      render json: {status: :ok, url: result['iframe_url']}
     else
       render json: {status: :error, message: result['message']}
     end
@@ -23,27 +22,32 @@ class RevoController < ApplicationController
   end
 
   private
-  def encrypt(str_params)
-    public_key = OpenSSL::PKey::RSA.new(File.read Rails.root.join('config', 'ssh', 'iframe_rsa.pub'))
-    encrypted_string = Base64.strict_encode64(public_key.public_encrypt(str_params))
-    encrypted_string.tr('/+=','_\­,')
+
+  def sign(payload)
+    Digest::SHA1.hexdigest(payload + Rails.application.secrets.password)
   end
 
-  def build_url(order, action = :check)
+  def call_revo(order, action = :auth)
     url = action == :check ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     payload = {
-        order_id: order.uid,
-        order_sum: "%.2f" % order.amount,
-        store_id: Rails.application.secrets.revo_store_id,
         callback_url: Rails.application.secrets.callback_url,
-        redirect_url: Rails.application.secrets.redirect_url
-    }
-    encrypted = encrypt payload.to_param
+        redirect_url: Rails.application.secrets.redirect_url,
+        current_order: {
+          sum: "%.2f" % order.amount,
+          order_id: order.uid,
+        }
+    }.to_json
+    signature = sign payload
 
-    params = {store_id: Rails.application.secrets.revo_store_id, params: encrypted}
+    params = {store_id: Rails.application.secrets.revo_store_id, signature: signature}
     uri = URI("http://#{url}/iframe/v1/#{action}")
     uri.query = URI.encode_www_form(params)
 
-    uri
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = payload
+
+    response = http.request(request)
+    ActiveSupport::JSON.decode response.body
   end
 end
