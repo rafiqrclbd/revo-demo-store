@@ -32,6 +32,7 @@ class RevoController < ApplicationController
     payload = {
         callback_url: Rails.application.secrets.callback_url,
         redirect_url: Rails.application.secrets.redirect_url,
+        primary_phone: order.user.phone_number,
         current_order: {
           sum: "%.2f" % order.amount,
           order_id: order.uid,
