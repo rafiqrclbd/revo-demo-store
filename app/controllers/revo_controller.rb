@@ -28,7 +28,7 @@ class RevoController < ApplicationController
   end
 
   def call_revo(order, action = :auth)
-    url = action == :check ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
+    url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     payload = {
         callback_url: Rails.application.secrets.callback_url,
         redirect_url: Rails.application.secrets.redirect_url,
