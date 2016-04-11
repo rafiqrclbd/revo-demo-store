@@ -6,6 +6,10 @@
     %br/
     = f.email_field :email, autofocus: true
   .field
+    = f.label :phone_number
+    %br/
+    = f.phone_field :phone_number
+  .field
     = f.label :password
     - if @minimum_password_length
       %em
