@@ -9,7 +9,7 @@ html {
 }
 
 .form {
-  max-width: $form-max-width;
+  width: $form-max-width;
   padding: $form-butt-padding $form-side-padding;
   border: 3px solid $stroke-color;
 }

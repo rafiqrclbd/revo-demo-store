@@ -25,3 +25,31 @@ $(function(){
     $item.mask(mask, { placeholder: placeholder });
   });
 });
+
+(function () {
+  var origin,
+    source,
+    message = {
+      type: 'resize',
+      data: {}
+    },
+    body, html;
+
+  function init (event) {
+    origin = event.origin || event.originalEvent.origin;
+    source = event.source;
+    window.removeEventListener('message', init);
+    window.addEventListener('resize', onResize);
+    onResize();
+  }
+
+  function onResize () {
+    body = document.body;
+    html = document.documentElement;
+    message.data.width = Math.max(body.offsetWidth, html.scrollWidth, html.offsetWidth);
+    message.data.height = Math.max(body.offsetHeight, html.scrollHeight, html.offsetHeight);
+    source.postMessage(message, origin);
+  }
+
+  window.addEventListener('message', init);
+})();
