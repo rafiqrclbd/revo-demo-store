@@ -48,7 +48,7 @@ $(function(){
     html = document.documentElement;
     message.data.width = Math.max(body.offsetWidth, html.scrollWidth, html.offsetWidth);
     message.data.height = Math.max(body.offsetHeight, html.scrollHeight, html.offsetHeight);
-    source.postMessage(message, origin);
+    source.postMessage(JSON.stringify(message), origin);
   }
 
   window.addEventListener('message', init);

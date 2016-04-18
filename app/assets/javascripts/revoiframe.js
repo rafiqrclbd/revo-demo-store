@@ -1,11 +1,16 @@
 (function(context){
 
-  var iframe;
+  var iframe,
+    defaultTargetSelector = '.revo-form';
 
   function handleMessage (event) {
-    var data = event.data.data;
-    iframe.style.width = data.width + 'px';
-    iframe.style.height = data.height + 'px';
+    var eventData = JSON.parse(event.data),
+      data = eventData.data;
+    
+    if (data) {
+      iframe.style.width = data.width + 'px';
+      iframe.style.height = data.height + 'px';
+    }
   }
 
   function onFrameLoaded () {
@@ -22,13 +27,12 @@
     var target;
 
     iframe = document.createElement('iframe');
+    targetSelector = targetSelector || defaultTargetSelector;
 
-    if (typeof targetSelector === 'string') {
-      target = document.querySelector(targetSelector);
-    }
-    else {
-      // TODO: insert script after current script or set default target
-      target = null;
+    target = document.querySelector(targetSelector);
+    
+    if (!target) {
+      throw 'Error: element ' + targetSelector + ' is not found';
     }
 
     iframe.addEventListener('load', onFrameLoaded);
