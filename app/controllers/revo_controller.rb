@@ -15,7 +15,7 @@ class RevoController < ApplicationController
 
   def callback
     order = Order.find_by! uid: params[:order_id]
-    order.update_attribute :revo_status, params[:status]
+    order.update_attribute :revo_status, params[:decision]
     render text: :ok
   rescue
     render text: :fail
