@@ -41,7 +41,7 @@ class RevoController < ApplicationController
     signature = sign payload
 
     params = {store_id: Rails.application.secrets.revo_store_id, signature: signature}
-    uri = URI("http://#{url}/iframe/v1/#{action}")
+    uri = URI("#{url}/iframe/v1/#{action}")
     uri.query = URI.encode_www_form(params)
 
     http = Net::HTTP.new(uri.host, uri.port)
