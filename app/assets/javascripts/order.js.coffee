@@ -19,14 +19,8 @@ class RevoLoan
         @error.show()
 
   openPopup: (url)->
-    modalBody = $('#revoModal .modal-body')
-    iframe = $('<iframe />',
-      src: url
-      width: 568
-      height: 600
-    )
-    modalBody.html ''
-    iframe.appendTo modalBody
+    REVO.Form.show url, '#revo-iframe'
+    #Use git history to find old method
 
 
 
