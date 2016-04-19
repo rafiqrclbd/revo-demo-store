@@ -42,11 +42,13 @@ class RevoController < ApplicationController
 
     params = {store_id: Rails.application.secrets.revo_store_id, signature: signature}
     uri = URI("#{url}/iframe/v1/#{action}")
-    uri.query = URI.encode_www_form(params)
+    uri.query = params.to_query
 
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    if uri.scheme == 'https'
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
     request = Net::HTTP::Post.new(uri.request_uri)
     request.body = payload
 
