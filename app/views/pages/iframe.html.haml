@@ -1,3 +1,4 @@
 %div.target
 %script{ :src => "/assets/revoiframe.js" }
-%script REVO.Form.show('/pages/step2', '.target');
+- url = "#{request.protocol}#{request.host_with_port}/pages/step2"
+%script= "REVO.Form.show('#{url}', '.target');"

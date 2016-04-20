@@ -1,6 +1,7 @@
 (function(context){
 
   var iframe,
+    iframeUrl,
     defaultTargetSelector = '.revo-form';
 
   function handleMessage (event) {
@@ -14,19 +15,28 @@
   }
 
   function onFrameLoaded () {
-    var origin = location.protocol + '//' + location.host,
+    var origin = iframeUrl.match(/(\w+\:)\/\/[^/]+/),
       message = {
         type: 'hello'
       };
     
+    if (!origin && !origin[0]) {
+      return;
+    }
+
     context.addEventListener('message', handleMessage);
-    iframe.contentWindow.postMessage(message, origin);
+    iframe.contentWindow.postMessage(message, origin[0]);
   }
 
-  function show (iframeUrl, targetSelector) {
+  function show (url, targetSelector) {
     var target;
 
+    if (typeof url !== 'string') {
+      throw 'Url must be specified';
+    }
+
     iframe = document.createElement('iframe');
+    iframeUrl = url;
     targetSelector = targetSelector || defaultTargetSelector;
 
     target = document.querySelector(targetSelector);
