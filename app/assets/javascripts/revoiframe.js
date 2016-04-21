@@ -50,6 +50,7 @@
     iframe.src = iframeUrl;
     iframe.setAttribute('scrolling', 'no');
     iframe.style.display = 'block';
+    iframe.style.width = '100%';
     target.appendChild(iframe);
   }
 
