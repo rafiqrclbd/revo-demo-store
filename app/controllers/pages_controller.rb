@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   layout 'form'
 
   def index
-    render params[:name]
+    if params[:name] == 'v2'
+      render params[:name], layout: 'v2'
+    else
+      render params[:name]
+    end
   end
 end
