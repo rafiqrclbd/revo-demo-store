@@ -35,6 +35,10 @@
       throw 'Url must be specified';
     }
 
+    if (iframe && iframe.parentNode) {
+      iframe.parentNode.removeChild(iframe);
+    }
+
     iframe = document.createElement('iframe');
     iframeUrl = url;
     targetSelector = targetSelector || defaultTargetSelector;
