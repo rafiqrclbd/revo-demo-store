@@ -1,5 +1,5 @@
 //= require jquery
-//= require jquery.selectric
+//= require jquery.selectric.min
 //= require jquery.maskedinput
 
 $(function () {

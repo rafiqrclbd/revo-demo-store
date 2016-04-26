@@ -5,76 +5,95 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_1_personal_date
     .form_1_personal_date_label
       %h2 Личные данные
-    %input.form_1_personal_date_input{:autofocus => "", "data-capitalize" => "", :placeholder => "Фамилия", :type => "text"}/
-    %input.form_1_personal_date_input{"data-capitalize" => "", :placeholder => "Имя", :type => "text"}/
-    %input.form_1_personal_date_input{"data-capitalize" => "", :placeholder => "Отчество", :type => "text"}/
+    .relative
+      %input.form_1_personal_date_input{:autofocus => "", :placeholder => "Фамилия", :type => "text"}
+    .relative
+      %input.form_1_personal_date_input{:placeholder => "Имя", :type => "text"}
+    .relative
+      %input.form_1_personal_date_input{:placeholder => "Отчество", :type => "text"}
     .form_1_personal_date_button_block
       .form_1_personal_date_button
-        %input#male{:name => "sex", :type => "radio"}/
-        %label.form_1_personal_date_button_text{:for => "male"} Вы - мужчина
+        .relative
+          %input#male{:name => "sex", :type => "radio"}
+            %label.form_1_personal_date_button_text{:for => "male"} Вы - мужчина
       .form_1_personal_date_button
-        %input#female{:name => "sex", :type => "radio"}/
-        %label.form_1_personal_date_button_text{:for => "female"} Вы - женщина
-    %input.form_1_personal_date_input_small{"data-mask" => "99.99.9999", "data-placeholder" => "дд.мм.гггг", :placeholder => "Дата рождения", :type => "text"}/
+        .relative
+          %input#female{:name => "sex", :type => "radio"}
+            %label.form_1_personal_date_button_text{:for => "female"} Вы - женщина
+    .relative
+      %input.form_1_personal_date_input_small{"data-mask" => "99.99.9999", "data-placeholder" => "дд.мм.гггг", :placeholder => "Дата рождения", :type => "text"}
   .form_1_passport_data
     .form_1_passport_data_label
       %h2 Паспортные данные
-    %input.form_1_passport_data_input_small{"data-mask" => "9999 999999", :placeholder => "Серия и номер паспорта", :type => "text"}/
-    %input.form_1_passport_data_input_small_last{"data-mask" => "99.99.9999", "data-placeholder" => "дд.мм.гггг", :placeholder => "Дата выдачи", :type => "text"}/
-    %input.form_1_passport_data_input{:placeholder => "Кем выдан", :type => "text"}/
+    .relative
+      %input.form_1_passport_data_input_small{"data-mask" => "9999 999999", :placeholder => "Серия и номер паспорта", :type => "text"}
+    .relative
+      %input.form_1_passport_data_input_small_last{"data-mask" => "99.99.9999", "data-placeholder" => "дд.мм.гггг", :placeholder => "Дата выдачи", :type => "text"}
+    .relative
+      %input.form_1_passport_data_input{:placeholder => "Кем выдан", :type => "text"}
   .form_1_more_data
     .form_1_more_data_label
       %h2 Дополнительные данные
     .form_1_more_data_input
-      %select
-        %option Ваше образование
-        %option Ваше образование
-        %option Ваше образование
-        %option Ваше образование
-      %select
-        %option Семейное положение
-        %option Семейное положение
-        %option Семейное положение
-      %select
-        %option Количество детей
-        %option Количество детей
-        %option Количество детей
-        %option Количество детей
+      .relative
+        %select
+          %option Ваше образование
+          %option Ваше образование
+          %option Ваше образование
+          %option Ваше образование
+      .relative
+        %select
+          %option Семейное положение
+          %option Семейное положение
+          %option Семейное положение
+      .relative
+        %select
+          %option Количество детей
+          %option Количество детей
+          %option Количество детей
+          %option Количество детей
   .form_1_adress
     .form_1_adress_label
       %h2 Адрес регистрации
-    %input.form_1_adress_input{"data-mask" => "999999", :placeholder => "Ваш индекс", :type => "text"}/
+    .relative
+      %input.form_1_adress_input.error{"data-mask" => "999999", :placeholder => "Ваш индекс", :type => "text"}
     %p.form_1_adress_text Мы автоматически найдем ваш регион и город по введенному индексу
+    %p.error_text Неверный индекс. Проверьте правильность указанного индекса.
   .form_1_adress_dop
     .selectric-wrapper.selectric-wrapper_suggest
-      %input.form_1_adress_dop_input{:placeholder => "Область или регион", :type => "text"}/
-      .selectric-items
-        .selectric-scroll
-          %ul
-            %li{"data-value" => "Волгоградская область"} Волгоградская область
-            %li{"data-value" => "Вологодская область"} Вологодская область
-            %li Воронежская область
-    %input.form_1_adress_dop_input{:placeholder => "Город или населенный пункт", :type => "text"}/
-    %input.form_1_adress_dop_input{:placeholder => "Улица или переулок", :type => "text"}/
+      .relative
+        %input.form_1_adress_dop_input{:placeholder => "Область или регион", :type => "text"}
+          .selectric-items
+            .selectric-scroll
+              %ul
+                %li{"data-value" => "Волгоградская область"} Волгоградская область
+                %li{"data-value" => "Вологодская область"} Вологодская область
+                %li Воронежская область
+    .relative
+      %input.form_1_adress_dop_input{:placeholder => "Город или населенный пункт", :type => "text"}
+    .relative
+      %input.form_1_adress_dop_input{:placeholder => "Улица или переулок", :type => "text"}
     .form_1_adress_dop_block
-      %input.form_1_adress_dop_block_input{:placeholder => "Номер дома", :type => "text"}/
-      %input.form_1_adress_dop_block_input{:placeholder => "Корпус", :type => "text"}/
-      %input.form_1_adress_dop_block_input{:placeholder => "Квартира", :type => "text"}/
+      %input.form_1_adress_dop_block_input.relative{:placeholder => "Номер дома", :type => "text"}
+        %input.form_1_adress_dop_block_input.relative{:placeholder => "Корпус", :type => "text"}
+          %input.form_1_adress_dop_block_input.relative{:placeholder => "Квартира", :type => "text"}
     .form_1_adress_dop_checkbox_block
-      %input#addresses_matches{:checked => "checked", :type => "checkbox"}/
-      %label.form_1_adress_dop_checkbox_block_text{:for => "addresses_matches"} Адрес регистрации совпадает с адресом проживания
+      .relative
+        %input#addresses_matches{:checked => "", :type => "checkbox"}
+          %label.form_1_adress_dop_checkbox_block_text{:for => "addresses_matches"} Адрес регистрации совпадает с адресом проживания
   .form_1_contact
     .form_1_contact_label
       %h2 Контактные данные
-    %input.form_1_contact_input{:placeholder => "Ваш-email", :type => "text"}/
-    %input.form_1_contact_input{"data-mask" => "+7 (999) 999-99-99", :placeholder => "Ваш телефон", :type => "text"}/
+    .relative
+      %input.form_1_contact_input{:placeholder => "Ваш-email", :type => "text"}
+    .relative
+      %input.form_1_contact_input{"data-mask" => "+7 (999) 999-99-99", :placeholder => "Ваш телефон", :type => "text"}
   .footer
-    %button.form_1_footer_button_left Отменить
     %button.form_1_footer_button_right Продолжить
+    %button.form_1_footer_button_left Отменить
 .form_2
   .header_type1
     .form_header_type_1_label
@@ -82,15 +101,14 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_2_contant
     %h1 Здравствуйте, Сергей Петрович!
     %p
       В прошлый раз Вы прервали заполнение анкеты, хотите
       продолжить или начать заново?
   .footer
-    %button.form_2_footer_button_left Начать заново
     %button.form_2_footer_button_right Продолжить
+    %button.form_2_footer_button_left Начать заново
 .form_3
   .header_type1
     .form_header_type_1_label
@@ -98,20 +116,20 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_3_contant
     %h2 Спасибо, Василий Константинович!
     %p
       Мы отправили вам СМС на номер +7 (999) 858-46-30, введите
       его в поле ниже, подтверждая этим свое согласие на обработку
       Ваших персональных данных
-    %input.form_3_contant_input{"data-mask" => "9999", :placeholder => "СМС-код", :type => "text"}/
+    .relative
+      %input.form_3_contant_input{"data-mask" => "9999", :placeholder => "СМС-код", :type => "text"}
     %button.form_3_contant_button
       %i.fa.fa-repeat
       %p Выслать еще раз
   .footer
-    %button.form_3_footer_button_left Назад
     %button.form_3_footer_button_right Продолжить
+    %button.form_3_footer_button_left Назад
 .form_4
   .header_type1
     .form_header_type_1_label
@@ -119,11 +137,11 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_4_contant
     %h2 Спасибо, Василий Константинович!
     %p Рады вас видеть! Чтобы подтвердить что вы — это вы, введите СМС-код, который мы отправили на номер +7 (926) ***-**-32.
-    %input.form_4_contant_input{"data-mask" => "9999", :placeholder => "СМС-код", :type => "text"}/
+    .relative
+      %input.form_4_contant_input{"data-mask" => "9999", :placeholder => "СМС-код", :type => "text"}
     %button.form_4_contant_button
       %i.fa.fa-repeat
       %p Выслать еще раз
@@ -131,9 +149,9 @@
       Если у Вас больше нет доступа к этому номеру, то
       %a.dostup_link{:href => "#"} нажмите сюда.
   .footer
-    %button.form_4_footer_button_left Назад
-    %button.form_4_footer_center Продолжить
     %button.form_4_footer_button_right Продолжить
+    %button.form_4_footer_center Нет доступа к этом номеру
+    %button.form_4_footer_button_left Назад
 .form_5
   .header_type1
     .form_header_type_1_label
@@ -141,13 +159,12 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_5_contant
-    %img{:src => "/img/ok_icon.png"}/
-    %h1 Здравствуйте, Сергей Петрович!
-    %p
-      В прошлый раз Вы прервали заполнение анкеты, хотите
-      продолжить или начать заново?
+    %img{:src => "/img/ok.svg"}
+      %h1 Здравствуйте, Сергей Петрович!
+      %p
+        В прошлый раз Вы прервали заполнение анкеты, хотите
+        продолжить или начать заново?
   .footer
     %button.form_5_footer_button_left Вернуться в магазин
 .form_6
@@ -158,7 +175,7 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
+      / img(src="/img/button.jpg")
   .form_6_contant
     %p
       В случае, если Вы потеряли телефонный номер, рекомендуем
@@ -167,14 +184,19 @@
       Если по каким-то причинам Вы намерены использовать новый
       номер и зарегистрировать его в нашей системе, пожалуйста,
       заполните данные  в форме ниже.
-    %input.form_6_contant_input{:placeholder => "Ваше ФИО", :type => "text"}/
-    %input.form_6_contant_input{:placeholder => "Старый номер телефона", :type => "text"}/
-    %input.form_6_contant_input{:placeholder => "Новый номер телефона", :type => "text"}/
-    %input.form_6_contant_input{:placeholder => "Ваше ФИО", :type => "text"}/
-    %textarea{:placeholder => "Причина смены"}
+    .relative
+      %input.form_6_contant_input{:placeholder => "Ваше ФИО", :type => "text"}
+    .relative
+      %input.form_6_contant_input{:placeholder => "Старый номер телефона", :type => "text"}
+    .relative
+      %input.form_6_contant_input{:placeholder => "Новый номер телефона", :type => "text"}
+    .relative
+      %input.form_6_contant_input{:placeholder => "Ваше ФИО", :type => "text"}
+    .relative
+      %textarea{:placeholder => "Причина смены"}
   .footer
-    %button.form_1_footer_button_left Отменить
     %button.form_1_footer_button_right Продолжить
+    %button.form_1_footer_button_left Отменить
 .form_7
   .header_type2
     .form_header_type_2_label
@@ -183,13 +205,13 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
+      / img(src="/img/button.jpg")
   .form_7_contant
-    %img{:src => "/img/ok_icon.png"}/
-    %h1 Ваш запрос отправлен!
-    %p
-      В ближайшее время с вами свяжется оператор
-      для подтверждения информации.
+    %img{:src => "/img/ok.svg"}
+      %h1 Ваш запрос отправлен!
+      %p
+        В ближайшее время с вами свяжется оператор
+        для подтверждения информации.
   .footer
     %button.form_7_footer_button_left Вернуться в магазин
 .form_8
@@ -199,13 +221,12 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_8_contant
-    %img{:src => "/img/ok_icon.png"}/
-    %h1 Покупка одобрена!
-    %p
-      Покупка одобрена. В ближайшее время с вами
-      свяжется оператор.
+    %img{:src => "/img/ok.svg"}
+      %h1 Покупка одобрена!
+      %p
+        Покупка одобрена. В ближайшее время с вами
+        свяжется оператор.
   .footer
     %button.form_8_footer_button_left Вернуться в магазин
 .form_9
@@ -215,13 +236,12 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_9_contant
-    %img{:src => "/img/error_icon.png"}/
-    %h1 Уважаемый клиент!
-    %p
-      Мы не можем подтвердить вам «оплату по частям».
-      Выберите другой способ оплаты.
+    %img{:src => "/img/error_icon.png"}
+      %h1 Уважаемый клиент!
+      %p
+        Мы не можем подтвердить вам «оплату по частям».
+        Выберите другой способ оплаты.
   .footer
     %button.form_9_footer_button_left Вернуться в магазин
 .form_10
@@ -231,13 +251,12 @@
     %a.header_logo
       %img{:src => "/img/logo.jpg"}/
     %a.header_button
-      %img{:src => "/img/button.jpg"}/
   .form_10_contant
-    %img{:src => "/img/circle_icon.png"}/
-    %h1 Уважаемый клиент!
-    %p
-      Вам одобрен лимит не более 99999, 99 ₽,
-      пожалуйста измените сумму покупки или выберите
-      другой способ оплаты.
+    %img{:src => "/img/pending.svg"}
+      %h1 Уважаемый клиент!
+      %p
+        Вам одобрен лимит не более 99999, 99 ₽,
+        пожалуйста измените сумму покупки или выберите
+        другой способ оплаты.
   .footer
     %button.form_10_footer_button_left Вернуться в магазин
