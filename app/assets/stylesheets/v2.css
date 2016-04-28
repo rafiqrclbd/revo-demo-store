@@ -7,6 +7,8 @@
     .selectric-wrapper_suggest .selectric-items {
       left: 0;
       right: 0; }
+    .selectric-wrapper_suggest .error_text {
+      margin-top: 7px; }
 
 .selectric-responsive {
   width: 100%; }
@@ -53,7 +55,7 @@
   height: 25px;
   color: white;
   text-align: center;
-  background: url(/img/dropdown.svg) no-repeat center center; }
+  background: url(../img/dropdown.svg) no-repeat center center; }
 
 .selectric .fa:after {
   position: absolute;
@@ -207,8 +209,13 @@ p.label {
     p.label {
       padding-top: 0px; } }
 
+textarea.error,
+.selectric.error {
+  border-color: #E59797 !important; }
+
 input,
 .selectric .label {
+  max-width: 100%;
   height: 50px;
   font-size: 16px;
   border-radius: 3px;
@@ -229,7 +236,7 @@ input,
         margin: 0; } }
   input.error,
   .selectric .label.error {
-    border-color: #E59797; }
+    border-color: #E59797 !important; }
 
 button {
   height: 50px; }
@@ -250,6 +257,10 @@ button {
     position: absolute;
     top: 10px;
     left: 10px; }
+
+body {
+  margin: 0;
+  background: none; }
 
 @font-face {
   font-family: 'Proxima Nova Regular';
@@ -291,9 +302,6 @@ body {
 .selectric-items li {
         font-size: 14px; } }
 
-body {
-  background-color: #686868; }
-
 input {
   box-sizing: border-box;
   color: black;
@@ -321,8 +329,7 @@ input {
 .form_10 {
   background-color: white;
   border: 1px solid #CACACA;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); }
+  border-radius: 5px; }
 
 .form_1 {
   background-color: white;
@@ -646,11 +653,11 @@ input {
   position: absolute;
   top: 20px;
   right: 25px;
-  background-image: url(/img/close.svg);
+  background-image: url(../img/close.svg);
   background-size: 100% 100%;
   color: red; }
   .header_button:hover {
-    background-image: url(/img/close_hover.svg);
+    background-image: url(../img/close_hover.svg);
     cursor: pointer; }
 
 .header_type2 {
@@ -704,11 +711,11 @@ input {
   position: absolute;
   top: 20px;
   right: 25px;
-  background-image: url(/img/close.svg);
+  background-image: url(../img/close.svg);
   background-size: 100% 100%;
   color: red; }
   .header_button:hover {
-    background-image: url(/img/close_hover.svg);
+    background-image: url(../img/close_hover.svg);
     cursor: pointer; }
 
 .footer {
@@ -761,8 +768,7 @@ input {
   box-sizing: border-box;
   max-width: 550px;
   margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 12px; }
+  margin-right: auto; }
   .form_1:after {
     content: " ";
     display: block;
@@ -830,8 +836,10 @@ input {
     width: 32.20339%;
     float: left;
     margin-right: 0;
-    margin-top: 7.2px;
-    margin-bottom: 7.2px; }
+    margin-top: 7.2px; }
+    .form_1_personal_date .form_1_personal_date_input_small input {
+      margin-bottom: 7.2px;
+      min-width: 100%; }
     @media (min-width: 0) and (max-width: 500px) {
       .form_1_personal_date .form_1_personal_date_input_small {
         -moz-box-sizing: border-box;
@@ -841,8 +849,9 @@ input {
         float: left;
         margin-left: 0;
         margin-right: 0;
-        margin-top: 7.2px;
-        margin-bottom: 7.2px; } }
+        margin-top: 7.2px; }
+        .form_1_personal_date .form_1_personal_date_input_small input {
+          margin-bottom: 7.2px; } }
 
 .form_1_personal_date_button {
   float: left;
@@ -910,8 +919,7 @@ input {
     box-sizing: border-box;
     width: 49.15254%;
     float: left;
-    margin-right: 1.69492%;
-    margin-bottom: 7.2px; }
+    margin-right: 1.69492%; }
     @media (min-width: 0) and (max-width: 500px) {
       .form_1_passport_data .form_1_passport_data_input_small {
         -moz-box-sizing: border-box;
@@ -921,6 +929,9 @@ input {
         float: left;
         margin-left: 0;
         margin-right: 0; } }
+    .form_1_passport_data .form_1_passport_data_input_small input {
+      margin-bottom: 7.2px;
+      min-width: 100%; }
   .form_1_passport_data .form_1_passport_data_input_small_last {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -939,6 +950,9 @@ input {
         margin-left: 0;
         margin-right: 0;
         margin-top: 7.2px; } }
+    .form_1_passport_data .form_1_passport_data_input_small_last input {
+      margin-bottom: 7.2px;
+      min-width: 100%; }
   .form_1_passport_data .form_1_passport_data_input {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1101,8 +1115,7 @@ input {
     width: 32.20339%;
     float: left;
     margin-right: 1.69492%;
-    margin-top: 14.4px;
-    margin-bottom: 7.2px; }
+    margin-top: 14.4px; }
     .form_1_adress_dop .form_1_adress_dop_block_input:nth-child(3) {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -1110,6 +1123,8 @@ input {
       width: 32.20339%;
       float: left;
       margin-right: 0; }
+    .form_1_adress_dop .form_1_adress_dop_block_input input {
+      margin-bottom: 7.2px; }
     @media (min-width: 0) and (max-width: 500px) {
       .form_1_adress_dop .form_1_adress_dop_block_input {
         -moz-box-sizing: border-box;
@@ -1157,11 +1172,11 @@ input {
       width: 22px;
       height: 22px;
       margin-right: 10px;
-      background: url("/img/checkbox.png") no-repeat 0 -22px;
+      background: url("../img/checkbox.png") no-repeat 0 -22px;
       vertical-align: bottom;
       content: ''; }
     :checked + .form_1_adress_dop_checkbox_block_text::before {
-      background: url("/img/checkbox.png") no-repeat 0 0; }
+      background: url("../img/checkbox.png") no-repeat 0 0; }
   @media (min-width: 0) and (max-width: 500px) {
     .form_1_adress_dop_checkbox_block {
       display: none; } }
@@ -1220,16 +1235,10 @@ input {
       font-size: 14px; } }
 
 .error_text {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  margin: 0;
+  margin: 0 0 5px 0;
   font-size: 12px;
-  color: #E59797; }
+  color: #E59797;
+  clear: both; }
 
 .form_2 {
   -moz-box-sizing: border-box;
@@ -1238,8 +1247,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_2:after {
     content: " ";
     display: block;
@@ -1334,9 +1342,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 12px;
-  margin-bottom: 12px; }
+  border-radius: 3px; }
   .form_3:after {
     content: " ";
     display: block;
@@ -1367,7 +1373,7 @@ input {
         clear: both; } }
 
 .form_3_contant {
-  padding: 35px 0;
+  padding: 35px 0 15px;
   padding-left: 25px;
   padding-right: 25px; }
   .form_3_contant p {
@@ -1385,7 +1391,8 @@ input {
   box-sizing: border-box;
   width: 49.15254%;
   float: left;
-  margin-right: 1.69492%; }
+  margin-right: 1.69492%;
+  margin-bottom: 12px; }
 
 .form_3_contant_button {
   -moz-box-sizing: border-box;
@@ -1395,7 +1402,6 @@ input {
   float: left;
   margin-right: 0;
   border-radius: 3px;
-  margin-bottom: 35px;
   border: none;
   outline: none; }
   .form_3_contant_button p {
@@ -1467,9 +1473,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 5px; }
   .form_4:after {
     content: " ";
     display: block;
@@ -1526,7 +1530,8 @@ input {
   box-sizing: border-box;
   width: 49.15254%;
   float: left;
-  margin-right: 1.69492%; }
+  margin-right: 1.69492%;
+  margin-bottom: 12px; }
 
 .form_4_contant_button {
   -moz-box-sizing: border-box;
@@ -1616,9 +1621,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_5:after {
     content: " ";
     display: block;
@@ -1717,9 +1720,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_6:after {
     content: " ";
     display: block;
@@ -1785,6 +1786,7 @@ input {
     outline: none;
     cursor: pointer;
     margin-top: 7.2px;
+    margin-bottom: 7.2px;
     font-size: 16px;
     border-radius: 3px;
     padding: 5px 0 0 10px; }
@@ -1823,9 +1825,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_7:after {
     content: " ";
     display: block;
@@ -1923,9 +1923,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_8:after {
     content: " ";
     display: block;
@@ -2022,9 +2020,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_9:after {
     content: " ";
     display: block;
@@ -2126,9 +2122,7 @@ input {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
-  margin-top: 12px;
-  margin-bottom: 36px; }
+  border-radius: 3px; }
   .form_10:after {
     content: " ";
     display: block;
