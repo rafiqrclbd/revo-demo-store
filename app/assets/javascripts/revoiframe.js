@@ -2,15 +2,23 @@
 
   var iframe,
     iframeUrl,
-    defaultTargetSelector = '.revo-form';
+    defaultTargetSelector = '.revo-form',
+    onCloseHandler;
 
   function handleMessage (event) {
     var eventData = JSON.parse(event.data),
+      type = eventData.type,
       data = eventData.data;
     
-    if (data) {
+    if (type === 'resize' && data) {
       iframe.style.width = data.width + 'px';
       iframe.style.height = data.height + 'px';
+    }
+    else if (type === 'close') {
+      if (onCloseHandler && typeof onCloseHandler !== 'function') {
+        throw 'onClose handler must be a function';
+      }
+      onCloseHandler();
     }
   }
 
@@ -58,10 +66,15 @@
     target.appendChild(iframe);
   }
 
+  function setOnCloseHandler (handler) {
+    onCloseHandler = handler;
+  }
+
   function Form () {}
 
   Form.prototype = {
-    show: show
+    show: show,
+    onClose: setOnCloseHandler
   }
 
   context.REVO = context.REVO || {};
