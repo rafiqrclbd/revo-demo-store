@@ -3,7 +3,9 @@
 //= require jquery.maskedinput
 
 $(function () {
-  $('select').selectric();
+  $('select').selectric({
+    disableOnMobile: false
+  });
 
   $('input[data-mask]').each(function () {
     var $item = $(this),
