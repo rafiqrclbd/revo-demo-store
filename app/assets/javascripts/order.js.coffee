@@ -20,6 +20,8 @@ class RevoLoan
 
   openPopup: (url)->
     REVO.Form.show url, '#revo-iframe'
+    REVO.Form.onClose ->
+      $('#revoModal').modal('hide') 
     #Use git history to find old method
 
 
