@@ -3,7 +3,8 @@
   var iframe,
     iframeUrl,
     defaultTargetSelector = '.revo-form',
-    onCloseHandler;
+    onCloseHandler,
+    onLoadHandler;
 
   function handleMessage (event) {
     var eventData = JSON.parse(event.data),
@@ -27,6 +28,10 @@
       message = {
         type: 'hello'
       };
+
+    if (typeof onLoadHandler === 'function') {
+      onLoadHandler();
+    }
     
     if (!origin && !origin[0]) {
       return;
@@ -70,11 +75,16 @@
     onCloseHandler = handler;
   }
 
+  function setOnLoadHandler (handler) {
+    onLoadHandler = handler;
+  }
+
   function Form () {}
 
   Form.prototype = {
     show: show,
-    onClose: setOnCloseHandler
+    onClose: setOnCloseHandler,
+    onLoad: setOnLoadHandler
   }
 
   context.REVO = context.REVO || {};

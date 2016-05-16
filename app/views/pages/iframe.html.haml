@@ -3,3 +3,4 @@
 - url = "#{request.protocol}#{request.host_with_port}/pages/v2"
 %script= "REVO.Form.show('#{url}', '.target');"
 %script= "REVO.Form.onClose(function () { alert('closed'); });"
+%script= "REVO.Form.onLoad(function () { console.log('frame loaded'); });"

@@ -80,6 +80,7 @@
   border-top: 2px solid #FF7400;
   border-left: 2px solid #FF7400;
   border-right: 2px solid #FF7400;
+  border-bottom: 0;
   background-color: white;
   border-radius: 3px 3px 0 0; }
   .selectric-open .selectric:hover {
@@ -143,7 +144,16 @@
 
 .selectric-above .selectric-items {
   top: auto;
-  bottom: 100%; }
+  bottom: 100%;
+  border-bottom-width: 1px;
+  border-top-width: 2px;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -8px; }
+
+.selectric-open.selectric-above .selectric {
+  border-bottom: 2px solid #FF7400;
+  border-radius: 0 0 3px 3px;
+}
 
 .selectric-items ul, .selectric-items li {
   list-style: none;
@@ -238,13 +248,15 @@ input,
   height: 50px;
   font-size: 16px;
   border-radius: 3px;
-  padding-left: 15px; }
+  padding-left: 15px;
+  box-shadow: 0 1px 3px #d0d0d0 inset; }
   input:hover,
   .selectric .label:hover {
     cursor: pointer; }
   input:focus,
   .selectric .label:focus {
-    padding-left: 14px; }
+    padding-left: 14px;
+    box-shadow: none; }
   @media (min-width: 0) and (max-width: 500px) {
     input,
     .selectric .label {
@@ -255,7 +267,11 @@ input,
         margin: 0; } }
   input.error,
   .selectric .label.error {
-    border-color: #E59797 !important; }
+    border-color: #E59797 !important;
+    box-shadow: none; }
+
+.selectric .label {
+  height: 40px; }
 
 button {
   height: 50px; }
@@ -275,7 +291,7 @@ button {
   .relative .placeholder {
     display: none;
     position: absolute;
-    top: 11px;
+    top: 14px;
     left: 16px;
     font-size: 12px;
     color: #999999;
@@ -291,7 +307,7 @@ button {
   .form_3_contant_input .placeholder,
   .form_3_contant .placeholder,
   .form_4_contant .placeholder {
-    top: 3px;
+    top: 6px;
   }
   .form_1_passport_data_input_small_last + .relative {
     clear: both;
@@ -378,7 +394,7 @@ input {
   border: 1px solid #CACACA; }
 
 .form_1_personal_date {
-  border-top: 1px solid #CACACA;
+  border-top: 1px solid #EFEFEF;
   border-bottom: 1px solid #CACACA; }
 
 .form_1_passport_data {
@@ -399,7 +415,7 @@ input {
 .form_1_contact {
   border-bottom: 1px solid #CACACA;
   border-top: 1px solid #CACACA;
-  border-bottom: 1px solid #CACACA; }
+  border-bottom: 1px solid #EAEAEA; }
 
 .form_1_footer_button_left {
   background-color: white;
@@ -850,7 +866,7 @@ input {
   margin-right: 0;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 12px; }
+  padding-bottom: 16px; }
   .form_1_personal_date .form_1_personal_date_label h2 {
     padding: 20px 0 10px 0; }
   .form_1_personal_date .form_1_personal_date_input {
@@ -965,7 +981,7 @@ input {
   height: auto;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 7.2px; }
+  padding-bottom: 17px; }
   .form_1_passport_data .form_1_passport_data_label {
     padding: 20px 0 10px 0; }
   .form_1_passport_data .form_1_passport_data_input_small {
@@ -1040,7 +1056,7 @@ input {
   margin-right: 0;
   height: auto;
   padding: 0 25px 0 25px;
-  padding-bottom: 7.2px; }
+  padding-bottom: 17px; }
   .form_1_more_data .form_1_more_data_label {
     padding: 20px 0 10px 0; }
   .form_1_more_data .form_1_more_data_input {
@@ -1072,7 +1088,7 @@ input {
   height: auto;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 7.2px; }
+  padding-bottom: 17px; }
 
 .form_1_adress_label {
   -moz-box-sizing: border-box;
@@ -1115,6 +1131,7 @@ input {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 66.10169%;
+  padding-left: 17px;
   float: left;
   margin-right: 0;
   font-size: 14px;
@@ -1141,7 +1158,7 @@ input {
   margin-right: 0;
   height: auto;
   padding-top: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 11px;
   padding-left: 25px;
   padding-right: 25px; }
   .form_1_adress_dop .form_1_adress_dop_input {
@@ -1247,7 +1264,7 @@ input {
   margin-right: 0;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 24px; }
+  padding-bottom: 17px; }
   .form_1_contact .form_1_contact_input {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1429,7 +1446,7 @@ input {
         clear: both; } }
 
 .form_3_contant {
-  padding: 35px 0 15px;
+  padding: 35px 0 17px;
   padding-left: 25px;
   padding-right: 25px; }
   .form_3_contant p {
@@ -1565,7 +1582,7 @@ input {
         height: 40px; } }
 
 .form_4_contant {
-  padding: 35px 25px; }
+  padding: 35px 25px 24px; }
   .form_4_contant p {
     font-size: 16px;
     display: inline-block; }
@@ -1809,7 +1826,7 @@ input {
 .form_6_contant {
   position: relative;
   height: auto;
-  padding: 35px 25px; }
+  padding: 35px 25px 17px; }
   @media (min-width: 0) and (max-width: 500px) {
     .form_6_contant {
       padding: 20px 25px; } }
