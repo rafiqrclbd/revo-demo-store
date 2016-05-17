@@ -3,9 +3,10 @@
     .form_header_type_1_label
       %h1 Оформление
     %a.header_logo
-      %img{:src => "/img/logo.svg"}/
+      %img.utkonos{:src => "/img/utkonos.png"}/
     %a.header_button
   .form_1_personal_date
+    .privacy_info Мы передаем данные по защищенному каналу, храним по закону и не отдаем их третьим лицам.
     .form_1_personal_date_label
       %h2 Личные данные
     .relative
@@ -112,9 +113,14 @@
     .relative
       %input.form_1_contact_input.error{"data-mask" => "+7 (999) 999-99-99", :placeholder => "Ваш телефон", :type => "text"}
       .error_text Проверьте правильность введённых данных
+    .relative
+      %input.form_1_contact_input.error{:placeholder => "Домашний телефон", :type => "text", :maxlength => "16"}
+      .optional Необязательно
+      .error_text Проверьте правильность введённых данных
   .footer
     %button.form_1_footer_button_right Продолжить
     %button.form_1_footer_button_left Отменить
+    .service_info Сервис предоставлен компанией «Ревоплюс»
 .form_2
   .header_type1
     .form_header_type_1_label

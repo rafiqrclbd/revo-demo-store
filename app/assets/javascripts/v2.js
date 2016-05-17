@@ -55,14 +55,20 @@ $(function () {
       placeholder = $input.attr('placeholder') || $wrapper.find('.selectric .label').text();
       $placeholder = $('<div/>').addClass('placeholder').text(placeholder);
       $wrapper.append($placeholder);
-      $input.on('keyup keydown paste change', function () {
+      $input.on('keyup paste change blur', function () {
         var value = $input.val();
 
         if (value) {
           $wrapper.addClass(withValue);
+          $placeholder.animate({
+            opacity: 1
+          }, 250);
         }
         else {
           $wrapper.removeClass(withValue);
+          $placeholder.css({
+            opacity: 0
+          });
         }
       });
     }

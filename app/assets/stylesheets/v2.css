@@ -273,6 +273,50 @@ input,
 .selectric .label {
   height: 40px; }
 
+.utkonos {
+  margin-top: -18px;
+}
+
+@media (min-width: 0) and (max-width: 500px) {
+  .utkonos {
+    margin-top: -13px;
+  }
+}
+
+.service_info {
+  float: left;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  padding-top: 24px;
+  padding-bottom: 10px;
+  border-top: 1px solid #EAEAEA;
+  font-size: 14px;
+  color: #696969;
+  text-align: right;
+  background: url('/img/logo.svg') no-repeat left 25px;
+  background-size: 110px 20px;
+}
+
+@media (min-width: 0) and (max-width: 500px) {
+  .service_info {
+    padding-top: 12px;
+    font-size: 10px;
+    background-size: 60px 11px;
+    background-position: left 14px;
+  }
+}
+
+.privacy_info {
+  padding: 16px 16px 16px 55px;
+  margin-top: 25px;
+  border: 1px solid #D1D1D1;
+  background: url('/img/lock.png') no-repeat 18px center;
+  font-size: 12px;
+  line-height: 17px;
+  color: #999999;
+}
+
 button {
   height: 50px; }
   button:hover {
@@ -285,6 +329,38 @@ button {
 @media (min-width: 0) and (max-width: 500px) {
   body .header_button {
     display: none; } }
+
+.optional {
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  font-size: 14px;
+  color: #999999;
+  transition: top 0.2s;
+  -ms-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  -webkit-transition: top 0.2s;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+.with-value .optional {
+  top: 30px;
+}
+
+@media (min-width: 0) and (max-width: 500px) {
+  .optional {
+    top: 21px;
+    right: 12px;
+    font-size: 12px;
+  }
+  .with-value .optional {
+    top: 26px;
+  }
+}
 
 .relative {
   position: relative; }
@@ -301,6 +377,7 @@ button {
     cursor: default; }
   .with-value .placeholder {
     display: block;
+    opacity: 0;
   }
   .form_1_personal_date_input_small .placeholder,
   .form_1_adress_dop_block_input .placeholder,
