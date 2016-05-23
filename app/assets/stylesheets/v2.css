@@ -328,7 +328,8 @@ button {
 
 @media (min-width: 0) and (max-width: 500px) {
   body .header_button {
-    display: none; } }
+    /*display: none;*/
+    top: 12px; } }
 
 .optional {
   position: absolute;
@@ -895,7 +896,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto;
       padding-top: 12px;
@@ -925,7 +926,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_1:after {
@@ -1416,7 +1417,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_2:after {
@@ -1514,7 +1515,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_3:after {
@@ -1646,7 +1647,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_4:after {
@@ -1790,7 +1791,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_5:after {
@@ -1892,7 +1893,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_6:after {
@@ -1994,7 +1995,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_7:after {
@@ -2092,7 +2093,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_8:after {
@@ -2189,7 +2190,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_9:after {
@@ -2291,7 +2292,7 @@ input {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      max-width: 330px;
+      /*max-width: 330px;*/
       margin-left: auto;
       margin-right: auto; }
       .form_10:after {
