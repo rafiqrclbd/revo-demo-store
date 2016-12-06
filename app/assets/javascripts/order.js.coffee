@@ -1,11 +1,22 @@
 class RevoLoan
   constructor: (@order_id)->
+    @init_order()
+    @init_full_order()
+    @url = null
+
+  init_order: ->
     @btn = $('.order-loan .loan-btn')
     @error = $('.order-loan .loan-error')
     @progress = $('.order-loan .progress')
     @btn.hide()
     @error.hide()
-    @url = null
+
+  init_full_order: ->
+    @full_btn = $('.full-order-loan .loan-btn')
+    @full_error = $('.full-order-loan .loan-error')
+    @full_progress = $('.full-order-loan .progress')
+    @full_btn.hide()
+    @full_error.hide()
 
   check: ->
     $.get('/revo/'+@order_id).success (data)=>
@@ -19,6 +30,16 @@ class RevoLoan
         @url = data.url
       else
         @error.show()
+
+  full_check: ->
+    $.get('/fullrevo/'+@order_id).success (data)=>
+      @full_progress.hide()
+      if data.status == 'ok'
+        @full_btn.show()
+        @full_btn.click =>
+          @openPopup data.url
+      else
+        @full_error.show()
 
   openPopup: (url)->
     REVO.Form.show url, '#revo-iframe'

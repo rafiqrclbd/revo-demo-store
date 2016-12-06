@@ -12,20 +12,36 @@
       %td
       %td=@order.amount
 
-.panel.panel-default.order-loan
-  .panel-heading
-    Buy by means of "pay later" service
-  .panel-body
-    .progress
-      .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
-    .loan-btn
-      -#=link_to 'Buy', '#', class: 'btn btn-warning'
-      %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
-        Checkout
-    .loan-error
-      Loan Error
+.row
+  .col-lg-6
+    .panel.panel-default.order-loan
+      .panel-heading
+        Buy by means of "pay later" service
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          -#=link_to 'Buy', '#', class: 'btn btn-warning'
+          %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+            Checkout
+        .loan-error
+          Loan Error
+
+  .col-lg-6
+    .panel.panel-default.full-order-loan
+      .panel-heading
+        Pay later
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+            GO
+        .loan-error
+          Loan Error
 
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
   revoLoan.check()
+  revoLoan.full_check()
 
