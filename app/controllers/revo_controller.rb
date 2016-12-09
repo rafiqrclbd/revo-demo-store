@@ -20,6 +20,16 @@ class RevoController < ApplicationController
     end
   end
 
+  def limit
+    order = current_user.orders.create(amount: 1)
+    result = call_revo order
+    if result['status'] == 0
+      render json: {status: :ok, url: result['iframe_url']}
+    else
+      render json: {status: :error, message: result['message']}
+    end
+  end
+
   def callback
     order = Order.find_by! uid: params[:order_id]
     order.update_attribute :revo_status, params[:decision]

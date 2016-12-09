@@ -39,9 +39,11 @@
         .col-lg-9
           = bootstrap_flash
           = yield
+          =render 'shared/iframe_popup'
         .col-lg-3
           -if user_signed_in?
             =render 'shared/cart'
+            =render 'shared/check_limit'
       %footer
         %p &copy; Revo Technologies 2016
   = javascript_include_tag Rails.application.secrets.revo_js_url
