@@ -10,6 +10,7 @@ class RevoLimit
         @openPopup data.url
 
   openPopup: (url)->
+    $('#revo-iframe').html('')
     REVO.Form.show url, '#revo-iframe'
     REVO.Form.onClose ->
       $('#revoModal').modal('hide')
