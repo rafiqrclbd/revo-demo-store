@@ -19,4 +19,7 @@ Product.delete_all
     { name: 'Samsung Gear 2 Neo',           price: 8_490,   image: 'http://mdata.yandex.net/i?path=b0423085224_img_id5227319824167798490.jpeg'},
     { name: 'Lenovo IdeaTab A7600 16Gb 3G', price: 1_020,  image: 'http://mdata.yandex.net/i?path=b0521004031_img_id6569655011894724867.jpeg'},
     { name: 'LG GA-B409 SLCA',              price: 3_230,  image: 'http://mdata.yandex.net/i?path=b0210151125_img_id4639031377487357309.jpg'},
+    { name: 'Long satin dress',             price: 1_499,  image: 'http://lp2.hm.com/hmprod?set=source[/environment/2016/7UZ_0117_001R.jpg],width[4284],height[5010],x[443],y[72],type[FASHION_FRONT]&hmver=0&call=url[file:/product/main]'},
+    { name: 'Leather court shoes',          price: 4_999,  image: 'http://lp2.hm.com/hmprod?set=source[/environment/2016/7XA_0276_004R.jpg],width[2983],height[3488],x[1042],y[1636],type[FASHION_FRONT]&hmver=0&call=url[file:/product/main]'},
+    { name: 'Shiny leggings',               price: 1_499,  image: 'http://lp2.hm.com/hmprod?set=source[/environment/2016/7XZ_0042_012R.jpg],rotate[-1.1000000000000025],width[4088],height[4780],x[684],y[302],type[FASHION_FRONT]&hmver=0&call=url[file:/product/main]'}
 ].each {|p| Product.create p}
