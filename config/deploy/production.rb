@@ -5,7 +5,7 @@ set :user, "deployer"
 server 'store.revoup.ru', user: fetch(:user), port: 2002, roles: %w{web app db}
 
 # Default branch is :master
-set :branch, 'master'
+set :branch, ENV.fetch('branch', 'master')
 
 #RVM settings
 set :rvm_ruby_version, "2.1.5"
