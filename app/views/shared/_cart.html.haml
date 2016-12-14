@@ -9,7 +9,7 @@
             =p.name
             =link_to 'x', remove_from_cart_path(p.id), class: 'btn btn-xs btn-danger', method: :post
       .text-center
-        =link_to 'Make order', cart_path, class: 'btn btn-success'
+        =link_to 'Go to cart', cart_path, class: 'btn btn-success'
     -else
       .text-center
         no goods in cart
