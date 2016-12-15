@@ -10,9 +10,11 @@ class RevoLoan
   check: ->
     $.get('/revo/'+@order_id).success (data)=>
       @progress.hide()
+      console.log(data)
       if data.status == 'ok'
         @btn.show()
         @btn.click =>
+          console.log(data.url)
           @openPopup data.url
         @url = data.url
       else
