@@ -1,0 +1,9 @@
+.panel.panel-success#panel-limit
+  .panel-heading
+    Check your limit
+  .panel-body
+    .text-center
+      =link_to 'Check your limit', '#', class: 'btn btn-warning', data: {toggle: :modal, target: '#revoModal'}
+
+:javascript
+  revoLimit = new RevoLimit()

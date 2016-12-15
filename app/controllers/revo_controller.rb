@@ -20,6 +20,17 @@ class RevoController < ApplicationController
     end
   end
 
+  def limit
+    order = current_user.orders.create(amount: 1)
+    result = call_revo order
+    if result['status'] == 0
+      iframe_url = add_subdomain_locale_param(result['iframe_url'])
+      render json: {status: :ok, url: iframe_url}
+    else
+      render json: {status: :error, message: result['message']}
+    end
+  end
+
   def callback
     order = Order.find_by! uid: params[:order_id]
     order.update_attribute :revo_status, params[:decision]
@@ -30,11 +41,19 @@ class RevoController < ApplicationController
 
   private
 
-  def sign(payload)
-    Digest::SHA1.hexdigest(payload + Rails.application.secrets.password)
+  def sign(payload, password)
+    Digest::SHA1.hexdigest(payload + password)
   end
 
   def call_revo(order, action = :auth)
+    password = Rails.application.secrets.password
+    store_id = Rails.application.secrets.revo_store_id
+    if order.amount == 1 #hack for check your limit
+      password = Rails.application.secrets.limit_password
+      store_id = Rails.application.secrets.revo_limit_store_id
+    end
+
+
     url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     payload = {
         callback_url: Rails.application.secrets.callback_url,
@@ -46,9 +65,9 @@ class RevoController < ApplicationController
           order_id: order.uid,
         }
     }.to_json
-    signature = sign payload
+    signature = sign payload, password
 
-    params = {store_id: Rails.application.secrets.revo_store_id, signature: signature}
+    params = {store_id: store_id, signature: signature}
     uri = URI("#{url}/iframe/v1/#{action}")
     uri.query = params.to_query
 

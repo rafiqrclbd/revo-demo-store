@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :create, :show]
 
   resources :revo, only: [:show] do
+    get :limit, to: 'revo#limit', on: :collection
     post :callback, to: 'revo#callback', on: :collection
   end
 end

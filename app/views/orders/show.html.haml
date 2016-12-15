@@ -25,13 +25,6 @@
     .loan-error
       Loan Error
 
-.modal.fade#revoModal{tabindex: '-1', role: :dialog, aria: {labelledby: :revoModalLabel}, data: {backdrop: 'static'}}
-  .modal-dialog{role: :document}
-    .modal-content
-      .modal-body
-        #revo-iframe
-
-
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
   revoLoan.check()
