@@ -8,11 +8,12 @@
           %li
             =p.name
             =link_to 'x', remove_from_cart_path(p.id), class: 'btn btn-xs btn-danger', method: :post
-      .panel-total_amount
-        Total amount:
-        = current_cart.total
       .text-center
         =link_to 'Go to cart', cart_path, class: 'btn btn-success'
     -else
       .text-center
         no goods in cart
+  -if current_cart.present? && current_cart.any?
+    .panel-footer
+      Total amount:
+      = current_cart.total
