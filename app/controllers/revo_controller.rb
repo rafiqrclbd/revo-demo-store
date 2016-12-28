@@ -101,6 +101,6 @@ class RevoController < ApplicationController
   end
 
   def subdomain_secrets
-    Rails.application.secrets.public_send(subdomain_locale)
+    OpenStruct.new(Rails.application.secrets.public_send(subdomain_locale))
   end
 end
