@@ -1,10 +1,7 @@
 require 'net/http'
 class RevoController < ApplicationController
 
-  SUBDOMAIN_LOCALES = {
-    'engstore' => :en,
-    'store'    => :ru
-  }
+  include Locale
 
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
@@ -84,23 +81,5 @@ class RevoController < ApplicationController
     response = http.request(request)
     logger.debug "response: #{response}"
     ActiveSupport::JSON.decode response.body
-  end
-
-  private
-
-  def subdomain
-    request.subdomains.first
-  end
-
-  def subdomain_locale
-    SUBDOMAIN_LOCALES.fetch(subdomain, I18n.default_locale)
-  end
-
-  def add_subdomain_locale_param(url)
-    url + "?locale=#{subdomain_locale}"
-  end
-
-  def subdomain_secrets
-    OpenStruct.new(Rails.application.secrets.public_send(subdomain_locale))
   end
 end
