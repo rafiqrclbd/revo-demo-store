@@ -25,7 +25,7 @@
           %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
             Checkout Preliminary
         .loan-error
-          Loan Error
+          Order already processed
 
   .col-lg-6
     .panel.panel-default.full-order-loan
@@ -38,7 +38,7 @@
           %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
             Checkout Full
         .loan-error
-          Loan Error
+          Order already processed
 
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
