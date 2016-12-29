@@ -1,4 +1,4 @@
-%h2 Sign up
+%h2=t('.subject')
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
@@ -13,7 +13,7 @@
     = f.label :password
     - if @minimum_password_length
       %em
-        (#{@minimum_password_length} characters minimum)
+        =t('.minimum_characters', length: @minimum_password_length)
     %br/
     = f.password_field :password, autocomplete: "off"
   .field
@@ -21,5 +21,5 @@
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
-    = f.submit "Sign up"
+    = f.submit t('.submit')
 = render "devise/shared/links"

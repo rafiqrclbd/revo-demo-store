@@ -19,21 +19,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
-  title: "Demo Shop"
-  sign_out: "Sign out"
-  sign_in: "Sign in"
-  sign_up: "Sign up"
-  footer_html: "&copy; Revo Technologies 2016"
+ru:
+  title: "Демо Магазин"
+  sign_out: "Выйти"
+  sign_in: "Войти"
+  sign_up: "Зарегистрироваться"
+  footer_html: "&copy; РЕВО Технологии 2016"
   activerecord:
     models:
-      orders: "Orders"
+      orders: "Заказы"
     attributes:
       user:
-        email: 'Email'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        remember_me: 'Remember me'
-        phone_number: 'Phone number'
-
+        email: 'Почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
+        phone_number: 'Телефон'
