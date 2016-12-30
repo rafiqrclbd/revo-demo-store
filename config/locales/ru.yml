@@ -35,3 +35,41 @@ ru:
         password_confirmation: 'Подтверждение пароля'
         remember_me: 'Запомнить меня'
         phone_number: 'Телефон'
+      product:
+        name: 'Наименование'
+        price: 'Цена'
+      order:
+        uid: 'Уникальный идентификатор'
+        amount: 'Цена'
+        revo_status: 'Рево статус'
+  products:
+    index:
+      price: "Цена: %{price}"
+      add_to_cart: "Добавить в корзину"
+  shared:
+    cart:
+      title: "Корзина"
+      empty_cart: "в корзине нет товаров"
+      total_amount: "Общая стоимость: %{amount}"
+      go_to_cart: "Перейти в корзину"
+    check_limit:
+      title: 'Проверьте ваш лимит'
+      submit: 'Проверьте ваш лимит'
+  carts:
+    show:
+      title: 'Корзина'
+      special_offer_price: "Цена по спецпредложению: %{price}"
+      total: 'ИТОГО'
+      confirm_order: 'Подтвердить заказ'
+      back_to_store: 'Назад в магазин'
+  orders:
+    index:
+      title: 'Заказы'
+      view_order: 'Показать заказ'
+    show:
+      title: "Заказ №%{order_id}"
+      items: 'Перечень товаров'
+      pay_later: "Купить через сервис \"Плати потом\""
+      checkout_preliminary: "Предварительный заказ"
+      checkout_full: "Полный заказ"
+      order_already_processed: 'Заказ обработан'

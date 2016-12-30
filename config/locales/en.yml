@@ -36,4 +36,41 @@ en:
         password_confirmation: 'Password confirmation'
         remember_me: 'Remember me'
         phone_number: 'Phone number'
+      product:
+        name: 'Name'
+        price: 'Price'
+      order:
+        uid: 'Uniq id'
+        amount: 'Amount'
+        revo_status: 'Revo status'
+  products:
+    index:
+      prica: "Price: %{price}"
+      add_to_cart: "Add to cart"
+  shared:
+    cart:
+      title: 'Cart'
+      empty_cart: 'no goods in cart'
+      total_amount: "Total amount: %{amount}"
+      go_to_cart: 'Go to cart'
+    check_limit:
+      title: 'Check your limit'
+      submit: 'Check your limit'
+  carts:
+    show:
+      title: 'Cart'
+      special_offer_price: 'The price with special offer: %{price}'
+      total: 'Total'
+      confirm_order: 'Confirm order'
+      back_to_store: 'Back to store'
+  orders:
+    index:
+      title: 'Orders'
+      view_order: 'View order'
+    show:
+      title: "Order #%{order_id}"
+      pay_later: "Buy by means of \"pay later\" service"
+      checkout_preliminary: "Checkout Preliminary"
+      checkout_full: "Checkout Full"
+      order_already_processed: 'Loan Error'
 
