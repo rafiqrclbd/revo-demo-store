@@ -45,7 +45,7 @@ en:
         revo_status: 'Revo status'
   products:
     index:
-      prica: "Price: %{price}"
+      price: "Price: %{price}"
       add_to_cart: "Add to cart"
   shared:
     cart:
