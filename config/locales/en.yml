@@ -25,7 +25,7 @@ en:
   sign_out: "Sign out"
   sign_in: "Sign in"
   sign_up: "Sign up"
-  footer_html: "&copy; Revo Technologies 2016"
+  footer_html: "&copy; 2017 MFC «Revo Technology» (LLC), all rights reserved"
   activerecord:
     models:
       orders: "Orders"

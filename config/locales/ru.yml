@@ -24,13 +24,13 @@ ru:
   sign_out: "Выйти"
   sign_in: "Войти"
   sign_up: "Зарегистрироваться"
-  footer_html: "&copy; РЕВО Технологии 2016"
+  footer_html: "&copy; 2017 МФК «Рево Технологии» (ООО), все права защищены"
   activerecord:
     models:
       orders: "Заказы"
     attributes:
       user:
-        email: 'Почта'
+        email: 'Email'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
         remember_me: 'Запомнить меня'
@@ -41,35 +41,35 @@ ru:
       order:
         uid: 'Уникальный идентификатор'
         amount: 'Цена'
-        revo_status: 'Рево статус'
+        revo_status: 'Статус Рево'
   products:
     index:
       price: "Цена: %{price}"
-      add_to_cart: "Добавить в корзину"
+      add_to_cart: "В корзину"
   shared:
     cart:
       title: "Корзина"
       empty_cart: "в корзине нет товаров"
-      total_amount: "Общая стоимость: %{amount}"
+      total_amount: "Товаров на сумму: %{amount}"
       go_to_cart: "Перейти в корзину"
     check_limit:
-      title: 'Проверьте ваш лимит'
-      submit: 'Проверьте ваш лимит'
+      title: 'Узнать лимит'
+      submit: 'Узнать лимит'
   carts:
     show:
       title: 'Корзина'
       special_offer_price: "Цена по спецпредложению: %{price}"
-      total: 'ИТОГО'
+      total: 'Итого'
       confirm_order: 'Подтвердить заказ'
-      back_to_store: 'Назад в магазин'
+      back_to_store: 'Вернуться в магазин'
   orders:
     index:
       title: 'Заказы'
-      view_order: 'Показать заказ'
+      view_order: 'Посмотреть заказ'
     show:
       title: "Заказ №%{order_id}"
-      items: 'Перечень товаров'
-      pay_later: "Купить через сервис \"Плати потом\""
-      checkout_preliminary: "Предварительный заказ"
-      checkout_full: "Полный заказ"
+      items: 'Товары'
+      pay_later: "Купить с помощью сервиса \"Оплата частями\""
+      checkout_preliminary: "Предоформление"
+      checkout_full: "Полное оформление"
       order_already_processed: 'Заказ обработан'

@@ -14,7 +14,7 @@ ru:
       last_attempt: "У Вас осталась еще одна попытка ввести пароль до блокировки."
       not_found_in_database: "Неверный %{authentication_keys} или пароль."
       timeout: "Ваш сеанс закончился. Пожалуйста, войдите в систему снова."
-      unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
+      unauthenticated: "Для продолжения необходимо авторизоваться или пройти регистрацию."
       unconfirmed: "Вы должны подтвердить вашу учётную запись."
     mailer:
       confirmation_instructions:
@@ -76,7 +76,7 @@ ru:
         subject: "Зарегистрироваться"
         submit: "Зарегистрироваться"
     sessions:
-      signed_in: "Вход в систему выполнен."
+      signed_in: "Вход выполнен успешно."
       signed_out: "Выход из системы выполнен."
       already_signed_out: "Выход из системы выполнен."
       new:
@@ -88,9 +88,9 @@ ru:
       unlocked: "Ваша учётная запись разблокирована. Теперь вы вошли в систему."
     shared:
       links:
-        log_in: "Авторизоваться"
+        log_in: "Войти"
         sign_up: "Зарегистрироваться"
-        forgot_password: "Забыли свой пароль?"
+        forgot_password: "Забыли пароль?"
         didnt_confirmation_instruction: "Не получили инструкцию по подтверждению?"
         sign_in_with: "Войти через %{provider}"
   errors:
