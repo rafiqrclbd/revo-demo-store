@@ -66,6 +66,8 @@ ru:
     index:
       title: 'Заказы'
       view_order: 'Посмотреть заказ'
+      approved: "подтверждён"
+      declined: "отказ"
     show:
       title: "Заказ №%{order_id}"
       items: 'Товары'

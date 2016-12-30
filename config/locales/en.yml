@@ -67,6 +67,8 @@ en:
     index:
       title: 'Orders'
       view_order: 'View order'
+      approved: "approved"
+      declined: "declined"
     show:
       title: "Order #%{order_id}"
       pay_later: "Buy by means of \"pay later\" service"
