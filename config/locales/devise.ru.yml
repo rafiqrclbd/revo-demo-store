@@ -74,6 +74,7 @@ ru:
         back: "Назад"
       new:
         subject: "Зарегистрироваться"
+        minimum_characters: "(%{length} минимум символов)"
         submit: "Зарегистрироваться"
     sessions:
       signed_in: "Вход выполнен успешно."
