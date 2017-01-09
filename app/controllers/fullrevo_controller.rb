@@ -1,5 +1,8 @@
 require 'net/http'
 class FullrevoController < ApplicationController
+
+  include Locale
+
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
@@ -7,7 +10,8 @@ class FullrevoController < ApplicationController
     order = Order.find params[:id]
     result = call_revo order
     if result['status'] == 0
-      render json: {status: :ok, url: result['iframe_url']}
+      iframe_url = add_subdomain_locale_param(result['iframe_url'])
+      render json: {status: :ok, url: iframe_url}
     else
       render json: {status: :error, message: result['message']}
     end
@@ -31,9 +35,9 @@ class FullrevoController < ApplicationController
     url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     payload = {
         callback_url: Rails.application.secrets.callback_url,
-        redirect_url: Rails.application.secrets.redirect_url,
+        redirect_url: subdomain_secrets.redirect_url,
         primary_phone: order.user.phone_number,
-	      primary_email: current_user.email,
+        primary_email: current_user.email,
         current_order: {
           sum: "%.2f" % order.amount,
           order_id: order.uid,

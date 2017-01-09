@@ -1,10 +1,7 @@
 require 'net/http'
 class RevoController < ApplicationController
 
-  SUBDOMAIN_LOCALES = {
-    'engstore' => :en,
-    'store'    => :ru
-  }
+  include Locale
 
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
@@ -49,17 +46,17 @@ class RevoController < ApplicationController
     password = Rails.application.secrets.password
     store_id = Rails.application.secrets.revo_store_id
     if order.amount == 1 #hack for check your limit
-      password = Rails.application.secrets.limit_password
-      store_id = Rails.application.secrets.revo_limit_store_id
+      password = subdomain_secrets.limit_store_password
+      store_id = subdomain_secrets.revo_limit_store_id
     end
 
 
     url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
     payload = {
         callback_url: Rails.application.secrets.callback_url,
-        redirect_url: redirect_url,
+        redirect_url: subdomain_secrets.redirect_url,
         primary_phone: order.user.phone_number,
-	primary_email: current_user.email,
+        primary_email: current_user.email,
         current_order: {
           sum: "%.2f" % order.amount,
           order_id: order.uid,
@@ -84,24 +81,5 @@ class RevoController < ApplicationController
     response = http.request(request)
     logger.debug "response: #{response}"
     ActiveSupport::JSON.decode response.body
-  end
-
-  private
-
-  def subdomain
-    request.subdomains.first
-  end
-
-  def subdomain_locale
-    SUBDOMAIN_LOCALES.fetch(subdomain, I18n.default_locale)
-  end
-
-  def redirect_url
-    method = subdomain_locale == :en ? :redirect_eng_url : :redirect_url
-    Rails.application.secrets.public_send(method)
-  end
-
-  def add_subdomain_locale_param(url)
-    url + "?locale=#{subdomain_locale}"
   end
 end
