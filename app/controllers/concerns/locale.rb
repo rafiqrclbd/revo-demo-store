@@ -3,25 +3,12 @@ module Locale
 
   private
 
-  SUBDOMAIN_LOCALES = {
-    'engstore' => :en,
-    'store'    => :ru
-  }
-
-  def subdomain
-    request.subdomains.first
-  end
-
-  def subdomain_locale
-    SUBDOMAIN_LOCALES.fetch(subdomain, I18n.default_locale)
-  end
-
-  def add_subdomain_locale_param(url)
-    url + "?locale=#{subdomain_locale}"
+  def add_locale_param(url)
+    url + "?locale=#{I18n.locale}"
   end
 
   def subdomain_secrets
-    OpenStruct.new(Rails.application.secrets.public_send(subdomain_locale))
+    OpenStruct.new(Rails.application.secrets.public_send(I18n.locale))
   end
 
 end
