@@ -40,7 +40,7 @@ class FullrevoController < ApplicationController
         primary_email: current_user.email,
         current_order: {
           sum: "%.2f" % order.amount,
-          order_id: order.uid,
+          order_id: ['FULL', order.uid].join,
         }
     }.to_json
     signature = sign payload
