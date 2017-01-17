@@ -7,8 +7,4 @@ module ApplicationHelper
       image_tag('revo-logo-ru.png', class: 'logo-ru')
     end
   end
-
-  def revo_status_locale(status)
-    status ? t(".#{status}") : ''
-  end
 end
