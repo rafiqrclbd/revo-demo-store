@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   title: "Demo Shop"
   sign_out: "Sign out"
   sign_in: "Sign in"
@@ -71,8 +70,8 @@ en:
       declined: "declined"
     show:
       title: "Order #%{order_id}"
+      items: 'Items'
       pay_later: "Buy by means of \"pay later\" service"
       checkout_preliminary: "Checkout Preliminary"
       checkout_full: "Checkout Full"
       order_already_processed: 'Loan Error'
-
