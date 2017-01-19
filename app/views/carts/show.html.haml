@@ -1,4 +1,4 @@
-%h1 Cart
+%h1=t('.title')
 
 %table.table
   %thead
@@ -13,13 +13,11 @@
         %td
           =p[:price.to_s]
           -if p[:discount_price.to_s]
-            %span.label.label-success
-              Цена по спецпредложению:
-              =p[:discount_price.to_s]
+            %span.label.label-success=t('.special_offer_price', price: p[:discount_price.to_s])
     %tr
-      %td.text-right{colspan: 2} Total
+      %td.text-right{colspan: 2}=t('.total')
       %td{colspan: 2}
         =@total
 %p
-  =link_to 'Confirm order', orders_path, class: 'btn btn-success', method: :post
-  =link_to 'Back to store', root_path, class: 'btn btn-success'
+  =link_to t('.confirm_order'), orders_path, class: 'btn btn-success', method: :post
+  =link_to t('.back_to_store'), root_path, class: 'btn btn-success'

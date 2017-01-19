@@ -1,0 +1,77 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  title: "Демо Магазин"
+  sign_out: "Выйти"
+  sign_in: "Войти"
+  sign_up: "Зарегистрироваться"
+  footer_html: "&copy; 2017 МФК «Рево Технологии» (ООО), все права защищены"
+  activerecord:
+    models:
+      orders: "Заказы"
+    attributes:
+      user:
+        email: 'Email'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
+        phone_number: 'Телефон'
+      product:
+        name: 'Наименование'
+        price: 'Цена'
+      order:
+        uid: 'Уникальный идентификатор'
+        amount: 'Цена'
+        revo_status: 'Статус Рево'
+  products:
+    index:
+      price: "Цена: %{price}"
+      add_to_cart: "В корзину"
+  shared:
+    cart:
+      title: "Корзина"
+      empty_cart: "в корзине нет товаров"
+      total_amount: "Товаров на сумму: %{amount}"
+      go_to_cart: "Перейти в корзину"
+    check_limit:
+      title: 'Узнать лимит'
+      submit: 'Узнать лимит'
+  carts:
+    show:
+      title: 'Корзина'
+      special_offer_price: "Цена по спецпредложению: %{price}"
+      total: 'Итого'
+      confirm_order: 'Подтвердить заказ'
+      back_to_store: 'Вернуться в магазин'
+  orders:
+    index:
+      title: 'Заказы'
+      view_order: 'Посмотреть заказ'
+      approved: "подтверждён"
+      declined: "отказ"
+    show:
+      title: "Заказ №%{order_id}"
+      items: 'Товары'
+      pay_later: "Купить с помощью сервиса \"Оплата частями\""
+      checkout_preliminary: "Предоформление"
+      checkout_full: "Полное оформление"
+      order_already_processed: 'Заказ обработан'

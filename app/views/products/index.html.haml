@@ -8,5 +8,5 @@
             %h3= p.name
           .description= p.description
           .price
-            Price: #{p.price}
-            =link_to 'Add to cart', add_to_cart_path(p.id), class: 'btn btn-success', method: :post
+            =t('.price', price: p.price)
+            =link_to t('.add_to_cart'), add_to_cart_path(p.id), class: 'btn btn-success', method: :post

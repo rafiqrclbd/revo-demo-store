@@ -1,5 +1,4 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+%h2=t('.subject', resource_name: resource_name.to_s.humanize)
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   .field
@@ -8,14 +7,14 @@
     = f.email_field :email, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
+      =t('.currently_waiting_confirmation', email: resource.unconfirmed_email)
   .field
     = f.label :phone_number
     %br/
     = f.phone_field :phone_number
   .field
     = f.label :password
-    %i (leave blank if you don't want to change it)
+    %i=t('.leave_blank')
     %br/
     = f.password_field :password, autocomplete: "off"
   .field
@@ -24,12 +23,12 @@
     = f.password_field :password_confirmation, autocomplete: "off"
   .field
     = f.label :current_password
-    %i (we need your current password to confirm your changes)
+    %i=t('.need_current_password')
     %br/
     = f.password_field :current_password, autocomplete: "off"
   .actions
-    = f.submit "Update"
-%h3 Cancel my account
+    = f.submit t('.update')
+%h3=t('.cancel')
 %p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+  #{t('.unhappy')} #{button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.confirm') }, method: :delete}
+= link_to t('.back'), :back

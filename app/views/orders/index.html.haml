@@ -1,4 +1,4 @@
-%h1 Orders
+%h1=t('.title')
 
 %table.table
   %thead
@@ -13,5 +13,5 @@
         %td= o.id
         %td= o.uid
         %td= o.amount
-        %td= o.revo_status
-        %td= link_to 'View order', order_path(o)
+        %td= o.revo_status ? t(".#{o.revo_status}") : ''
+        %td= link_to t('.view_order'), order_path(o)

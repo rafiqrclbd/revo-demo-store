@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.logo-eng {
+  height: 50px;
+}
+
+.logo-ru {
+  margin-top: 12px;
+  width: 180px;
+  height: 32px;
+}

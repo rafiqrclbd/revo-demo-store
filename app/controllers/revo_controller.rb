@@ -10,7 +10,7 @@ class RevoController < ApplicationController
     order = Order.find params[:id]
     result = call_revo order
     if result['status'] == 0
-      iframe_url = add_subdomain_locale_param(result['iframe_url'])
+      iframe_url = add_locale_param(result['iframe_url'])
       render json: {status: :ok, url: iframe_url}
     else
       render json: {status: :error, message: result['message']}
@@ -21,7 +21,7 @@ class RevoController < ApplicationController
     order = current_user.orders.create(amount: 1)
     result = call_revo order
     if result['status'] == 0
-      iframe_url = add_subdomain_locale_param(result['iframe_url'])
+      iframe_url = add_locale_param(result['iframe_url'])
       render json: {status: :ok, url: iframe_url}
     else
       render json: {status: :error, message: result['message']}

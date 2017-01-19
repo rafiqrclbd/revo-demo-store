@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "IframeDemoShop"
+    %title= content_for?(:title) ? yield(:title) : t('title')
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
@@ -22,18 +22,18 @@
     .navbar.navbar-default.navbar-static-top
       .container
         %a.navbar-left.col-md-2(href="/")
-          =image_tag('revo-logo-eng.svg', height: '50px')
+          = locale_logo(I18n.locale)
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav.pull-right
             -if user_signed_in?
               %li= link_to current_user.email, edit_user_registration_path
-              %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+              %li= link_to t('sign_out'), destroy_user_session_path, method: :delete
             -else
-              %li= link_to 'Sign in', new_user_session_path
-              %li= link_to 'Sign up', new_user_registration_path
+              %li= link_to t('sign_in'), new_user_session_path
+              %li= link_to t('sign_up'), new_user_registration_path
           -if user_signed_in?
             %ul.nav.navbar-nav
-              %li= link_to 'Orders', orders_path
+              %li= link_to t('activerecord.models.orders'), orders_path
 
     .container
       .row
@@ -46,5 +46,5 @@
             =render 'shared/cart'
             =render 'shared/check_limit'
       %footer
-        %p &copy; Revo Technologies 2016
+        %p=t('footer_html')
   = javascript_include_tag Rails.application.secrets.revo_js_url

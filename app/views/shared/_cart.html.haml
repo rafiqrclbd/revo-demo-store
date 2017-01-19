@@ -1,6 +1,5 @@
 .panel.panel-info
-  .panel-heading
-    Cart
+  .panel-heading=t('.title')
   .panel-body
     -if current_cart.present? && current_cart.any?
       %ul
@@ -9,11 +8,8 @@
             =p.name
             =link_to 'x', remove_from_cart_path(p.id), class: 'btn btn-xs btn-danger', method: :post
       .text-center
-        =link_to 'Go to cart', cart_path, class: 'btn btn-success'
+        =link_to t('.go_to_cart'), cart_path, class: 'btn btn-success'
     -else
-      .text-center
-        no goods in cart
+      .text-center=t('.empty_cart')
   -if current_cart.present? && current_cart.any?
-    .panel-footer
-      Total amount:
-      = current_cart.total
+    .panel-footer=t('.total_amount', amount: current_cart.total)
