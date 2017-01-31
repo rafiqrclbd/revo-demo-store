@@ -20,9 +20,8 @@ class RevoLoan
     @full_error.hide()
 
   init_payu: ->
-    term = $(@).data('term')
     $('.payu-btn').on 'click', (e)=>
-      console.log term
+      term = $(e.currentTarget).data('term')
       @openPopup('/orders/'+@order_id+'/payu?term='+term)
 
   check: ->
