@@ -75,3 +75,8 @@ ru:
       checkout_preliminary: "Предоформление"
       checkout_full: "Полное оформление"
       order_already_processed: 'Заказ обработан'
+      payu_checkout: 'Варианты оплаты PayU'
+      revo_3: 'Оплата частями 3 месяца'
+      revo_6: 'Оплата частями 6 месяцев'
+      yandex_money: 'Оплата Yandex.Money'
+      next_step: 'Следующий шаг'

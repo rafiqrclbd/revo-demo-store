@@ -75,3 +75,8 @@ en:
       checkout_preliminary: "Checkout Preliminary"
       checkout_full: "Checkout Full"
       order_already_processed: 'Loan Error'
+      payu_checkout: 'PayU payment methods'
+      revo_3: 'Installment 3 months'
+      revo_6: 'Installment 6 months'
+      yandex_money: 'Checkout with Yandex.Money'
+      next_step: 'Next'

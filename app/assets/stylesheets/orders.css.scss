@@ -1,23 +1,23 @@
 .checkout {
-  .thumbnail{
-    min-height: 200px;
-    .img-container{
-      height: 140px;
-      text-align: center;
-      img {
-        max-height: 140px;
-        max-width: 140px;
-        vertical-align: middle;
-      }
-      .aligner {
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
+  table {
+    tr:first-child{
+      td {
+        border-top: none;
       }
     }
-    //.caption {
-    //  position: absolute;
-    //  bottom: 20px;
-    //}
+    tr {
+      td:first-child{
+        img {
+          max-width: 100px;
+        }
+      }
+      td {
+        vertical-align: middle;
+      }
+      td:last-child{
+        text-align: right;
+      }
+    }
+
   }
 }
