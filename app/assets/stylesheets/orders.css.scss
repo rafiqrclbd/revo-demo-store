@@ -1,0 +1,23 @@
+.checkout {
+  table {
+    tr:first-child{
+      td {
+        border-top: none;
+      }
+    }
+    tr {
+      td:first-child{
+        img {
+          max-width: 100px;
+        }
+      }
+      td {
+        vertical-align: middle;
+      }
+      td:last-child{
+        text-align: right;
+      }
+    }
+
+  }
+}

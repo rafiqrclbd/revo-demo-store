@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     post 'add/:product_id', to: 'carts#add', as: :add_to
     post 'remove/:product_id', to: 'carts#remove', as: :remove_from
   end
-  resources :orders, only: [:index, :create, :show]
+  resources :orders, only: [:index, :create, :show] do
+    resource :payu, controller: :payu, only: [:show]
+  end
 
   resources :revo, only: [:show] do
     get :limit, to: 'revo#limit', on: :collection

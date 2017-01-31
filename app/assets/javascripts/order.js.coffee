@@ -2,6 +2,7 @@ class RevoLoan
   constructor: (@order_id)->
     @init_order()
     @init_full_order()
+    @init_payu()
     @url = null
 
   init_order: ->
@@ -17,6 +18,11 @@ class RevoLoan
     @full_progress = $('.full-order-loan .progress')
     @full_btn.hide()
     @full_error.hide()
+
+  init_payu: ->
+    $('.payu-btn').on 'click', (e)=>
+      term = $(e.currentTarget).data('term')
+      @openPopup('/orders/'+@order_id+'/payu?term='+term)
 
   check: ->
     $.get('/revo/'+@order_id).success (data)=>

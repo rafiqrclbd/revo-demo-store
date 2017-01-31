@@ -1,0 +1,7 @@
+=form_tag(@form.url, name: 'checkout_form', id: 'checkout_form') do
+  -@form.payload.each do |field, value|
+    =text_field_tag field, value, type: :hidden
+
+:coffeescript
+  window.onload = ->
+    document.forms["checkout_form"].submit()
