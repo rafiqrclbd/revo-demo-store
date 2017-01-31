@@ -41,49 +41,17 @@
       .panel-body
         %table.table.table-condensed
           %tr
-            %td=image_tag(asset_path('logos/revo'))
+            %td=image_tag(asset_path('logos/revo.svg'))
             %td=t('.revo_3')
             %td=link_to t('.next_step'), '', class: 'btn btn-xs btn-success payu-btn', data: {term: 3, toggle: :modal, target: '#revoModal'}
           %tr
-            %td=image_tag(asset_path('logos/revo'))
+            %td=image_tag(asset_path('logos/revo.svg'))
             %td=t('.revo_6')
             %td=link_to t('.next_step'), '', class: 'btn btn-xs btn-success payu-btn', data: {term: 6, toggle: :modal, target: '#revoModal'}
           %tr
-            %td=image_tag(asset_path('logos/yandex_money'))
+            %td=image_tag(asset_path('logos/yandex_money.png'))
             %td=t('.yandex_money')
             %td=link_to t('.next_step'), '', class: 'btn btn-xs btn-success payu-btn disabled'
-
-        -#.row
-        -#  .col-sm-6.col-md-4
-        -#    .thumbnail
-        -#      .img-container
-        -#        %span.aligner
-        -#        =image_tag(asset_path('logos/revo'))
-        -#      .caption
-        -#        %h3=t('.revo_3')
-        -#        .pull-right
-        -#          =link_to t('.checkout'), '', class: 'btn btn-success payu-btn', data: {term: 3, toggle: :modal, target: '#revoModal'}
-        -#        .clearfix
-        -#  .col-sm-6.col-md-4
-        -#    .thumbnail
-        -#      .img-container
-        -#        %span.aligner
-        -#        =image_tag(asset_path('logos/revo'))
-        -#      .caption
-        -#        %h3=t('.revo_6')
-        -#        .pull-right
-        -#          =link_to t('.checkout'), '', class: 'btn btn-success payu-btn', data: {term: 6, toggle: :modal, target: '#revoModal'}
-        -#        .clearfix
-        -#  .col-sm-6.col-md-4
-        -#    .thumbnail
-        -#      .img-container
-        -#        %span.aligner
-        -#        =image_tag(asset_path('logos/yandex_money'))
-        -#      .caption
-        -#        %h3=t('.yandex_money')
-        -#        .pull-right
-        -#          =link_to t('.checkout'), '', class: 'btn btn-success'
-        -#        .clearfix
 
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
