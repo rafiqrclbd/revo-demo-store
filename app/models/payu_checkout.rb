@@ -1,6 +1,12 @@
 class PayuCheckout
-  def initialize(order)
+  CREDS = {
+    3 => {merchant: 'erwghrtt', secret_key: 'k5#13%R8~4|Qz9(E8?i!'},
+    6 => {merchant: 'DEMO2', secret_key: 'demosecret_old'}
+  }
+
+  def initialize(order, term = 3)
     @order = order
+    @term = term.to_i
   end
 
   def payload
@@ -24,14 +30,14 @@ class PayuCheckout
 
   private
 
-  attr_reader :order
+  attr_reader :order, :term
 
   def merchant
-    'DEMO2' #TODO must be depended on term
+    CREDS[term][:merchant]
   end
 
   def secret_key
-    'demosecret_old'
+    CREDS[term][:secret_key]
   end
 
   def base_string
