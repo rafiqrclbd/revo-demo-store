@@ -22,7 +22,7 @@ class RevoLoan
   init_payu: ->
     $('.payu-btn').on 'click', (e)=>
       term = $(e.currentTarget).data('term')
-      @openPopup('/orders/'+@order_id+'/payu?term='+term)
+      @openPopup(location.origin+'/orders/'+@order_id+'/payu?term='+term)
 
   check: ->
     $.get('/revo/'+@order_id).success (data)=>
