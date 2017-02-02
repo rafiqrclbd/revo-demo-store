@@ -22,7 +22,7 @@ class RevoLoan
   init_payu: ->
     $('.payu-btn').on 'click', (e)=>
       term = $(e.currentTarget).data('term')
-      @openPopup(location.origin+'/orders/'+@order_id+'/payu?term='+term)
+      @openPopup(location.origin+'/orders/'+@order_id+'/payu?term='+term, 'https://demo.revoup.ru')
 
   check: ->
     $.get('/revo/'+@order_id).success (data)=>
@@ -47,8 +47,8 @@ class RevoLoan
       else
         @full_error.show()
 
-  openPopup: (url)->
-    REVO.Form.show url, '#revo-iframe'
+  openPopup: (url, origin)->
+    REVO.Form.show url, '#revo-iframe', origin
     REVO.Form.onClose ->
       $('#revoModal').modal('hide') 
     #Use git history to find old method
