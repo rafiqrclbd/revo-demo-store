@@ -78,5 +78,5 @@ ru:
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'
       revo_6: 'Оплата частями 6 месяцев'
-      yandex_money: 'Оплата Yandex.Money'
+      visa_mastercard: 'Оплата Visa/Mastercard'
       next_step: 'Следующий шаг'

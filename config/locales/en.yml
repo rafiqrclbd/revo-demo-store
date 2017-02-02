@@ -78,5 +78,5 @@ en:
       payu_checkout: 'PayU payment methods'
       revo_3: 'Installment 3 months'
       revo_6: 'Installment 6 months'
-      yandex_money: 'Checkout with Yandex.Money'
+      visa_mastercard: 'Checkout with Visa/Mastercard'
       next_step: 'Next'
