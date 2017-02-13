@@ -15,7 +15,12 @@
   }
 }
 #revoModal {
+  .modal-content {
+    border: 0;
+  }
+  
   iframe {
+    max-width: 550px;
     border: 0;
   }
   .modal-dialog{
