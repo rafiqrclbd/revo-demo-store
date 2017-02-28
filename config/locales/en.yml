@@ -55,6 +55,9 @@ en:
     check_limit:
       title: 'Check your limit'
       submit: 'Check your limit'
+    check_simple_limit:
+      title: 'Check your limit simple'
+      submit: 'Check your limit simple'
   carts:
     show:
       title: 'Cart'
