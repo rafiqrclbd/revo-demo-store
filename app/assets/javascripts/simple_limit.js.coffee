@@ -5,7 +5,7 @@ class RevoSimpleLimit
     @bind_click()
 
   bind_click: ->
-    $(document).on 'click', @btn, (e)=>
+    $(document).on 'click', '#panel-simple-limit a', (e)=>
       e.preventDefault()
       @openPopup()
 
