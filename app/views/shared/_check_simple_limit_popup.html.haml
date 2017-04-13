@@ -1,0 +1,8 @@
+.panel.panel-success#panel-simple-limit-popup
+  .panel-heading=t('.title')
+  .panel-body
+    .text-center
+      =link_to t('.submit'), '#', class: 'btn btn-warning'
+
+:javascript
+  revoSimpleLimitPopup = new RevoSimpleLimitPopup("#{Rails.application.secrets.simple_limit_url}")

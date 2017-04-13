@@ -45,6 +45,7 @@
           -if user_signed_in?
             =render 'shared/cart'
             =render 'shared/check_limit'
+            =render 'shared/check_simple_limit_popup'
       %footer
         %p=t('footer_html')
   = javascript_include_tag Rails.application.secrets.revo_js_url

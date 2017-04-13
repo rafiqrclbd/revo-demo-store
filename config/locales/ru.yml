@@ -55,6 +55,9 @@ ru:
     check_limit:
       title: 'Узнать лимит'
       submit: 'Узнать лимит'
+    check_simple_limit_popup:
+      title: 'Узнать лимит упрощенно в попапе'
+      submit: 'Узнать лимит упрощенно в попапе'
   carts:
     show:
       title: 'Корзина'
