@@ -11,8 +11,8 @@ class PayuCheckout
 
   def payload
     base_string.merge({
-      'BILL_FNAME' => 'John',
-      'BILL_LNAME' => 'Snow',
+      'BILL_FNAME' => 'Тест',
+      'BILL_LNAME' => 'Тестович',
       'BILL_EMAIL' => order.user.email,
       'BILL_PHONE' => (order.user.phone_number.presence || '8888000001'),
       'BACK_REF' => Rails.application.secrets.public_send(I18n.locale)[:redirect_url.to_s],
