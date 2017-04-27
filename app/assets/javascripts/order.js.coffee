@@ -51,6 +51,7 @@ class RevoLoan
     REVO.Form.show url, '#revo-iframe', origin
     REVO.Form.onClose ->
       $('#revoModal').modal('hide') 
+      window.location.reload()
     #Use git history to find old method
 
 
