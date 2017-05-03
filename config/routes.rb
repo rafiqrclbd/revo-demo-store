@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :fullrevo, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
   end
+
+  match 'payu_payments', via: :all, to: redirect('/')
 end
