@@ -23,3 +23,11 @@
   width: 180px;
   height: 32px;
 }
+
+.navbar-left {
+    padding: 0;
+}
+
+.navbar .navbar-collapse {
+    margin-left: 195px;
+}
