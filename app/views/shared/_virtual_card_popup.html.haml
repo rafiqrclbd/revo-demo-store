@@ -1,0 +1,8 @@
+.panel.panel-success#panel-virtual-card
+  .panel-heading=t('.title')
+  .panel-body
+    .text-center
+      =link_to t('.submit'), '#', class: 'btn btn-warning'
+
+:javascript
+  revoVirtualCardPopup = new RevoVirtualCardPopup("#{Rails.application.secrets.virtual_card_url}")

@@ -55,6 +55,15 @@ ru:
     check_limit:
       title: 'Узнать лимит'
       submit: 'Узнать лимит'
+    check_simple_limit:
+      title: 'Узнать лимит упрощенно'
+      submit: 'Узнать лимит упрощенно'
+    check_simple_limit_popup:
+      title: 'Узнать лимит упрощенно в попапе'
+      submit: 'Узнать лимит упрощенно в попапе'
+    virtual_card_popup:
+      title: 'Оформить виртуальную карту'
+      submit: 'Оформить'
   carts:
     show:
       title: 'Корзина'
