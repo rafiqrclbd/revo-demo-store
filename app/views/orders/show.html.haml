@@ -9,6 +9,9 @@
     %tr
       %td
       %td=@order.amount
+    %tr
+      %td= t('activerecord.attributes.order.revo_amount')
+      %td= @order.revo_amount
 
 .row
   .col-lg-6
