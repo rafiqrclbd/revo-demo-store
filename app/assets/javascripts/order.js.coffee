@@ -3,6 +3,8 @@ class RevoLoan
     @init_order()
     @init_full_order()
     @init_payu()
+    @init_factoring_order()
+    @init_factoring_precheck_order()
     @url = null
 
   init_order: ->
@@ -18,6 +20,20 @@ class RevoLoan
     @full_progress = $('.full-order-loan .progress')
     @full_btn.hide()
     @full_error.hide()
+
+  init_factoring_order: ->
+    @factoring_btn = $('.factoring-order-loan .loan-btn')
+    @factoring_error = $('.factoring-order-loan .loan-error')
+    @factoring_progress = $('.factoring-order-loan .progress')
+    @factoring_btn.hide()
+    @factoring_error.hide()
+
+  init_factoring_precheck_order: ->
+    @factoring_precheck_btn = $('.factoring-precheck-order-loan .loan-btn')
+    @factoring_precheck_error = $('.factoring-precheck-order-loan .loan-error')
+    @factoring_precheck_progress = $('.factoring-precheck-order-loan .progress')
+    @factoring_precheck_btn.hide()
+    @factoring_precheck_error.hide()
 
   init_payu: ->
     $('.payu-btn').on 'click', (e)=>
@@ -47,10 +63,30 @@ class RevoLoan
       else
         @full_error.show()
 
+  factoring_check: ->
+    $.get('/factoring/'+@order_id).success (data)=>
+      @factoring_progress.hide()
+      if data.status == 'ok'
+        @factoring_btn.show()
+        @factoring_btn.click =>
+          @openPopup data.url
+      else
+        @factoring_error.show()
+
+  factoring_precheck_check: ->
+    $.get('/factoring_precheck/'+@order_id).success (data)=>
+      @factoring_precheck_progress.hide()
+      if data.status == 'ok'
+        @factoring_precheck_btn.show()
+        @factoring_precheck_btn.click =>
+          @openPopup data.url
+      else
+        @factoring_precheck_error.show()
+
   openPopup: (url, origin)->
     REVO.Form.show url, '#revo-iframe', origin
     REVO.Form.onClose ->
-      $('#revoModal').modal('hide') 
+      $('#revoModal').modal('hide')
       window.location.reload()
     #Use git history to find old method
 

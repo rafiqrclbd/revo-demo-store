@@ -39,6 +39,7 @@ gem 'unicorn', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-rails'
   # Capistrano for deploy
   gem 'capistrano'#, '~> 3.3.0'
   gem 'capistrano-rails'
