@@ -76,6 +76,7 @@ ru:
       checkout_full: "Полное оформление"
       factoring: 'Факторинг'
       factoring_precheck: 'Пречек факторинг'
+      emulate_precheck: 'Эмулировать предоплату пречека'
       order_already_processed: 'Заказ обработан'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'

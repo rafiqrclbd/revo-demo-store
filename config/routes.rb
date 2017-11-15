@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :factoring_precheck, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
+    post :finish, on: :member
   end
 
   match 'payu_payments', via: :all, to: redirect('/')

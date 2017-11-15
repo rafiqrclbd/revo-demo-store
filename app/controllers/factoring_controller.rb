@@ -16,18 +16,10 @@ class FactoringController < ApplicationController
     end
   end
 
-  def callback
-    order = Order.find_by! uid: params[:order_id]
-    order.update_attribute :revo_status, params[:decision]
-    render text: :ok
-  rescue
-    render text: :fail
-  end
-
   private
 
   def sign(payload)
-    Digest::SHA1.hexdigest(payload + Rails.application.secrets.full_password)
+    Digest::SHA1.hexdigest(payload + Rails.application.secrets.factoring_password)
   end
 
   def call_revo(order, action = :auth)

@@ -16,23 +16,24 @@ class FactoringPrecheckController < ApplicationController
     end
   end
 
-  def callback
-    order = Order.find_by! uid: params[:order_id]
-    order.update_attribute :revo_status, params[:decision]
-    render text: :ok
-  rescue
-    render text: :fail
+  def finish
+    order = Order.find params[:id]
+    result = call_revo order, :finish
+    if result['status'].zero?
+      render json: { status: :ok }
+    else
+      render json: { status: :error }
+    end
   end
 
   private
 
   def sign(payload)
-    Digest::SHA1.hexdigest(payload + Rails.application.secrets.full_password)
+    Digest::SHA1.hexdigest(payload + Rails.application.secrets.factoring_password)
   end
 
-  def call_revo(order, action = :auth)
-    url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
-    payload = {
+  def auth_payload(order)
+    {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
       primary_phone: order.user.phone_number,
@@ -42,6 +43,20 @@ class FactoringPrecheckController < ApplicationController
         order_id: ['FACTPRECH', order.uid].join
       }
     }.to_json
+  end
+
+  def finish_payload(order)
+    id = ['FACTPRECH', order.uid].join
+    {
+      order_id: id,
+      amount: format('%.2f', order.amount),
+      check_number: id
+    }.to_json
+  end
+
+  def call_revo(order, action = :auth)
+    url = Rails.application.secrets.revo_internal_host
+    payload = action == :auth ? auth_payload(order) : finish_payload(order)
     signature = sign payload
 
     params = { store_id: Rails.application.secrets.revo_store_id, signature: signature }
