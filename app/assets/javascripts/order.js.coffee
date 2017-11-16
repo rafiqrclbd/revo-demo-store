@@ -31,10 +31,12 @@ class RevoLoan
   init_factoring_precheck_order: ->
     @factoring_precheck_btn = $('.factoring-precheck-order-loan .loan-btn')
     @factoring_precheck_finish_btn = $('.factoring-precheck-order-loan .loan-finish-btn')
+    @factoring_precheck_cancel_btn = $('.factoring-precheck-order-loan .loan-cancel-btn')
     @factoring_precheck_error = $('.factoring-precheck-order-loan .loan-error')
     @factoring_precheck_progress = $('.factoring-precheck-order-loan .progress')
     @factoring_precheck_btn.hide()
     @factoring_precheck_finish_btn.hide()
+    @factoring_precheck_cancel_btn.hide()
     @factoring_precheck_error.hide()
 
   init_payu: ->
@@ -84,8 +86,11 @@ class RevoLoan
           @openPopup data.url
       else
         @factoring_precheck_finish_btn.show()
+        @factoring_precheck_cancel_btn.show()
         @factoring_precheck_finish_btn.click =>
           @finalizeOrder()
+        @factoring_precheck_cancel_btn.click =>
+          @cancelOrder()
 
   openPopup: (url, origin)->
     REVO.Form.show url, '#revo-iframe', origin
@@ -98,7 +103,14 @@ class RevoLoan
     $.post('/factoring_precheck/'+@order_id+'/finish').success (data)=>
       @factoring_precheck_progress.hide()
       @factoring_precheck_finish_btn.hide()
+      @factoring_precheck_cancel_btn.hide()
       @factoring_precheck_error.show()
 
+  cancelOrder: ->
+    $.post('/factoring_precheck/'+@order_id+'/cancel').success (data)=>
+      @factoring_precheck_progress.hide()
+      @factoring_precheck_finish_btn.hide()
+      @factoring_precheck_cancel_btn.hide()
+      @factoring_precheck_error.show()
 
 window.RevoLoan = RevoLoan

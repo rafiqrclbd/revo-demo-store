@@ -26,6 +26,16 @@ class FactoringPrecheckController < ApplicationController
     end
   end
 
+  def cancel
+    order = Order.find params[:id]
+    result = call_revo order, :cancel
+    if result['status'].zero?
+      render json: { status: :ok }
+    else
+      render json: { status: :error }
+    end
+  end
+
   private
 
   def sign(payload)
@@ -40,7 +50,8 @@ class FactoringPrecheckController < ApplicationController
       primary_email: current_user.email,
       current_order: {
         sum: format('%.2f', order.amount),
-        order_id: ['FACTPRECH', order.uid].join
+        order_id: ['FACTPRECH', order.uid].join,
+        valid_till: 10.minutes.from_now.to_s
       }
     }.to_json
   end
@@ -54,9 +65,15 @@ class FactoringPrecheckController < ApplicationController
     }.to_json
   end
 
+  def cancel_payload(order)
+    {
+      order_id: ['FACTPRECH', order.uid].join,
+    }.to_json
+  end
+
   def call_revo(order, action = :auth)
     url = Rails.application.secrets.revo_internal_host
-    payload = action == :auth ? auth_payload(order) : finish_payload(order)
+    payload = send("#{action}_payload", order)
     signature = sign payload
 
     params = { store_id: Rails.application.secrets.revo_store_id, signature: signature }
