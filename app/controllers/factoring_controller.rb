@@ -31,7 +31,8 @@ class FactoringController < ApplicationController
       primary_email: current_user.email,
       current_order: {
         sum: format('%.2f', order.amount),
-        order_id: ['FACT', order.uid].join
+        order_id: ['FACT', order.uid].join,
+        term: 3
       }
     }.to_json
     signature = sign payload
