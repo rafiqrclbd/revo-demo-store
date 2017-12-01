@@ -37,6 +37,35 @@
             =t('.checkout_full')
         .loan-error=t('.order_already_processed')
 
+.row
+  .col-lg-6
+    .panel.panel-default.factoring-order-loan
+      .panel-heading=t('.pay_later')
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+            =t('.factoring')
+        .loan-error=t('.order_already_processed')
+
+  .col-lg-6
+    .panel.panel-default.factoring-precheck-order-loan
+      .panel-heading=t('.pay_later')
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+            =t('.factoring_precheck')
+        .loan-error=t('.order_already_processed')
+        .loan-finish-btn
+          %button.btn.btn-success
+            =t('.emulate_precheck')
+        .loan-cancel-btn
+          %button.btn.btn-danger
+            =t('.emulate_cancel')
+
 .row.checkout
   .col-lg-12
     .panel.panel-default
@@ -60,4 +89,5 @@
   revoLoan = new RevoLoan(#{@order.id})
   revoLoan.check()
   revoLoan.full_check()
-
+  revoLoan.factoring_check()
+  revoLoan.factoring_precheck_check()

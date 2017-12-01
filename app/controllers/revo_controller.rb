@@ -29,7 +29,7 @@ class RevoController < ApplicationController
   end
 
   def callback
-    order = Order.find_by! uid: params[:order_id].gsub(/\AFULL/, '')
+    order = Order.find_by! uid: params[:order_id].gsub(/\AFULL|FACTPRECH|FACT/, '')
     order.update_attributes(revo_status: params[:decision], revo_amount: params[:amount])
     render text: :ok
   rescue

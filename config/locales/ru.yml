@@ -75,6 +75,10 @@ ru:
       pay_later: "Купить с помощью сервиса \"Оплата частями\""
       checkout_preliminary: "Предоформление"
       checkout_full: "Полное оформление"
+      factoring: 'Факторинг'
+      factoring_precheck: 'Пречек факторинг'
+      emulate_precheck: 'Эмулировать предоплату пречека'
+      emulate_cancel: 'Эмулировать отказ'
       order_already_processed: 'Заказ обработан'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'

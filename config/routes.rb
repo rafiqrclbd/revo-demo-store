@@ -13,10 +13,20 @@ Rails.application.routes.draw do
   resources :revo, only: [:show] do
     get :limit, to: 'revo#limit', on: :collection
     post :callback, to: 'revo#callback', on: :collection
-    end
+  end
 
   resources :fullrevo, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
+  end
+
+  resources :factoring, only: [:show] do
+    post :callback, to: 'revo#callback', on: :collection
+  end
+
+  resources :factoring_precheck, only: [:show] do
+    post :callback, to: 'revo#callback', on: :collection
+    post :finish, on: :member
+    post :cancel, on: :member
   end
 
   match 'payu_payments', via: :all, to: redirect('/')
