@@ -30,7 +30,7 @@ class FactoringController < ApplicationController
       primary_phone: order.user.phone_number,
       primary_email: current_user.email,
       current_order: {
-        sum: format('%.2f', order.amount),
+        amount: format('%.2f', order.amount),
         order_id: ['FACT', order.uid].join,
         term: 3
       }

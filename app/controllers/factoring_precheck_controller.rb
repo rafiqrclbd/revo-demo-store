@@ -49,7 +49,7 @@ class FactoringPrecheckController < ApplicationController
       primary_phone: order.user.phone_number,
       primary_email: current_user.email,
       current_order: {
-        sum: format('%.2f', order.amount),
+        amount: format('%.2f', order.amount),
         order_id: ['FACTPRECH', order.uid].join,
         valid_till: 10.minutes.from_now.to_s
       }
