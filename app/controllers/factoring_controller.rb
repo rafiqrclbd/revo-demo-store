@@ -7,7 +7,20 @@ class FactoringController < ApplicationController
 
   def show
     order = Order.find params[:id]
-    result = call_revo order
+    result = call_revo(order, type: :order)
+
+    if result['status'].zero?
+      iframe_url = add_locale_param(result['iframe_url'])
+      render json: { status: :ok, url: iframe_url }
+    else
+      render json: { status: :error, message: result['message'] }
+    end
+  end
+
+  def limit
+    order = current_user.orders.create(amount: 1)
+    result = call_revo(order, type: :limit)
+
     if result['status'].zero?
       iframe_url = add_locale_param(result['iframe_url'])
       render json: { status: :ok, url: iframe_url }
@@ -22,8 +35,10 @@ class FactoringController < ApplicationController
     Digest::SHA1.hexdigest(payload + Rails.application.secrets.factoring_password)
   end
 
-  def call_revo(order, action = :auth)
+  def call_revo(order, action: :auth, type: :order)
     url = action == :auth ? Rails.application.secrets.revo_internal_host : Rails.application.secrets.revo_host
+    path = type == :order ? '/factoring/v1/auth' : '/factoring/v1/limit/auth'
+
     payload = {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
@@ -38,7 +53,7 @@ class FactoringController < ApplicationController
     signature = sign payload
 
     params = { store_id: Rails.application.secrets.revo_store_id, signature: signature }
-    uri = URI("#{url}/factoring/v1/#{action}")
+    uri = URI("#{url}#{path}")
     uri.query = params.to_query
 
     http = Net::HTTP.new(uri.host, uri.port)
