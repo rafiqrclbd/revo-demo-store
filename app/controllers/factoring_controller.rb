@@ -33,7 +33,10 @@ class FactoringController < ApplicationController
         sum: format('%.2f', order.amount),
         order_id: ['FACT', order.uid].join,
         term: 3
-      }
+      },
+      cart_items: order.products.map.with_index do |product, i|
+        { sku: i + 1, name: product.name, price: product.price, quantity: 1 }
+      end
     }.to_json
     signature = sign payload
 
