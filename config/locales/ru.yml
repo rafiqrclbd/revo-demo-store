@@ -56,6 +56,9 @@ ru:
     check_limit:
       title: 'Узнать лимит'
       submit: 'Узнать лимит'
+    check_factoring_limit:
+      title: 'Узнать лимит факторинга'
+      submit: 'Узнать лимит факторинга'
   carts:
     show:
       title: 'Корзина'

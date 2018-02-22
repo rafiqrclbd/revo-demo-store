@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :factoring, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
+    get :limit, to: 'factoring#limit', on: :collection
   end
 
   resources :factoring_precheck, only: [:show] do
