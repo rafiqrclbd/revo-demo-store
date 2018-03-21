@@ -1,8 +1,5 @@
-.panel.panel-success#panel-factoring-limit
+.panel.panel-success
   .panel-heading=t('.title')
   .panel-body
     .text-center
-      = link_to t('.submit'), '#', class: 'btn btn-warning'
-
-:javascript
-  revoLimit = new RevoFactoringLimit()
+      = link_to t('.submit'), '#', class: 'btn btn-warning revo-popup', data: {url: '/factoring/limit'}

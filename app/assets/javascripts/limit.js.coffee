@@ -3,14 +3,18 @@ class RevoLimit
     @listenEvents()
 
   listenEvents: ->
-    $(document).on 'click', '#panel-limit a', @initPopup
+    $(document).on 'click', '.revo-popup', @initPopup
 
   initPopup: (e) =>
     e.preventDefault()
-    $.get('/revo/limit').success (data)=>
+    url = $(e.target).data('url')
+    $.get(url).success (data)=>
       @openPopup data.url
 
   openPopup: (url)->
     REVO.Form.showPopup(url)
 
-window.RevoLimit = RevoLimit
+
+
+$ ->
+  new RevoLimit()
