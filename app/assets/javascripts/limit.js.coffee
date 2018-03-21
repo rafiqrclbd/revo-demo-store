@@ -1,20 +1,16 @@
 class RevoLimit
   constructor: ->
-    @btn = $('#panel-limit a')
-    @bind_click()
+    @listenEvents()
 
-  bind_click: ->
-    $(document).on 'click', '#panel-limit a', (e)=>
-      e.preventDefault()
-      $.get('/revo/limit').success (data)=>
-        @openPopup data.url
+  listenEvents: ->
+    $(document).on 'click', '#panel-limit a', @initPopup
+
+  initPopup: (e) =>
+    e.preventDefault()
+    $.get('/revo/limit').success (data)=>
+      @openPopup data.url
 
   openPopup: (url)->
-    $('#revo-iframe').html('')
-    REVO.Form.show url, '#revo-iframe'
-    REVO.Form.onClose ->
-      $('#revoModal').modal('hide')
-
-
+    REVO.Form.showPopup(url)
 
 window.RevoLimit = RevoLimit
