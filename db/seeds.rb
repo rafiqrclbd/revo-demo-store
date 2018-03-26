@@ -11,7 +11,7 @@ Order.delete_all
 Product.delete_all
 [
   { name: "Samsung UE22H5610", price: 1990,
-    image: "/images/products/samsung_ue.jpg" },
+    image: "/images/products/samsung_ue.jpg", sale_price: 1500 },
   { name: "Sony Xperia Z3 Compact", price: 2490,
     image: "/images/products/sony_xperia.jpg" },
   { name: "Lenovo G700", price: 2900,
@@ -33,5 +33,5 @@ Product.delete_all
   { name: "Leather court shoes", price: 4999,
     image: "/images/products/leather_court_shoes.jpg" },
   { name: "Shiny leggings", price: 1499,
-    image: "/images/products/shiny_leggins.jpg" }
+    image: "/images/products/shiny_leggins.jpg", sale_price: 1000 }
 ].each {|p| Product.create p}
