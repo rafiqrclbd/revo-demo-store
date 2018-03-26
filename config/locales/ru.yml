@@ -88,3 +88,6 @@ ru:
       revo_6: 'Оплата частями 6 месяцев'
       visa_mastercard: 'Оплата Visa/Mastercard'
       next_step: 'Следующий шаг'
+      price: 'Цена'
+      sale_price: 'Цена со скидкой'
+      total: 'Сумма'
