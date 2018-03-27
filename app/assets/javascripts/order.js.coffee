@@ -42,10 +42,10 @@ class RevoLoan
   init_payu: ->
     $('.payu-btn').on 'click', (e)=>
       term = $(e.currentTarget).data('term')
-      @openPopup(location.origin+'/orders/'+@order_id+'/payu?term='+term, 'https://demo.revoup.ru')
+      @openPopup(location.origin + '/orders/' + @order_id + '/payu?term=' + term, 'https://demo.revoup.ru')
 
   check: ->
-    $.get('/revo/'+@order_id).success (data)=>
+    $.get('/revo/' + @order_id).success (data)=>
       @progress.hide()
       console.log(data)
       if data.status == 'ok'
@@ -58,7 +58,7 @@ class RevoLoan
         @error.show()
 
   full_check: ->
-    $.get('/fullrevo/'+@order_id).success (data)=>
+    $.get('/fullrevo/' + @order_id).success (data)=>
       @full_progress.hide()
       if data.status == 'ok'
         @full_btn.show()
@@ -68,7 +68,7 @@ class RevoLoan
         @full_error.show()
 
   factoring_check: ->
-    $.get('/factoring/'+@order_id).success (data)=>
+    $.get('/factoring/' + @order_id).success (data)=>
       @factoring_progress.hide()
       if data.status == 'ok'
         @factoring_btn.show()
@@ -78,7 +78,7 @@ class RevoLoan
         @factoring_error.show()
 
   factoring_precheck_check: ->
-    $.get('/factoring_precheck/'+@order_id).success (data)=>
+    $.get('/factoring_precheck/' + @order_id).success (data)=>
       @factoring_precheck_progress.hide()
       if data.status == 'ok'
         @factoring_precheck_btn.show()
@@ -94,14 +94,13 @@ class RevoLoan
         @factoring_precheck_error.show()
 
   openPopup: (url, origin)->
-    REVO.Form.show url, '#revo-iframe', origin
+    REVO.Form.showPopup(url)
     REVO.Form.onClose ->
-      $('#revoModal').modal('hide')
       window.location.reload()
     #Use git history to find old method
 
   finalizeOrder: ->
-    $.post('/factoring_precheck/'+@order_id+'/finish').success (data)=>
+    $.post('/factoring_precheck/' + @order_id + '/finish').success (data)=>
       @factoring_precheck_btn.hide()
       @factoring_precheck_progress.hide()
       @factoring_precheck_finish_btn.hide()
@@ -109,7 +108,7 @@ class RevoLoan
       @factoring_precheck_error.show()
 
   cancelOrder: ->
-    $.post('/factoring_precheck/'+@order_id+'/cancel').success (data)=>
+    $.post('/factoring_precheck/' + @order_id + '/cancel').success (data)=>
       @factoring_precheck_btn.hide()
       @factoring_precheck_progress.hide()
       @factoring_precheck_finish_btn.hide()

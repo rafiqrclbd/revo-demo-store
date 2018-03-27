@@ -1,8 +1,5 @@
-.panel.panel-success#panel-limit
+.panel.panel-success
   .panel-heading=t('.title')
   .panel-body
     .text-center
-      =link_to t('.submit'), '#', class: 'btn btn-warning', data: {toggle: :modal, target: '#revoModal'}
-
-:javascript
-  revoLimit = new RevoLimit()
+      = link_to t('.submit'), '#', class: 'btn btn-warning revo-popup', data: {url: '/revo/limit'}
