@@ -82,16 +82,17 @@ class RevoLoan
       @factoring_precheck_progress.hide()
       if data.status == 'ok'
         @factoring_precheck_btn.show()
-        @factoring_precheck_finish_btn.show()
-        @factoring_precheck_cancel_btn.show()
         @factoring_precheck_btn.click =>
           @openPopup data.url
-        @factoring_precheck_finish_btn.click =>
-          @finalizeOrder()
-        @factoring_precheck_cancel_btn.click =>
-          @cancelOrder()
       else
         @factoring_precheck_error.show()
+
+      @factoring_precheck_finish_btn.show()
+      @factoring_precheck_cancel_btn.show()
+      @factoring_precheck_finish_btn.click =>
+        @finalizeOrder()
+      @factoring_precheck_cancel_btn.click =>
+        @cancelOrder()
 
   openPopup: (url, origin)->
     REVO.Form.showPopup(url)
