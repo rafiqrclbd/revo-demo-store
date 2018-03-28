@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20180326140144) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "old_price",   limit: 4
     t.integer  "sale_price",  limit: 4
   end
 
