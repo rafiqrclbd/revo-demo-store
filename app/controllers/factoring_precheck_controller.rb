@@ -54,7 +54,13 @@ class FactoringPrecheckController < ApplicationController
         valid_till: 10.minutes.from_now.to_s
       },
       cart_items: order.products.map.with_index do |product, i|
-        { sku: i + 1, name: product.name, price: product.price, quantity: 1 }
+        {
+          sku: i + 1,
+          name: product.name,
+          price: product.price,
+          sale_price: product.sale_price,
+          quantity: 1
+        }
       end
     }.to_json
   end
