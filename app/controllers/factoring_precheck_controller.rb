@@ -36,13 +36,23 @@ class FactoringPrecheckController < ApplicationController
     end
   end
 
+  def update_amount
+    order = Order.find params[:id]
+    result = call_revo order, :update, {amount: params[:amount]}
+    if result['status'].zero?
+      render json: { status: :ok }
+    else
+      render json: { status: :error }
+    end
+  end
+
   private
 
   def sign(payload)
     Digest::SHA1.hexdigest(payload + Rails.application.secrets.factoring_password)
   end
 
-  def auth_payload(order)
+  def auth_payload(order, params = {})
     {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
@@ -59,7 +69,7 @@ class FactoringPrecheckController < ApplicationController
     }.to_json
   end
 
-  def finish_payload(order)
+  def finish_payload(order, params = {})
     id = ['FACTPRECH', order.uid].join
     {
       order_id: id,
@@ -68,15 +78,22 @@ class FactoringPrecheckController < ApplicationController
     }.to_json
   end
 
-  def cancel_payload(order)
+  def cancel_payload(order, params = {})
     {
       order_id: ['FACTPRECH', order.uid].join,
     }.to_json
   end
 
-  def call_revo(order, action = :auth)
+  def update_payload(order, params = {})
+    {
+      amount: format('%.2f', params[:amount]),
+      order_id: ['FACTPRECH', order.uid].join,
+    }.to_json
+  end
+
+  def call_revo(order, action = :auth, params = {})
     url = Rails.application.secrets.revo_internal_host
-    payload = send("#{action}_payload", order)
+    payload = send("#{action}_payload", order, params)
     signature = sign payload
 
     params = { store_id: Rails.application.secrets.revo_store_id, signature: signature }
