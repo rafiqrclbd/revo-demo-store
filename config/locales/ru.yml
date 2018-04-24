@@ -82,7 +82,7 @@ ru:
       factoring_precheck: 'Пречек факторинг'
       emulate_precheck: 'Эмулировать предоплату пречека'
       emulate_cancel: 'Эмулировать отказ'
-      emulate_update: 'Эмулировать обновление суммы'
+      emulate_change: 'Эмулировать изменение суммы'
       order_already_processed: 'Ошибка (возможно, заказ обработан)'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'

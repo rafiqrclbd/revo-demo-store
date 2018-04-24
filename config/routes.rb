@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     post :callback, to: 'revo#callback', on: :collection
     post :finish, on: :member
     post :cancel, on: :member
-    post :update_amount, on: :member
+    post :change, on: :member
   end
 
   match 'payu_payments', via: :all, to: redirect('/')

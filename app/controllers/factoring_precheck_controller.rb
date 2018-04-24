@@ -36,9 +36,9 @@ class FactoringPrecheckController < ApplicationController
     end
   end
 
-  def update_amount
+  def change
     order = Order.find params[:id]
-    result = call_revo order, :update, {amount: params[:amount]}
+    result = call_revo order, :change, amount: params[:amount]
     if result['status'].zero?
       render json: { status: :ok }
     else
@@ -52,7 +52,7 @@ class FactoringPrecheckController < ApplicationController
     Digest::SHA1.hexdigest(payload + Rails.application.secrets.factoring_password)
   end
 
-  def auth_payload(order, params = {})
+  def auth_payload(order, _)
     {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
@@ -69,7 +69,7 @@ class FactoringPrecheckController < ApplicationController
     }.to_json
   end
 
-  def finish_payload(order, params = {})
+  def finish_payload(order, _)
     id = ['FACTPRECH', order.uid].join
     {
       order_id: id,
@@ -78,16 +78,16 @@ class FactoringPrecheckController < ApplicationController
     }.to_json
   end
 
-  def cancel_payload(order, params = {})
+  def cancel_payload(order, _)
     {
       order_id: ['FACTPRECH', order.uid].join,
     }.to_json
   end
 
-  def update_payload(order, params = {})
+  def change_payload(order, params = {})
     {
       amount: format('%.2f', params[:amount]),
-      order_id: ['FACTPRECH', order.uid].join,
+      order_id: ['FACTPRECH', order.uid].join
     }.to_json
   end
 
