@@ -32,11 +32,17 @@ class RevoLoan
     @factoring_precheck_btn = $('.factoring-precheck-order-loan .loan-btn')
     @factoring_precheck_finish_btn = $('.factoring-precheck-order-loan .loan-finish-btn')
     @factoring_precheck_cancel_btn = $('.factoring-precheck-order-loan .loan-cancel-btn')
+    @factoring_precheck_change_btn = $('.factoring-precheck-order-loan .loan-change-btn')
+    @factoring_precheck_amount_input = @factoring_precheck_change_btn
+      .closest('.change-section')
+      .find("input[name='amount']")
     @factoring_precheck_error = $('.factoring-precheck-order-loan .loan-error')
     @factoring_precheck_progress = $('.factoring-precheck-order-loan .progress')
     @factoring_precheck_btn.hide()
     @factoring_precheck_finish_btn.hide()
     @factoring_precheck_cancel_btn.hide()
+    @factoring_precheck_change_btn.hide()
+    @factoring_precheck_amount_input.hide()
     @factoring_precheck_error.hide()
 
   init_payu: ->
@@ -89,10 +95,14 @@ class RevoLoan
 
       @factoring_precheck_finish_btn.show()
       @factoring_precheck_cancel_btn.show()
+      @factoring_precheck_change_btn.show()
+      @factoring_precheck_amount_input.show()
       @factoring_precheck_finish_btn.click =>
         @finalizeOrder()
       @factoring_precheck_cancel_btn.click =>
         @cancelOrder()
+      @factoring_precheck_change_btn.click =>
+        @changeOrder()
 
   openPopup: (url, origin)->
     REVO.Form.showPopup(url)
@@ -106,6 +116,8 @@ class RevoLoan
       @factoring_precheck_progress.hide()
       @factoring_precheck_finish_btn.hide()
       @factoring_precheck_cancel_btn.hide()
+      @factoring_precheck_change_btn.hide()
+      @factoring_precheck_amount_input.hide()
       @factoring_precheck_error.show()
 
   cancelOrder: ->
@@ -114,6 +126,19 @@ class RevoLoan
       @factoring_precheck_progress.hide()
       @factoring_precheck_finish_btn.hide()
       @factoring_precheck_cancel_btn.hide()
+      @factoring_precheck_change_btn.hide()
+      @factoring_precheck_amount_input.hide()
+      @factoring_precheck_error.show()
+
+  changeOrder: ->
+    amount = @factoring_precheck_amount_input.val()
+    $.post('/factoring_precheck/' + @order_id + '/change', {amount}).success (data)=>
+      @factoring_precheck_btn.hide()
+      @factoring_precheck_progress.hide()
+      @factoring_precheck_finish_btn.hide()
+      @factoring_precheck_cancel_btn.hide()
+      @factoring_precheck_change_btn.hide()
+      @factoring_precheck_amount_input.hide()
       @factoring_precheck_error.show()
 
 window.RevoLoan = RevoLoan
