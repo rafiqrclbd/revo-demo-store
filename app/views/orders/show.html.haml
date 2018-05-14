@@ -1,16 +1,21 @@
 %h1=t('.title', order_id: @order.id)
 %h2=t('.items')
-%table.table
+%table.table.table-bordered
   %tbody
     -@order.products.each do |p|
       %tr
+        %th
+        %th= t('.price')
+        %th= t('.sale_price')
+      %tr
         %td= p.name
         %td= p.price
+        %td= p.sale_price
     %tr
-      %td
-      %td=@order.amount
+      %th= t('.total')
+      %td= @order.amount
     %tr
-      %td= t('activerecord.attributes.order.revo_amount')
+      %th= t('activerecord.attributes.order.revo_amount')
       %td= @order.revo_amount
 
 .row

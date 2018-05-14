@@ -1,15 +1,23 @@
 .products {
   .thumbnail{
-    height: 370px;
+    height: 400px;
     img {
       max-height: 200px;
     }
     .caption {
-      position: absolute;
-      height: 170px;
-      bottom: 0px;
-      .name {
-        height: 80px;
+      text-align: center;
+      height: 200px;
+      .name, .price-wrapper {
+        height: 60px;
+      }
+      .price-wrapper {
+        .old-price  {
+          font-size: 14px;
+          text-decoration: line-through;
+        }
+        .price {
+          font-size: 18px;
+        }
       }
     }
   }

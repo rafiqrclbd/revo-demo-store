@@ -15,7 +15,7 @@ class Cart
       id: id,
       name: p.name,
       image: p.image,
-      price: p.price,
+      price: p.actual_price,
     }
   end
 

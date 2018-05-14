@@ -50,7 +50,13 @@ class FactoringController < ApplicationController
         term: 3
       },
       cart_items: order.products.map.with_index do |product, i|
-        { sku: i + 1, name: product.name, price: product.price, quantity: 1 }
+        {
+          sku: i + 1,
+          name: product.name,
+          price: product.price,
+          sale_price: product.sale_price,
+          quantity: 1
+        }
       end
     }.to_json
     signature = sign payload

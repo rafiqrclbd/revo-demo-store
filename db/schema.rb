@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180425085835) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "brand",       limit: 255
+    t.integer  "sale_price",  limit: 4
   end
 
   create_table "users", force: :cascade do |t|
