@@ -108,6 +108,10 @@ class RevoLoan
     REVO.Form.showPopup(url)
     REVO.Form.onClose ->
       window.location.reload()
+    $('#simple-limit-overlay').click (e) ->
+      message = JSON.stringify({type: 'close'})
+      origin = location.protocol + '//' + location.host
+      postMessage(message, origin);
     #Use git history to find old method
 
   finalizeOrder: ->
