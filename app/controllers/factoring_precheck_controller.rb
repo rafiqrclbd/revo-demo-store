@@ -61,7 +61,7 @@ class FactoringPrecheckController < ApplicationController
       current_order: {
         amount: format('%.2f', order.amount),
         order_id: ['FACTPRECH', order.uid].join,
-        valid_till: 1.hour.from_now.to_s
+        valid_till: 1.day.from_now.to_s
       },
       cart_items: order.products.map.with_index do |product, i|
         {
