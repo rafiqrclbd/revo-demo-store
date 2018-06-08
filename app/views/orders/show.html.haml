@@ -2,15 +2,19 @@
 %h2=t('.items')
 %table.table.table-bordered
   %tbody
-    -@order.products.each do |p|
+    %tr
+      %th
+      %th= t('.initial_price')
+      %th= t('.sale_price')
+      %th= t('.quantity')
+      %th= t('.price')
+    -@order.items.each do |item|
       %tr
-        %th
-        %th= t('.price')
-        %th= t('.sale_price')
-      %tr
-        %td= p.name
-        %td= p.price
-        %td= p.sale_price
+        %td= item.product.name
+        %td= item.product.price
+        %td= item.product.sale_price
+        %td= item.quantity
+        %td= item.price
     %tr
       %th= t('.total')
       %td= @order.amount
