@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   serialize :items
   belongs_to :user
+  has_many :order_items
   after_commit :generate_uid, on: :create
 
   def products
