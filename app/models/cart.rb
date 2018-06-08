@@ -36,10 +36,6 @@ class Cart
     Product.where id: @items.keys
   end
 
-  def products_ids
-    @items.keys
-  end
-
   def total
     @items.values.map { |i| (i[:price.to_s] * i[:quantity.to_s]).to_i }.sum
   end

@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
   def create
     Order.create do |o|
       o.user = current_user
-      o.items = current_cart.products_ids
+      o.items = current_cart.items.map do |id, item|
+        OrderItem.new(
+          product_id: id,
+          quantity: item[:quantity.to_s]
+        )
+      end
       o.amount = current_cart.total
     end
     current_cart.clear
