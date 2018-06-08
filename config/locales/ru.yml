@@ -37,6 +37,7 @@ ru:
         phone_number: 'Телефон'
       product:
         name: 'Наименование'
+        quantity: 'Кол-во'
         price: 'Цена'
       order:
         uid: 'Уникальный идентификатор'

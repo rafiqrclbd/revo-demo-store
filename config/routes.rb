@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resource :cart, only: :show do
     post 'add/:product_id', to: 'carts#add', as: :add_to
     post 'remove/:product_id', to: 'carts#remove', as: :remove_from
+    post 'update_quantity/:product_id', to: 'carts#update_quantity'
   end
   resources :orders, only: [:index, :create, :show] do
     resource :payu, controller: :payu, only: [:show]
