@@ -37,6 +37,6 @@ class Cart
   end
 
   def total
-    @items.values.map { |i| (i[:price.to_s] * i[:quantity.to_s]).to_i }.sum
+    @items.values.sum { |i| (i[:price.to_s] * i[:quantity.to_s]).to_i }
   end
 end
