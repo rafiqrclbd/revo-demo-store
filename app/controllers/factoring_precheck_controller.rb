@@ -80,7 +80,7 @@ class FactoringPrecheckController < ApplicationController
     id = ['FACTPRECH', order.uid].join
     {
       order_id: id,
-      amount: format('%.2f', order.amount),
+      amount: format('%.2f', (order.revo_amount || order.amount)),
       check_number: id
     }.to_json
   end
