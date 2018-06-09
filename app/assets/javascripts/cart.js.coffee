@@ -9,9 +9,10 @@ class Cart
     self = @
 
     @$cart_item_quantity_inputs.on 'input', ->
-      $tr = $(this).closest('tr')
+      $this = $(this)
+      $tr = $this.closest('tr')
       $cart_item_price = $tr.find('.cart-item-price')
-      quantity = $(this).val()
+      quantity = $this.val()
 
       self._sendQuantity($tr[0].id, quantity)
       difference = self._updatePrices($cart_item_price, quantity)
