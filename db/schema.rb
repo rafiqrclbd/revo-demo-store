@@ -11,16 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425085835) do
+ActiveRecord::Schema.define(version: 20180608194426) do
+
+  create_table "order_items", force: :cascade do |t|
+    t.float    "quantity",   limit: 24
+    t.integer  "order_id",   limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.float    "amount",      limit: 24
-    t.text     "items",       limit: 65535
     t.string   "uid",         limit: 255
     t.string   "revo_status", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.float    "revo_amount", limit: 24
   end
 
@@ -33,8 +43,8 @@ ActiveRecord::Schema.define(version: 20180425085835) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "brand",       limit: 255
     t.integer  "sale_price",  limit: 4
+    t.string   "brand",       limit: 255
   end
 
   create_table "users", force: :cascade do |t|

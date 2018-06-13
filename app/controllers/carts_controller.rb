@@ -13,4 +13,9 @@ class CartsController < ApplicationController
     current_cart.delete params[:product_id]
     redirect_to :back
   end
+
+  def update_quantity
+    current_cart.update_quantity(params[:product_id], params[:quantity])
+    head :ok
+  end
 end

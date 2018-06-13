@@ -49,13 +49,13 @@ class FactoringController < ApplicationController
         order_id: ['FACT', order.uid].join,
         term: 3
       },
-      cart_items: order.products.map.with_index do |product, i|
+      cart_items: order.items.map.with_index do |item, i|
         {
           sku: i + 1,
-          name: product.name,
-          price: product.price,
-          sale_price: product.sale_price,
-          quantity: 1
+          name: item.product.name,
+          price: item.product.price,
+          sale_price: item.product.sale_price,
+          quantity: item.quantity
         }
       end
     }.to_json

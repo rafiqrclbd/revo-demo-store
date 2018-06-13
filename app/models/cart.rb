@@ -16,11 +16,16 @@ class Cart
       name: p.name,
       image: p.image,
       price: p.actual_price,
+      quantity: 1
     }
   end
 
   def delete(id)
     @items.delete id
+  end
+
+  def update_quantity(id, value)
+    @items[id][:quantity.to_s] = value.to_f
   end
 
   def clear
@@ -31,11 +36,7 @@ class Cart
     Product.where id: @items.keys
   end
 
-  def products_ids
-    @items.keys
-  end
-
   def total
-    @items.values.map{|i| i[:price.to_s]}.reduce(:+)
+    @items.values.sum { |i| (i[:price.to_s] * i[:quantity.to_s]).to_i }
   end
 end

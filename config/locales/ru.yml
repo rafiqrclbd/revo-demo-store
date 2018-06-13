@@ -37,6 +37,7 @@ ru:
         phone_number: 'Телефон'
       product:
         name: 'Наименование'
+        quantity: 'Кол-во'
         price: 'Цена'
       order:
         uid: 'Уникальный идентификатор'
@@ -90,6 +91,8 @@ ru:
       visa_mastercard: 'Оплата Visa/Mastercard'
       next_step: 'Следующий шаг'
       new_amount: 'Новая сумма'
-      price: 'Цена'
+      initial_price: 'Исходная цена'
+      price: 'Итоговая цена'
       sale_price: 'Цена со скидкой'
+      quantity: 'Кол-во'
       total: 'Сумма'

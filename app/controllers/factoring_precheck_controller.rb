@@ -63,14 +63,14 @@ class FactoringPrecheckController < ApplicationController
         order_id: ['FACTPRECH', order.uid].join,
         valid_till: 1.day.from_now.to_s
       },
-      cart_items: order.products.map.with_index do |product, i|
+      cart_items: order.items.map.with_index do |item, i|
         {
           sku: i + 1,
-          name: product.name,
-          price: product.price,
-          sale_price: product.sale_price,
-          quantity: 1,
-          brand: product.brand
+          name: item.product.name,
+          price: item.product.price,
+          sale_price: item.product.sale_price,
+          quantity: item.quantity,
+          brand: item.product.brand
         }
       end
     }.to_json
