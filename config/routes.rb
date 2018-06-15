@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'remove/:product_id', to: 'carts#remove', as: :remove_from
     post 'update_quantity/:product_id', to: 'carts#update_quantity'
   end
-  resources :orders, only: [:index, :create, :show] do
+  resources :orders, only: [:index, :create, :show, :update] do
     resource :payu, controller: :payu, only: [:show]
   end
 

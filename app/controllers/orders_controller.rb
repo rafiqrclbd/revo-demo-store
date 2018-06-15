@@ -7,6 +7,13 @@ class OrdersController < ApplicationController
     @order = Order.find params[:id]
   end
 
+  def update
+    @order = Order.find params[:id]
+    @order.update(order_params)
+
+    redirect_to order_path(@order)
+  end
+
   def create
     Order.create do |o|
       o.user = current_user
@@ -20,5 +27,11 @@ class OrdersController < ApplicationController
     end
     current_cart.clear
     redirect_to orders_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:prepayment_amount)
   end
 end

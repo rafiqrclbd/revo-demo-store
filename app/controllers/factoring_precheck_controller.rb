@@ -61,6 +61,7 @@ class FactoringPrecheckController < ApplicationController
       current_order: {
         amount: format('%.2f', order.amount),
         order_id: ['FACTPRECH', order.uid].join,
+        prepayment_amount: order.prepayment_amount,
         valid_till: 1.day.from_now.to_s
       },
       cart_items: order.items.map.with_index do |item, i|
@@ -113,6 +114,7 @@ class FactoringPrecheckController < ApplicationController
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
     request = Net::HTTP::Post.new(uri.request_uri)
+
     request.body = payload
 
     response = http.request(request)

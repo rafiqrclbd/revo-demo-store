@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180608194426) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.float    "revo_amount", limit: 24
+    t.float    "prepayment_amount", limit: 24
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
