@@ -79,6 +79,14 @@
             %button.btn.btn-info
               =t('.emulate_change')
           %input.form-control{name: 'amount', placeholder: t('.new_amount'), type: 'number'}
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Предоплата
+      .panel-body
+        =form_for @order do |f|
+          = f.text_field :prepayment_amount
+          = f.submit 'Сохранить', class: 'btn btn-info'
 
 .row.checkout
   .col-lg-12
