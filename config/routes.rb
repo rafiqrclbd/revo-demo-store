@@ -11,8 +11,13 @@ Rails.application.routes.draw do
     resource :payu, controller: :payu, only: [:show]
   end
 
+  resources :revo_reg, only: [] do
+    get :iframe_v1, on: :collection
+    get :iframe_v2, on: :collection
+    get :factoring_v1, on: :collection
+  end
+
   resources :revo, only: [:show] do
-    get :limit, to: 'revo#limit', on: :collection
     post :callback, to: 'revo#callback', on: :collection
   end
 
@@ -22,7 +27,6 @@ Rails.application.routes.draw do
 
   resources :factoring, only: [:show] do
     post :callback, to: 'revo#callback', on: :collection
-    get :limit, to: 'factoring#limit', on: :collection
   end
 
   resources :factoring_precheck, only: [:show] do

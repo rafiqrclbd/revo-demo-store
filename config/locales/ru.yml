@@ -54,12 +54,12 @@ ru:
       empty_cart: "в корзине нет товаров"
       total_amount: "Товаров на сумму: %{amount}"
       go_to_cart: "Перейти в корзину"
-    check_limit:
-      title: 'Узнать лимит'
-      submit: 'Узнать лимит'
-    check_factoring_limit:
-      title: 'Узнать лимит факторинга'
-      submit: 'Узнать лимит факторинга'
+    registration:
+      title: 'Регистрация/Узнать лимит'
+      submit:
+        iframe_v1: 'Iframe v1'
+        iframe_v2: 'Iframe v2'
+        factoring_v1: 'Factoring v1'
   carts:
     show:
       title: 'Корзина'

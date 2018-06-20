@@ -17,17 +17,6 @@ class RevoController < ApplicationController
     end
   end
 
-  def limit
-    order = current_user.orders.create(amount: 1)
-    result = call_revo order
-    if result['status'] == 0
-      iframe_url = add_locale_param(result['iframe_url'])
-      render json: {status: :ok, url: iframe_url}
-    else
-      render json: {status: :error, message: result['message']}
-    end
-  end
-
   def callback
     order = Order.find_by! uid: params[:order_id].gsub(/\AFULL|FACTPRECH|FACT/, '')
     order.update_attributes(revo_status: params[:decision], revo_amount: params[:amount])
