@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+# lock '3.4.0'
 
 set :application, 'revo-demo-store'
 set :repo_url, 'git@github.com:RevoTechnology/revo-demo-store.git'
@@ -33,6 +33,15 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+set :slackistrano, {
+  channel: '#1_deploys',
+  team: 'revoplus',
+  token: 'eKsIycgpWbkEBBVhG2VvRncD'
+}
+set :slackistrano_use_non_deploy_chat, -> {
+  set :slackistrano, fetch(:slackistrano).merge(channel: '#deplog')
+}
 
 set :rvm_map_bins, %w{gem rake ruby bundle}
 

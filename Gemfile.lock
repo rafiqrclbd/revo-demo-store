@@ -205,6 +205,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    slackistrano (3.1.0)
+      capistrano (>= 3.5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -269,6 +271,7 @@ DEPENDENCIES
   rails (~> 4.2.10)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  slackistrano (= 3.1.0)
   spring
   therubyracer
   turbolinks
@@ -278,4 +281,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
