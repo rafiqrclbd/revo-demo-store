@@ -1,14 +1,26 @@
 %h1=t('.title', order_id: @order.id)
 %h2=t('.items')
-%table.table
+%table.table.table-bordered
   %tbody
-    -@order.products.each do |p|
-      %tr
-        %td= p.name
-        %td= p.price
     %tr
-      %td
-      %td=@order.amount
+      %th
+      %th= t('.initial_price')
+      %th= t('.sale_price')
+      %th= t('.quantity')
+      %th= t('.price')
+    -@order.items.each do |item|
+      %tr
+        %td= item.product.name
+        %td= item.product.price
+        %td= item.product.sale_price
+        %td= item.quantity
+        %td= item.price
+    %tr
+      %th= t('.total')
+      %td= @order.amount
+    %tr
+      %th= t('activerecord.attributes.order.revo_amount')
+      %td= @order.revo_amount
 
 .row
   .col-lg-6
@@ -30,9 +42,51 @@
         .progress
           .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
         .loan-btn
-          %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
+          %button.btn.btn-warning{type: :button}
             =t('.checkout_full')
         .loan-error=t('.order_already_processed')
+
+.row
+  .col-lg-6
+    .panel.panel-default.factoring-order-loan
+      .panel-heading=t('.pay_later')
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button}
+            =t('.factoring')
+        .loan-error=t('.order_already_processed')
+
+  .col-lg-6
+    .panel.panel-default.factoring-precheck-order-loan
+      .panel-heading=t('.pay_later')
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button}
+            =t('.factoring_precheck')
+        .loan-error=t('.order_already_processed')
+        .loan-finish-btn
+          %button.btn.btn-success
+            =t('.emulate_precheck')
+        .loan-cancel-btn
+          %button.btn.btn-danger
+            =t('.emulate_cancel')
+        .change-section
+          .loan-change-btn
+            %button.btn.btn-info
+              =t('.emulate_change')
+          %input.form-control{name: 'amount', placeholder: t('.new_amount'), type: 'number'}
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Предоплата
+      .panel-body
+        =form_for @order do |f|
+          = f.text_field :prepayment_amount
+          = f.submit 'Сохранить', class: 'btn btn-info'
 
 .row.checkout
   .col-lg-12
@@ -57,4 +111,5 @@
   revoLoan = new RevoLoan(#{@order.id})
   revoLoan.check()
   revoLoan.full_check()
-
+  revoLoan.factoring_check()
+  revoLoan.factoring_precheck_check()

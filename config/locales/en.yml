@@ -74,6 +74,8 @@ en:
       pay_later: "Buy by means of \"pay later\" service"
       checkout_preliminary: "Checkout Preliminary"
       checkout_full: "Checkout Full"
+      factoring: 'Factoring'
+      factoring_precheck: 'Factoring Precheck'
       order_already_processed: 'Loan Error'
       payu_checkout: 'PayU payment methods'
       revo_3: 'Installment 3 months'

@@ -37,11 +37,13 @@ ru:
         phone_number: 'Телефон'
       product:
         name: 'Наименование'
+        quantity: 'Кол-во'
         price: 'Цена'
       order:
         uid: 'Уникальный идентификатор'
         amount: 'Цена'
         revo_status: 'Статус Рево'
+        revo_amount: 'Лимит Рево'
   products:
     index:
       price: "Цена: %{price}"
@@ -55,6 +57,9 @@ ru:
     check_limit:
       title: 'Узнать лимит'
       submit: 'Узнать лимит'
+    check_factoring_limit:
+      title: 'Узнать лимит факторинга'
+      submit: 'Узнать лимит факторинга'
   carts:
     show:
       title: 'Корзина'
@@ -74,9 +79,20 @@ ru:
       pay_later: "Купить с помощью сервиса \"Оплата частями\""
       checkout_preliminary: "Предоформление"
       checkout_full: "Полное оформление"
-      order_already_processed: 'Заказ обработан'
+      factoring: 'Факторинг'
+      factoring_precheck: 'Пречек факторинг'
+      emulate_precheck: 'Эмулировать предоплату пречека'
+      emulate_cancel: 'Эмулировать отказ'
+      emulate_change: 'Эмулировать изменение суммы'
+      order_already_processed: 'Ошибка (возможно, заказ обработан)'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'
       revo_6: 'Оплата частями 6 месяцев'
       visa_mastercard: 'Оплата Visa/Mastercard'
       next_step: 'Следующий шаг'
+      new_amount: 'Новая сумма'
+      initial_price: 'Исходная цена'
+      price: 'Итоговая цена'
+      sale_price: 'Цена со скидкой'
+      quantity: 'Кол-во'
+      total: 'Сумма'
