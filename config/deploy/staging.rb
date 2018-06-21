@@ -8,7 +8,7 @@ server '10.1.2.106', user: fetch(:user), port: 2002, roles: %w{web app db}
 set :branch, ENV.fetch('branch', 'staging')
 
 # RVM settings
-set :rvm_ruby_version, '2.1.5'
+set :rvm_ruby_version, '2.5.1'
 
 # Path settings
 set :deploy_to, "/home/#{fetch(:user)}/www/#{fetch(:application)}"
