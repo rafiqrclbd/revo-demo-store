@@ -16,6 +16,15 @@ class RevoRegController < ApplicationController
     render_json(result)
   end
 
+  def callback
+    order_id = params[:order_id].split('-').last
+    order = Order.find_by(uid: order_id)
+    order.update!(revo_status: params[:decision], revo_amount: params[:amount])
+    render text: :ok
+  rescue
+    render text: :fail
+  end
+
   private
 
   def render_json(result)

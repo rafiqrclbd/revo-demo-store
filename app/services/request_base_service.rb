@@ -1,9 +1,8 @@
-class Reg::BaseService
+class RequestBaseService
   include Locale
 
   def initialize(user)
     @user = user
-    @order = user.orders.create!(amount: 1)
   end
 
   def call
@@ -12,7 +11,11 @@ class Reg::BaseService
 
   private
 
-  attr_reader :order, :user
+  attr_reader :user
+
+  def order
+    @order ||= user.orders.create!(amount: 1)
+  end
 
   def get_response
     uri.query = params.to_query

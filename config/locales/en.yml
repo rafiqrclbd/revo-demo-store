@@ -24,7 +24,7 @@ en:
   sign_out: "Sign out"
   sign_in: "Sign in"
   sign_up: "Sign up"
-  footer_html: "&copy; 2017 MFC «Revo Technology» (LLC), all rights reserved"
+  footer_html: "&copy; %{year} MFC «Revo Technology» (LLC), all rights reserved"
   activerecord:
     models:
       orders: "Orders"
@@ -52,9 +52,12 @@ en:
       empty_cart: 'no goods in cart'
       total_amount: "Total amount: %{amount}"
       go_to_cart: 'Go to cart'
-    check_limit:
-      title: 'Check your limit'
-      submit: 'Check your limit'
+    registration:
+      title: 'Sign up/Check limit'
+      submit:
+        iframe_v1: 'Iframe v1'
+        iframe_v2: 'Iframe v2'
+        factoring_v1: 'Factoring v1'
   carts:
     show:
       title: 'Cart'
@@ -69,6 +72,7 @@ en:
       approved: "approved"
       declined: "declined"
     show:
+      checkout: 'Checkout'
       title: "Order #%{order_id}"
       items: 'Items'
       pay_later: "Buy by means of \"pay later\" service"
@@ -76,6 +80,9 @@ en:
       checkout_full: "Checkout Full"
       factoring: 'Factoring'
       factoring_precheck: 'Factoring Precheck'
+      emulate_precheck: 'Precheck'
+      emulate_cancel: 'Cancel'
+      emulate_change: 'Change'
       order_already_processed: 'Loan Error'
       payu_checkout: 'PayU payment methods'
       revo_3: 'Installment 3 months'

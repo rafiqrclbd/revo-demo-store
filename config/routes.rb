@@ -15,25 +15,15 @@ Rails.application.routes.draw do
     get :iframe_v1, on: :collection
     get :iframe_v2, on: :collection
     get :factoring_v1, on: :collection
+    post :callback, on: :collection
   end
 
-  resources :revo, only: [:show] do
-    post :callback, to: 'revo#callback', on: :collection
-  end
-
-  resources :fullrevo, only: [:show] do
-    post :callback, to: 'revo#callback', on: :collection
-  end
-
-  resources :factoring, only: [:show] do
-    post :callback, to: 'revo#callback', on: :collection
-  end
-
-  resources :factoring_precheck, only: [:show] do
-    post :callback, to: 'revo#callback', on: :collection
-    post :finish, on: :member
-    post :cancel, on: :member
-    post :change, on: :member
+  resources :revo_order, only: [] do
+    get :iframe_v1, on: :collection
+    get :online_v1, on: :collection
+    get :online_v2, on: :collection
+    get :factoring_v1, on: :collection
+    get :factoring_precheck_v1, on: :collection
   end
 
   match 'payu_payments', via: :all, to: redirect('/')

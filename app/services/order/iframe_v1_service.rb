@@ -1,6 +1,16 @@
-class Reg::IframeV1Service < RequestBaseService
+class Order::IframeV1Service < RequestBaseService
+  def initialize(user, order_id)
+    super(user)
+    @order_id = order_id
+  end
 
   private
+
+  attr_reader :order_id
+
+  def order
+    @order ||= user.orders.find(order_id)
+  end
 
   def payload
     {
@@ -10,7 +20,7 @@ class Reg::IframeV1Service < RequestBaseService
       primary_email: user.email,
       current_order: {
         sum: format('%.2f', order.amount),
-        order_id: ['REG-IFRAME-V1-', order.uid].join
+        order_id: ['ORDER-IFRAME-V1-', order.uid].join
       }
     }.to_json
   end
@@ -20,10 +30,6 @@ class Reg::IframeV1Service < RequestBaseService
   end
 
   def password
-    subdomain_secrets.limit_store_password
-  end
-
-  def store_id
-    subdomain_secrets.revo_limit_store_id
+    Rails.application.secrets.password
   end
 end

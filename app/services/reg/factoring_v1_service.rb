@@ -1,4 +1,4 @@
-class Reg::FactoringV1Service < Reg::BaseService
+class Reg::FactoringV1Service < RequestBaseService
   private
 
   def payload
@@ -8,7 +8,7 @@ class Reg::FactoringV1Service < Reg::BaseService
       primary_phone: user.phone_number,
       primary_email: user.email,
       current_order: {
-        order_id: ['FACT', order.uid].join
+        order_id: ['REG-FACT-V1-', order.uid].join
       }
     }.to_json
   end

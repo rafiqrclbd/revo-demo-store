@@ -35,5 +35,5 @@
             =render 'shared/cart'
             =render 'shared/registration'
       %footer
-        %p=t('footer_html')
+        %p= t('footer_html', year: Time.current.year)
   = javascript_include_tag Rails.application.secrets.revo_js_url

@@ -1,4 +1,4 @@
-class Reg::IframeV2Service < Reg::BaseService
+class Reg::IframeV2Service < RequestBaseService
 
   private
 
@@ -10,7 +10,7 @@ class Reg::IframeV2Service < Reg::BaseService
       primary_email: user.email,
       current_order: {
         sum: format('%.2f', order.amount),
-        order_id: order.uid
+        order_id: ['REG-IFRAME-V2-', order.uid].join
       }
     }.to_json
   end

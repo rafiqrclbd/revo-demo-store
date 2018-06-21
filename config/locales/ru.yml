@@ -24,7 +24,7 @@ ru:
   sign_out: "Выйти"
   sign_in: "Войти"
   sign_up: "Зарегистрироваться"
-  footer_html: "&copy; 2017 МФК «Рево Технологии» (ООО), все права защищены"
+  footer_html: "&copy; %{year} МФК «Рево Технологии» (ООО), все права защищены"
   activerecord:
     models:
       orders: "Заказы"
@@ -74,16 +74,17 @@ ru:
       approved: "подтверждён"
       declined: "отказ"
     show:
+      checkout: 'Оформить заказ'
       title: "Заказ №%{order_id}"
       items: 'Товары'
       pay_later: "Купить с помощью сервиса \"Оплата частями\""
-      checkout_preliminary: "Предоформление"
-      checkout_full: "Полное оформление"
+      checkout_preliminary: 'Предоформление'
+      checkout_full: 'Полное оформление'
       factoring: 'Факторинг'
       factoring_precheck: 'Пречек факторинг'
-      emulate_precheck: 'Эмулировать предоплату пречека'
-      emulate_cancel: 'Эмулировать отказ'
-      emulate_change: 'Эмулировать изменение суммы'
+      emulate_precheck: 'Финализация'
+      emulate_cancel: 'Отказ'
+      emulate_change: 'Измененить сумму'
       order_already_processed: 'Ошибка (возможно, заказ обработан)'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'
