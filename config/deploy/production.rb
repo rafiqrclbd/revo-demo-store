@@ -12,3 +12,5 @@ set :rvm_ruby_version, "2.1.5"
 
 #Path settings
 set :deploy_to, "/home/#{fetch(:user)}/www/#{fetch(:application)}"
+
+fetch(:slackistrano_use_non_deploy_chat)
