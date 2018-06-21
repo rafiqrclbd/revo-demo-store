@@ -1,6 +1,4 @@
 class Order < ActiveRecord::Base
-  serialize :items
-
   belongs_to :user
   has_many :items, foreign_key: :order_id, class_name: 'OrderItem'
   has_many :products, through: :items
