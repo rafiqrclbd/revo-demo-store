@@ -1,4 +1,7 @@
 class RevoRegController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:callback]
+  skip_before_action :verify_authenticity_token, only: [:callback]
+
   def iframe_v1
     result = Reg::IframeV1Service.new(current_user).call
     render_json(result)

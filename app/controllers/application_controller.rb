@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_json(result)
-    if result['status'].zero?
+    if result['status'].zero? && result['iframe_url']
       iframe_url = add_locale_param(result['iframe_url'])
       render json: { status: :ok, url: iframe_url }
     else
