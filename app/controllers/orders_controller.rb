@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.where('amount > 1')
+    @orders = current_user.orders.where('amount > 1').order(created_at: :desc)
   end
 
   def show

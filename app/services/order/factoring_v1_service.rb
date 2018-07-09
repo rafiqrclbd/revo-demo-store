@@ -13,18 +13,17 @@ class Order::FactoringV1Service < RequestBaseService
   end
 
   def payload
-   {
+    {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
       primary_phone: user.phone_number,
       primary_email: user.email,
       current_order: {
         amount: format('%.2f', order.amount),
-        order_id: public_order_id,
-        term: 3
+        order_id: public_order_id
       },
       cart_items: cart_items
-   }.to_json
+    }.to_json
   end
 
   def uri

@@ -1,5 +1,4 @@
 class Reg::IframeV2Service < RequestBaseService
-
   private
 
   def payload

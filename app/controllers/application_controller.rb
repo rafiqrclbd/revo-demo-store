@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Locale
+
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :set_locale
   helper_method :current_cart
@@ -30,5 +32,14 @@ class ApplicationController < ActionController::Base
 
   def subdomain
     request.subdomains.first
+  end
+
+  def render_json(result)
+    if result['status'].zero?
+      iframe_url = add_locale_param(result['iframe_url'])
+      render json: { status: :ok, url: iframe_url }
+    else
+      render json: { status: result['status'], message: result['message'] }
+    end
   end
 end

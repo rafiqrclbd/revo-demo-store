@@ -57,9 +57,9 @@ ru:
     registration:
       title: 'Регистрация/Узнать лимит'
       submit:
-        iframe_v1: 'Iframe v1'
-        iframe_v2: 'Iframe v2'
-        factoring_v1: 'Factoring v1'
+        iframe_v1: 'iframe/v1'
+        iframe_v2: 'iframe/v2'
+        factoring_v1: 'factoring/limit/v1'
   carts:
     show:
       title: 'Корзина'
@@ -78,10 +78,11 @@ ru:
       title: "Заказ №%{order_id}"
       items: 'Товары'
       pay_later: "Купить с помощью сервиса \"Оплата частями\""
-      checkout_preliminary: 'Предоформление'
-      checkout_full: 'Полное оформление'
-      factoring: 'Факторинг'
-      factoring_precheck: 'Пречек факторинг'
+      checkout_preliminary: 'Предоформление iframe/v1'
+      checkout_full_v1: 'Полное оформление online/v1'
+      checkout_full_v2: 'Полное оформление online/v2'
+      factoring: 'Факторинг factoring/v1'
+      factoring_precheck: 'Пречек факторинг factoring/precheck/v1'
       emulate_precheck: 'Финализация'
       emulate_cancel: 'Отказ'
       emulate_change: 'Измененить сумму'

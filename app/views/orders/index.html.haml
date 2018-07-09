@@ -8,8 +8,8 @@
     %th= Order.human_attribute_name :revo_status
     %th
   %tbody
-    -@orders.each do |o|
-      %tr
+    -@orders.each_with_index do |o, i|
+      %tr{style: "#{'font-weight: 600' if i.zero? }"}
         %td= o.id
         %td= o.uid
         %td= o.amount

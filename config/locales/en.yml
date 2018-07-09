@@ -55,9 +55,9 @@ en:
     registration:
       title: 'Sign up/Check limit'
       submit:
-        iframe_v1: 'Iframe v1'
-        iframe_v2: 'Iframe v2'
-        factoring_v1: 'Factoring v1'
+        iframe_v1: 'iframe/v1'
+        iframe_v2: 'iframe/v2'
+        factoring_v1: 'factoring/limit/v1'
   carts:
     show:
       title: 'Cart'

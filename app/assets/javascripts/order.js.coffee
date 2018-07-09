@@ -1,7 +1,8 @@
 class RevoLoan
   constructor: (@order_id)->
     @init_order()
-    @init_full_order()
+    @init_full_order_v1()
+    @init_full_order_v2()
     @init_payu()
     @init_factoring_order()
     @init_factoring_precheck_order()
@@ -14,12 +15,19 @@ class RevoLoan
     @btn.hide()
     @error.hide()
 
-  init_full_order: ->
-    @full_btn = $('.full-order-loan .loan-btn')
-    @full_error = $('.full-order-loan .loan-error')
-    @full_progress = $('.full-order-loan .progress')
-    @full_btn.hide()
-    @full_error.hide()
+  init_full_order_v1: ->
+    @full_btn_v1 = $('.full-order-loan-v1 .loan-btn')
+    @full_error_v1 = $('.full-order-loan-v1 .loan-error')
+    @full_progress_v1 = $('.full-order-loan-v1 .progress')
+    @full_btn_v1.hide()
+    @full_error_v1.hide()
+
+  init_full_order_v2: ->
+    @full_btn_v2 = $('.full-order-loan-v2 .loan-btn')
+    @full_error_v2 = $('.full-order-loan-v2 .loan-error')
+    @full_progress_v2 = $('.full-order-loan-v2 .progress')
+    @full_btn_v2.hide()
+    @full_error_v2.hide()
 
   init_factoring_order: ->
     @factoring_btn = $('.factoring-order-loan .loan-btn')
@@ -63,15 +71,25 @@ class RevoLoan
       else
         @error.show()
 
-  full_check: ->
+  full_check_v1: ->
     $.get('/revo_order/online_v1?id=' + @order_id).success (data)=>
-      @full_progress.hide()
+      @full_progress_v1.hide()
       if data.status == 'ok'
-        @full_btn.show()
-        @full_btn.click =>
+        @full_btn_v1.show()
+        @full_btn_v1.click =>
           @openPopup data.url
       else
-        @full_error.show()
+        @full_error_v1.show()
+
+  full_check_v2: ->
+    $.get('/revo_order/online_v2?id=' + @order_id).success (data)=>
+      @full_progress_v2.hide()
+      if data.status == 'ok'
+        @full_btn_v2.show()
+        @full_btn_v2.click =>
+          @openPopup data.url
+      else
+        @full_error_v2.show()
 
   factoring_check: ->
     $.get('/revo_order/factoring_v1?id=' + @order_id).success (data)=>

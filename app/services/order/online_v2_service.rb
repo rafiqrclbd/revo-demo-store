@@ -1,19 +1,18 @@
-class Order::FactoringPrecheckV1Service < RequestBaseService
-  def initialize(user, order_id, type)
+class Order::OnlineV2Service < RequestBaseService
+  def initialize(user, order_id)
     super(user)
     @order_id = order_id
-    @type = type || :auth
   end
 
   private
 
-  attr_reader :order_id, :type
+  attr_reader :order_id
 
-  def payload
-    send("#{type}_payload").to_json
+  def order
+    @order ||= user.orders.find(order_id)
   end
 
-  def auth_payload
+  def payload
     {
       callback_url: Rails.application.secrets.callback_url,
       redirect_url: subdomain_secrets.redirect_url,
@@ -24,32 +23,11 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
         order_id: public_order_id
       },
       cart_items: cart_items
-    }
-  end
-
-  def cancel_payload
-    {
-      order_id: public_order_id
-    }
-  end
-
-  def finish_payload
-    {
-      order_id: public_order_id,
-      check_number: public_order_id,
-      amount: format('%.2f', (order.revo_amount || order.amount))
-    }
-  end
-
-  def change_payload
-    {
-      order_id: public_order_id,
-      amount: format('%.2f', params[:amount])
-    }
+   }.to_json
   end
 
   def uri
-    @uri ||= URI("#{host}/factoring/v1/precheck/#{type}")
+    @uri ||= URI("#{host}/online/v2/auth")
   end
 
   def password
@@ -69,10 +47,6 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
   end
 
   def public_order_id
-    ['ORDER-FACT-PRECH-V1-', order.uid].join
-  end
-
-  def order
-    @order ||= user.orders.find(order_id)
+    ['ORDER-ONLINE-V2-', order.uid].join
   end
 end
