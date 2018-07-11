@@ -1,13 +1,26 @@
 class Order::FactoringPrecheckV1Service < RequestBaseService
-  def initialize(user, order_id, type)
+  def initialize(user, order_id, type:, amount:)
     super(user)
     @order_id = order_id
     @type = type || :auth
+    @amount = amount
+  end
+
+  def call
+    res = super
+    update_local_price_after_change(res)
+    res
+  end
+
+  def update_local_price_after_change(res)
+    return unless res['status'].zero? && type == 'change'
+
+    order.update!(revo_amount: amount)
   end
 
   private
 
-  attr_reader :order_id, :type
+  attr_reader :order_id, :type, :amount
 
   def payload
     send("#{type}_payload").to_json
@@ -44,7 +57,8 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
   def change_payload
     {
       order_id: public_order_id,
-      amount: format('%.2f', params[:amount])
+      amount: format('%.2f', amount),
+      cart_items: cart_items
     }
   end
 

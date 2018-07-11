@@ -5,7 +5,7 @@ class RevoOrderController < ApplicationController
   end
 
   def factoring_precheck_v1
-    result = Order::FactoringPrecheckV1Service.new(current_user, params[:id], params[:type]).call
+    result = Order::FactoringPrecheckV1Service.new(current_user, params[:id], type: params[:type], amount: params[:amount]).call
     render_json(result)
   end
 

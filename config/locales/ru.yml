@@ -42,8 +42,8 @@ ru:
       order:
         uid: 'Уникальный идентификатор'
         amount: 'Цена'
-        revo_status: 'Статус Рево'
-        revo_amount: 'Лимит Рево'
+        revo_status: 'Статус в Рево'
+        revo_amount: 'Цена в Рево'
   products:
     index:
       price: "Цена: %{price}"
