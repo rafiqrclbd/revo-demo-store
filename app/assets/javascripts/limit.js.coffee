@@ -9,12 +9,13 @@ class RevoLimit
     e.preventDefault()
     url = $(e.target).data('url')
     $.get(url).success (data)=>
-      @openPopup data.url
+      if data.url
+        @openPopup data.url
+      else
+        alert("status: #{data.status},  message: #{data.message}")
 
   openPopup: (url)->
     REVO.Form.showPopup(url)
-
-
 
 $ ->
   new RevoLimit()

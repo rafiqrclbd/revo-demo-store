@@ -25,60 +25,74 @@
 .row
   .col-lg-6
     .panel.panel-default.order-loan
-      .panel-heading=t('.pay_later')
+      .panel-heading=t('.checkout_preliminary')
       .panel-body
         .progress
           .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
         .loan-btn
-          -#=link_to 'Buy', '#', class: 'btn btn-warning'
           %button.btn.btn-warning{type: :button, data: {toggle: :modal, target: '#revoModal'}}
-            =t('.checkout_preliminary')
+            =t('.checkout')
         .loan-error=t('.order_already_processed')
 
   .col-lg-6
-    .panel.panel-default.full-order-loan
-      .panel-heading=t('.pay_later')
+    .panel.panel-default.factoring-order-loan
+      .panel-heading=t('.factoring')
       .panel-body
         .progress
           .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
         .loan-btn
           %button.btn.btn-warning{type: :button}
-            =t('.checkout_full')
+            =t('.checkout')
         .loan-error=t('.order_already_processed')
+
 
 .row
   .col-lg-6
-    .panel.panel-default.factoring-order-loan
-      .panel-heading=t('.pay_later')
+    .panel.panel-default.full-order-loan-v1
+      .panel-heading=t('.checkout_full_v1')
       .panel-body
         .progress
           .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
         .loan-btn
           %button.btn.btn-warning{type: :button}
-            =t('.factoring')
+            =t('.checkout')
+        .loan-error=t('.order_already_processed')
+    .panel.panel-default.full-order-loan-v2
+      .panel-heading=t('.checkout_full_v2')
+      .panel-body
+        .progress
+          .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
+        .loan-btn
+          %button.btn.btn-warning{type: :button}
+            =t('.checkout')
         .loan-error=t('.order_already_processed')
 
   .col-lg-6
     .panel.panel-default.factoring-precheck-order-loan
-      .panel-heading=t('.pay_later')
+      .panel-heading= t('.factoring_precheck')
       .panel-body
         .progress
           .progress-bar.progress-bar-striped.active{aria: {valuenow: 95, valuemin: 0, valuemax: 100}, role: :progressbar, style: 'width: 95%'}
         .loan-btn
           %button.btn.btn-warning{type: :button}
-            =t('.factoring_precheck')
+            = t('.checkout')
         .loan-error=t('.order_already_processed')
+        %br
         .loan-finish-btn
           %button.btn.btn-success
             =t('.emulate_precheck')
+        %br
         .loan-cancel-btn
           %button.btn.btn-danger
             =t('.emulate_cancel')
+        %br
         .change-section
-          .loan-change-btn
-            %button.btn.btn-info
-              =t('.emulate_change')
-          %input.form-control{name: 'amount', placeholder: t('.new_amount'), type: 'number'}
+          .form-inline
+            .loan-change-btn.form-group
+              %button.btn.btn-info
+                =t('.emulate_change')
+            .form-group
+              = number_field_tag 'amount', @order.amount, placeholder: t('.new_amount')
 .row
   .col-lg-6
     .panel.panel-default
@@ -110,6 +124,7 @@
 :javascript
   revoLoan = new RevoLoan(#{@order.id})
   revoLoan.check()
-  revoLoan.full_check()
+  revoLoan.full_check_v1()
+  revoLoan.full_check_v2()
   revoLoan.factoring_check()
   revoLoan.factoring_precheck_check()

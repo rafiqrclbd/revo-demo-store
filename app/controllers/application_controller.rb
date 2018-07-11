@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include Locale
+
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :set_locale
   helper_method :current_cart
 
   protected
+
   def current_cart
     @current_cart ||= Cart.new session
   end
@@ -31,5 +32,14 @@ class ApplicationController < ActionController::Base
 
   def subdomain
     request.subdomains.first
+  end
+
+  def render_json(result)
+    if result['status'].zero? && result['iframe_url']
+      iframe_url = add_locale_param(result['iframe_url'])
+      render json: { status: :ok, url: iframe_url }
+    else
+      render json: { status: result['status'], message: result['message'] }
+    end
   end
 end
