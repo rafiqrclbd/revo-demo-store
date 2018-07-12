@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get :online_v2, on: :collection
     get :factoring_v1, on: :collection
     get :factoring_precheck_v1, on: :collection
+    get :status, on: :collection
   end
 
   match 'payu_payments', via: :all, to: redirect('/')

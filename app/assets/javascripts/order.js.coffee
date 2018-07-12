@@ -41,6 +41,7 @@ class RevoLoan
     @factoring_precheck_finish_btn = $('.factoring-precheck-order-loan .loan-finish-btn')
     @factoring_precheck_cancel_btn = $('.factoring-precheck-order-loan .loan-cancel-btn')
     @factoring_precheck_change_btn = $('.factoring-precheck-order-loan .loan-change-btn')
+    @factoring_precheck_status_btn = $('.factoring-precheck-order-loan .loan-status-btn')
     @factoring_precheck_amount_input = @factoring_precheck_change_btn
       .closest('.change-section')
       .find("input[name='amount']")
@@ -50,6 +51,7 @@ class RevoLoan
     @factoring_precheck_finish_btn.hide()
     @factoring_precheck_cancel_btn.hide()
     @factoring_precheck_change_btn.hide()
+    @factoring_precheck_status_btn.hide()
     @factoring_precheck_amount_input.hide()
     @factoring_precheck_error.hide()
 
@@ -114,6 +116,7 @@ class RevoLoan
       @factoring_precheck_finish_btn.show()
       @factoring_precheck_cancel_btn.show()
       @factoring_precheck_change_btn.show()
+      @factoring_precheck_status_btn.show()
       @factoring_precheck_amount_input.show()
       @factoring_precheck_finish_btn.click =>
         @finalizeOrder()
@@ -121,6 +124,8 @@ class RevoLoan
         @cancelOrder()
       @factoring_precheck_change_btn.click =>
         @changeOrder()
+      @factoring_precheck_status_btn.click =>
+        @statusOrder()
 
   openPopup: (url, origin)->
     REVO.Form.showPopup(url)
@@ -135,10 +140,11 @@ class RevoLoan
       @factoring_precheck_finish_btn.hide()
       @factoring_precheck_cancel_btn.hide()
       @factoring_precheck_change_btn.hide()
+      @factoring_precheck_status_btn.hide()
       @factoring_precheck_amount_input.hide()
       @factoring_precheck_error.show()
       unless data.status == 'ok'
-        alert("status: #{data.status},  message: #{data.message}")
+        alert(JSON.stringify(data, null, 4))
 
   cancelOrder: ->
     $.get('/revo_order/factoring_precheck_v1?id=' + @order_id + '&type=cancel').success (data)=>
@@ -147,10 +153,11 @@ class RevoLoan
       @factoring_precheck_finish_btn.hide()
       @factoring_precheck_cancel_btn.hide()
       @factoring_precheck_change_btn.hide()
+      @factoring_precheck_status_btn.hide()
       @factoring_precheck_amount_input.hide()
       @factoring_precheck_error.show()
       unless data.status == 'ok'
-        alert("status: #{data.status},  message: #{data.message}")
+        alert(JSON.stringify(data, null, 4))
 
   changeOrder: ->
     amount = @factoring_precheck_amount_input.val()
@@ -160,9 +167,24 @@ class RevoLoan
       @factoring_precheck_finish_btn.hide()
       @factoring_precheck_cancel_btn.hide()
       @factoring_precheck_change_btn.hide()
+      @factoring_precheck_status_btn.hide()
       @factoring_precheck_amount_input.hide()
       @factoring_precheck_error.show()
       unless data.status == 'ok'
-        alert("status: #{data.status},  message: #{data.message}")
+        alert(JSON.stringify(data, null, 4))
+
+  statusOrder: ->
+    amount = @factoring_precheck_amount_input.val()
+    $.get('/revo_order/status?id=' + @order_id, {amount}).success (data)=>
+      @factoring_precheck_btn.hide()
+      @factoring_precheck_progress.hide()
+      @factoring_precheck_finish_btn.hide()
+      @factoring_precheck_cancel_btn.hide()
+      @factoring_precheck_change_btn.hide()
+      @factoring_precheck_status_btn.hide()
+      @factoring_precheck_amount_input.hide()
+      @factoring_precheck_error.show()
+      unless data.status == 'ok'
+        alert(JSON.stringify(data, null, 4))
 
 window.RevoLoan = RevoLoan

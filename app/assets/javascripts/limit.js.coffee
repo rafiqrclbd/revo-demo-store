@@ -12,7 +12,7 @@ class RevoLimit
       if data.url
         @openPopup data.url
       else
-        alert("status: #{data.status},  message: #{data.message}")
+        alert(JSON.stringify(data, null, 4))
 
   openPopup: (url)->
     REVO.Form.showPopup(url)

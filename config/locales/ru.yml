@@ -86,6 +86,7 @@ ru:
       emulate_precheck: 'Финализация'
       emulate_cancel: 'Отказ'
       emulate_change: 'Измененить сумму'
+      status: 'Проверить статус'
       order_already_processed: 'Ошибка (возможно, заказ обработан)'
       payu_checkout: 'Варианты оплаты PayU'
       revo_3: 'Оплата частями 3 месяца'
