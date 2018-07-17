@@ -93,6 +93,10 @@
                 =t('.emulate_change')
             .form-group
               = number_field_tag 'amount', @order.amount, placeholder: t('.new_amount')
+        %br
+        .loan-status-btn
+          %button.btn.btn-warning
+            =t('.status')
 .row
   .col-lg-6
     .panel.panel-default

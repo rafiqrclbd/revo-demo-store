@@ -23,4 +23,9 @@ class RevoOrderController < ApplicationController
     result = Order::OnlineV2Service.new(current_user, params[:id]).call
     render_json(result)
   end
+
+  def status
+    result = Order::StatusService.new(current_user, params[:id]).call
+    render_json(result)
+  end
 end

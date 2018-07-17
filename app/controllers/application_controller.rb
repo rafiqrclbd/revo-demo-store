@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       iframe_url = add_locale_param(result['iframe_url'])
       render json: { status: :ok, url: iframe_url }
     else
-      render json: { status: result['status'], message: result['message'] }
+      render json: result
     end
   end
 end
