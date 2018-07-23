@@ -8,7 +8,6 @@ class Reg::IframeV2Service < RequestBaseService
       primary_phone: user.phone_number,
       primary_email: user.email,
       current_order: {
-        sum: format('%.2f', order.amount),
         order_id: ['REG-IFRAME-V2-', order.uid].join
       }
     }.to_json

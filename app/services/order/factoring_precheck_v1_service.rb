@@ -34,7 +34,8 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
       primary_email: user.email,
       current_order: {
         amount: format('%.2f', order.amount),
-        order_id: public_order_id
+        order_id: public_order_id,
+        valid_till: 1.day.from_now.to_s
       },
       cart_items: cart_items
     }
