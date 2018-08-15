@@ -19,7 +19,7 @@ class Order::OnlineV2Service < RequestBaseService
       primary_phone: user.phone_number,
       primary_email: user.email,
       current_order: {
-        amount: format('%.2f', order.amount),
+        sum: format('%.2f', order.amount),
         order_id: public_order_id,
         valid_till: 1.day.from_now.to_s
       },
