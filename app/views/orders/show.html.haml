@@ -100,11 +100,17 @@
 .row
   .col-lg-6
     .panel.panel-default
-      .panel-heading Предоплата
+      .panel-heading Параметры запроса:
       .panel-body
         =form_for @order do |f|
-          = f.text_field :prepayment_amount
-          = f.submit 'Сохранить', class: 'btn btn-info'
+          .form-group
+            = f.label :prepayment_amount
+            = f.text_field :prepayment_amount, class: 'form-control'
+          .form-group
+            = f.label :redirect_url
+            = f.text_field :redirect_url, class: 'form-control'
+          .form-group
+            = f.submit 'Сохранить', class: 'btn btn-info'
 
 .row.checkout
   .col-lg-12

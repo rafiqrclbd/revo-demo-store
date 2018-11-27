@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608194426) do
+ActiveRecord::Schema.define(version: 20181127113026) do
 
   create_table "order_items", force: :cascade do |t|
     t.float    "quantity",   limit: 24
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180608194426) do
     t.datetime "updated_at",                    null: false
     t.float    "revo_amount",       limit: 24
     t.float    "prepayment_amount", limit: 24
+    t.string   "redirect_url",      limit: 255
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree

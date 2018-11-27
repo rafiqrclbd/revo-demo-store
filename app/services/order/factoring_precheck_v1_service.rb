@@ -29,7 +29,7 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
   def auth_payload
     {
       callback_url: Rails.application.secrets.callback_url,
-      redirect_url: subdomain_secrets.redirect_url,
+      redirect_url: order.redirect_url.to_s,
       primary_phone: user.phone_number,
       primary_email: user.email,
       current_order: {

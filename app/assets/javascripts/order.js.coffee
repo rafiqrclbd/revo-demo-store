@@ -129,8 +129,6 @@ class RevoLoan
 
   openPopup: (url, origin)->
     REVO.Form.showPopup(url)
-    REVO.Form.onClose ->
-      window.location.reload()
     #Use git history to find old method
 
   finalizeOrder: ->
