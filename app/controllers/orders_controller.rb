@@ -32,6 +32,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:prepayment_amount)
+    params.require(:order).permit(:prepayment_amount, :redirect_url)
   end
 end
