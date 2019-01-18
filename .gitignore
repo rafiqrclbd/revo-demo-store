@@ -17,3 +17,4 @@
 
 #Ignore IDEA files
 /.idea
+.rake_tasks
