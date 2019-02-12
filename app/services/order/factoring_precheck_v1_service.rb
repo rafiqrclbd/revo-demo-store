@@ -67,6 +67,20 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
     @uri ||= URI("#{host}/factoring/v1/precheck/#{type}")
   end
 
+  def get_response
+    uri.query = params.to_query
+
+    request = Net::HTTP::Post.new(uri.request_uri)
+    sent_data = [
+      ['body', payload],
+      ['check', File.open('data/documents/example.pdf')]
+    ]
+    request.set_form sent_data, 'multipart/form-data'
+
+    response = http.request(request)
+    JSON.parse(response.body)
+  end
+
   def password
     Rails.application.secrets.factoring_password
   end
