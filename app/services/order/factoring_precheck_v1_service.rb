@@ -68,6 +68,7 @@ class Order::FactoringPrecheckV1Service < RequestBaseService
   end
 
   def get_response
+    return super unless type == 'finish'
     uri.query = params.to_query
 
     request = Net::HTTP::Post.new(uri.request_uri)
