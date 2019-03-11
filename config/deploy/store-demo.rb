@@ -4,7 +4,7 @@ set :service_user, 'demostore'
 set :group, 'g_revo_rw'
 
 # SET  env
-set :rails_env, 'staging'
+set :rails_env, 'production'
 
 # Connection settings
 server 'store.demo.revoup.ru', user: fetch(:user), port: 22, roles: %w[web app db]
