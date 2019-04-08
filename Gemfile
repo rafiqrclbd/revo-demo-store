@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'slackistrano', '3.1.0'
 gem 'unicorn', group: :production
 
+gem 'dotenv'
+
 group :development, :test do
   gem 'byebug'
   gem 'capistrano'

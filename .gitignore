@@ -18,3 +18,7 @@
 #Ignore IDEA files
 /.idea
 .rake_tasks
+
+.env.local
+
+Dockerfile.kebab
