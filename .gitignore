@@ -16,6 +16,6 @@
 /.idea
 .rake_tasks
 
-.env.local
+.env*.local
 
 Dockerfile.kebab
