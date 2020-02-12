@@ -63,7 +63,6 @@ class RevoLoan
   check: ->
     $.get('/revo_order/iframe_v1?id=' + @order_id).success (data)=>
       @progress.hide()
-      console.log(data)
       if data.status == 'ok'
         @btn.show()
         @btn.click =>
@@ -71,6 +70,7 @@ class RevoLoan
           @openPopup data.url
         @url = data.url
       else
+        console.log('Iframe V1', JSON.stringify(data))
         @error.show()
 
   full_check_v1: ->
@@ -81,6 +81,7 @@ class RevoLoan
         @full_btn_v1.click =>
           @openPopup data.url
       else
+        console.log('Online V1', JSON.stringify(data))
         @full_error_v1.show()
 
   full_check_v2: ->
@@ -91,6 +92,7 @@ class RevoLoan
         @full_btn_v2.click =>
           @openPopup data.url
       else
+        console.log('Online V2', JSON.stringify(data))
         @full_error_v2.show()
 
   factoring_check: ->
@@ -101,6 +103,7 @@ class RevoLoan
         @factoring_btn.click =>
           @openPopup data.url
       else
+        console.log('Factoring V1', JSON.stringify(data))
         @factoring_error.show()
 
   factoring_precheck_check: ->
@@ -111,6 +114,7 @@ class RevoLoan
         @factoring_precheck_btn.click =>
           @openPopup data.url
       else
+        console.log('Factoring V1 precheck', JSON.stringify(data))
         @factoring_precheck_error.show()
 
       @factoring_precheck_finish_btn.show()
