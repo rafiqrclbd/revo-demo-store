@@ -36,7 +36,7 @@ class RequestBaseService
   end
 
   def params
-    { store_id: store_id, signature: signature }
+    { store_id: store_id, signature: signature, form_url: form_url }.compact
   end
 
   def signature
@@ -58,5 +58,9 @@ class RequestBaseService
 
       http
     end
+  end
+
+  def form_url
+    ENV['FORM_URL']
   end
 end
